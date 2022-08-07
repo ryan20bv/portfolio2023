@@ -1,6 +1,6 @@
 .nav {
 	/* border: solid red; */
-	width: 50%;
+	width: 80%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -9,7 +9,7 @@
 .nav .head {
 	/* border: solid red; */
 	font-family: var(--satisfy);
-	color: #fff;
+	/* color: #fff; */
 	word-wrap: normal;
 	font-size: 10em;
 	text-align: center;
@@ -18,19 +18,20 @@
 }
 
 .nav ul {
+	/* border: solid red; */
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-around;
 	list-style: none;
-	font-size: 2em;
-	color: red;
+	font-size: 1.5em;
+	/* color: red; */
 }
 .nav li {
-	padding: 10px 30px;
+	padding: 10px 10px;
 }
 .nav a {
-	color: red;
+	/* color: red; */
 	text-decoration: none;
 }
 

@@ -1,0 +1,21 @@
+.wrapper {
+	/* border: solid red; */
+	display: flex;
+	min-height: 100vh;
+}
+
+.left {
+	/* border: solid blue; */
+	width: 50%;
+	min-height: 100vh;
+	background-color: red;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	/* padding: 8em; */
+}
+.right {
+	width: 50%;
+	/* padding: 8em; */
+}
