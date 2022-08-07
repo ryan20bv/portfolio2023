@@ -1,0 +1,22 @@
+.nav {
+	color: red;
+	/* border: solid red; */
+}
+.nav ul {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	list-style: none;
+	font-size: 2em;
+}
+.nav li {
+	padding: 10px 30px;
+}
+.nav a {
+	color: red;
+	text-decoration: none;
+}
+.nav a.active {
+	text-decoration: underline;
+}
