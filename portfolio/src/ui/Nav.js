@@ -2,9 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 import classes from "./nav.module.css";
-const Nav = () => {
+const Nav = (props) => {
 	return (
 		<nav className={classes.nav}>
+			<div className={classes.head}>
+				<h1 style={{ fontFamily: props.fontFamily }}>{props.head}</h1>
+			</div>
 			<ul>
 				<li>
 					<NavLink

@@ -1,7 +1,22 @@
 .nav {
-	color: red;
 	/* border: solid red; */
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
+.nav .head {
+	/* border: solid red; */
+	font-family: var(--satisfy);
+	color: #fff;
+	word-wrap: normal;
+	font-size: 10em;
+	text-align: center;
+	line-height: 220px;
+	margin-bottom: 1em;
+}
+
 .nav ul {
 	display: flex;
 	flex-direction: row;
@@ -9,6 +24,7 @@
 	justify-content: space-around;
 	list-style: none;
 	font-size: 2em;
+	color: red;
 }
 .nav li {
 	padding: 10px 30px;
@@ -17,6 +33,8 @@
 	color: red;
 	text-decoration: none;
 }
+
+.nav a:hover,
 .nav a.active {
 	text-decoration: underline;
 }

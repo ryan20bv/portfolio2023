@@ -8,20 +8,3 @@
 	flex-direction: column;
 	padding-bottom: 5em;
 }
-
-.head {
-	/* border: solid red; */
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	margin-bottom: 10em;
-}
-h1 {
-	font-family: var(--great);
-	color: #fff;
-	font-size: 14em;
-	line-height: 0.9em;
-}
-h1 + h1 {
-	margin-left: -50px;
-}
