@@ -1,0 +1,15 @@
+.project {
+	min-height: inherit;
+	padding: 8em;
+	position: fixed;
+	width: 50%;
+	/* min-height: 100vh; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 250px;
+}
+.container {
+	border: solid red 2px;
+	height: 50vh;
+}

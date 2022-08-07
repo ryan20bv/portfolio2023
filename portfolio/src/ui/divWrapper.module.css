@@ -1,14 +1,14 @@
 .wrapper {
-	/* border: solid red; */
 	display: flex;
-	min-height: 100vh;
+	/* min-height: initial; */
 }
 
 .left {
 	/* border: solid blue; */
 	width: 50%;
-	min-height: 100vh;
+	/* min-height: inherit; */
 	background-color: red;
+	background-image: url("https://images.pexels.com/photos/1036808/pexels-photo-1036808.jpeg?auto=compress&cs=tinysrgb&w=600");
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
