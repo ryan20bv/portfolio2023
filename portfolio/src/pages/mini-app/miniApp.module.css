@@ -2,11 +2,13 @@
 	/* border: solid red; */
 	height: 100vh;
 	/* position: relative; */
+	/* overflow: hidden; */
+	/* overflow-x: scroll; */
 }
 .section .divContainer {
 	border: solid black;
 	height: 8%;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 
 .miniAppNav {
@@ -31,7 +33,21 @@
 	align-content: center;
 	height: 75%;
 }
-.section .slider {
+.section .slider_div {
 	border: solid blue;
 	height: 25%;
+	width: 100%;
+	overflow-x: scroll;
+}
+.section .slider_container {
+	border: solid black;
+	width: 120%;
+	height: 100%;
+	/* overflow-x: scroll; */
+	display: flex;
+}
+.section .slider_content {
+	border: solid red;
+	width: 20%;
+	height: inherit;
 }
