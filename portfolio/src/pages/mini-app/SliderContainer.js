@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SliderContainer = ({ classes }) => {
-	const [contentId, setContentId] = useState("one");
+	const [contentId, setContentId] = useState("three");
 	const navigate = useNavigate();
 	const clickHandler = (e) => {
 		const targetId = e.target.id;
