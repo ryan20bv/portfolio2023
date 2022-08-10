@@ -18,7 +18,7 @@ const App = () => {
 				<Route path='/home/*' element={<Home />} exact />
 				<Route path='/about' element={<About />} />
 				<Route path='/project' element={<Project />} />
-				<Route path='/mini-app' element={<MiniApp />} />
+				<Route path='/mini-app/*' element={<MiniApp />} />
 			</Routes>
 		</React.Suspense>
 	);

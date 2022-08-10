@@ -1,17 +1,17 @@
-.section {
+.main {
 	/* border: solid red; */
 	height: 100vh;
 	/* position: relative; */
 	/* overflow: hidden; */
 	/* overflow-x: scroll; */
 }
-.section .divContainer {
+.main .nav_container {
 	border: solid black;
 	height: 8%;
 	/* overflow: hidden; */
 }
 
-.miniAppNav {
+.mini_app_nav {
 	/* border: solid red; */
 	position: relative;
 	width: 99vw;
@@ -24,29 +24,30 @@
 	align-items: flex-end;
 	justify-content: center;
 }
-.section .content {
+.main .content {
 	border: solid black;
 	height: 92%;
 }
-.section .view {
+.main .output {
 	/* border: solid black; */
 	align-content: center;
 	height: 75%;
 }
-.section .slider_div {
+.main .slider_div {
 	border: solid blue;
 	height: 25%;
 	width: 100%;
-	overflow-x: scroll;
+	/* overflow-x: scroll; */
+	overflow-x: hidden;
 }
-.section .slider_container {
+.main .slider_container {
 	border: solid black;
 	width: 120%;
 	height: 100%;
 	/* overflow-x: scroll; */
 	display: flex;
 }
-.section .slider_content {
+.main .slider_content {
 	border: solid red;
 	width: 20%;
 	height: inherit;

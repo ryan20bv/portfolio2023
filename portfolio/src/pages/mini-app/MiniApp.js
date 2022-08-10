@@ -1,40 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import Nav from "../../ui/Nav";
+import Slider from "./Slider";
+import MiniAppOutput from "./MiniAppOutput";
+import SliderContainer from "./SliderContainer";
 
 import classes from "./miniApp.module.css";
 
+// const sliderContainer = document.getElementById("slider_container");
+
 const MiniApp = () => {
+	const [screenX, setScreenX] = useState(null);
+	// const handler = ()=> {
+
+	// }
+	onmousemove = (e) => {
+		// console.log(e.screenX);
+		setScreenX(e.screenX);
+	};
+
 	return (
-		<section className={classes.section}>
-			<div className={classes.divContainer}>
-				<Nav miniAppClassName={classes.miniAppNav} />
-			</div>
-			<div className={classes.content}>
-				<div className={classes.view}>MiniApp</div>
-				<div className={classes.slider_div}>
-					<div className={classes.slider_container}>
-						<div className={classes.slider_content}>
-							<p>slide 1</p>
-						</div>
-						<div className={classes.slider_content}>
-							<p>slide 2</p>
-						</div>
-						<div className={classes.slider_content}>
-							<p>slide 3</p>
-						</div>
-						<div className={classes.slider_content}>
-							<p>slide 4</p>
-						</div>
-						<div className={classes.slider_content}>
-							<p>slide 5</p>
-						</div>
-						<div className={classes.slider_content}>
-							<p>slide 6</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+		<main className={classes.main}>
+			<section className={classes.nav_container}>
+				<Nav miniAppClassName={classes.mini_app_nav} />
+			</section>
+			<section className={classes.content}>
+				<MiniAppOutput classes={classes} />
+				<Slider classes={classes} screenXValue={screenX}>
+					<SliderContainer classes={classes} />
+				</Slider>
+			</section>
+		</main>
 	);
 };
 
