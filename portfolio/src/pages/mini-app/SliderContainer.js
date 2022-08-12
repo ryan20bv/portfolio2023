@@ -8,11 +8,9 @@ const SliderContainer = ({ classes }) => {
 		const targetId = e.target.id;
 		// console.log(targetId);
 		if (targetId === "") {
-			// console.log("here");
 			return;
 		}
 		setContentId(targetId);
-		// setContentId();
 	};
 	useEffect(() => {
 		navigate(`/mini-app/slider/${contentId}`);

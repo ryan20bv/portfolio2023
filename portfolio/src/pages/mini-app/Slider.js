@@ -21,7 +21,7 @@ const Slider = (props) => {
 		} else if (screenXValue >= 800 && screenXValue < 1000) {
 			sliderDivRef.current.scrollLeft = 218;
 		} else if (screenXValue >= 1000) {
-			sliderDivRef.current.scrollLeft = 320;
+			sliderDivRef.current.scrollLeft = 350;
 		}
 	};
 
