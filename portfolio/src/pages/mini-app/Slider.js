@@ -1,8 +1,12 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
 const Slider = (props) => {
-	// console.log(props.screenXValue);
-	const { screenXValue } = props;
+	const [screenXValue, setScreenXValue] = useState(null);
+	onmousemove = (e) => {
+		// console.log(e.screenX);
+		setScreenXValue(e.screenX);
+	};
+
 	const sliderDivRef = useRef();
 	useEffect(() => {
 		sliderDivRef.current.scrollLeft = 150;

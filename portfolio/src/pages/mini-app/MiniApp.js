@@ -1,35 +1,26 @@
-import React, { useState } from "react";
-import Nav from "../../ui/Nav";
-import Slider from "./Slider";
-import MiniAppOutput from "./MiniAppOutput";
-import SliderContainer from "./SliderContainer";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
-import classes from "./miniApp.module.css";
-
-// const sliderContainer = document.getElementById("slider_container");
+import MiniAppWrapper from "./MiniAppWrapper";
+import SliderOne from "./miniAppPages/SliderOne";
+import SimonGame from "./miniAppPages/SimonGame";
+import NumToWords from "./miniAppPages/NumToWords";
+import Randomizer from "./miniAppPages/Randomizer";
+import DiceGame from "./miniAppPages/DiceGame";
+import SliderSix from "./miniAppPages/SliderSix";
 
 const MiniApp = () => {
-	const [screenX, setScreenX] = useState(null);
-	// const handler = ()=> {
-
-	// }
-	onmousemove = (e) => {
-		// console.log(e.screenX);
-		setScreenX(e.screenX);
-	};
-
 	return (
-		<main className={classes.main}>
-			<section className={classes.nav_container}>
-				<Nav miniAppClassName={classes.mini_app_nav} />
-			</section>
-			<section className={classes.content}>
-				<MiniAppOutput classes={classes} />
-				<Slider classes={classes} screenXValue={screenX}>
-					<SliderContainer classes={classes} />
-				</Slider>
-			</section>
-		</main>
+		<MiniAppWrapper>
+			<Routes>
+				<Route path='/one' element={<SliderOne />} />
+				<Route path='/simon-game' element={<SimonGame />} />
+				<Route path='/num-to-word' element={<NumToWords />} />
+				<Route path='/randomizer' element={<Randomizer />} />
+				<Route path='/dice-game' element={<DiceGame />} />
+				<Route path='/Six' element={<SliderSix />} />
+			</Routes>
+		</MiniAppWrapper>
 	);
 };
 
