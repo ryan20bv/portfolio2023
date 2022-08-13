@@ -1,7 +1,61 @@
 .num {
-	background-color: aqua;
+	background-color: #faebd7;
 	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 4em 2em 2em 2em;
 }
 .num h1 {
+	font-size: 3em;
+	margin-bottom: 1em;
+}
+.num form {
+	/* border: solid red; */
+	display: flex;
+	flex-direction: column;
+	width: 70%;
+	margin-bottom: 30px;
+}
+.num form label {
+	font-size: larger;
+	margin-bottom: 10px;
+}
+.num form input {
+	width: 80%;
+	font-size: 36px;
+	margin: auto;
+	height: 50px;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	padding: 0 20px;
 	color: red;
+	text-align: right;
+}
+.num form button {
+	width: 30%;
+	margin: auto;
+	height: 50px;
+	font-size: 36px;
+	border-radius: 10px;
+	border: solid black 1px;
+}
+.num form button:hover {
+	cursor: pointer;
+	background-color: salmon;
+	color: #fff;
+}
+
+.num div {
+	/* border: solid red; */
+	height: 50%;
+	width: 80%;
+	padding: 1em 2em;
+}
+.num div p {
+	font-size: 42px;
+}
+.num footer {
+	/* align-self: flex-end; */
+	justify-content: last baseline;
 }
