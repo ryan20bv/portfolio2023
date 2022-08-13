@@ -34,21 +34,26 @@
 	height: 75%;
 }
 .main .slider_div {
-	border: solid blue;
+	border-top: solid black;
 	height: 25%;
 	width: 100%;
 	/* overflow-x: scroll; */
-	overflow-x: hidden;
+	overflow: hidden;
+	opacity: 0.5;
+	transition: opacity 1s;
+}
+.main .slider_div:hover {
+	opacity: 1;
 }
 .main .slider_container {
-	border: solid black;
+	/* border: solid black; */
 	width: 120%;
 	height: 100%;
 	/* overflow-x: scroll; */
 	display: flex;
 }
 .main .slider_content {
-	border: solid red;
+	/* border: solid red; */
 	width: 20%;
 	height: inherit;
 }

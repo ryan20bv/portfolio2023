@@ -4,17 +4,17 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 4em 2em 2em 2em;
+	padding: 40px 20px 20px 2px;
 }
 .num h1 {
 	font-size: 3em;
-	margin-bottom: 1em;
+	margin-bottom: 20px;
 }
 .num form {
 	/* border: solid red; */
 	display: flex;
 	flex-direction: column;
-	width: 70%;
+	width: 60%;
 	margin-bottom: 30px;
 }
 .num form label {
@@ -22,8 +22,8 @@
 	margin-bottom: 10px;
 }
 .num form input {
-	width: 80%;
-	font-size: 36px;
+	width: 70%;
+	font-size: 3em;
 	margin: auto;
 	height: 50px;
 	border-radius: 10px;
@@ -36,7 +36,7 @@
 	width: 30%;
 	margin: auto;
 	height: 50px;
-	font-size: 36px;
+	font-size: 2em;
 	border-radius: 10px;
 	border: solid black 1px;
 }
@@ -53,7 +53,7 @@
 	padding: 1em 2em;
 }
 .num div p {
-	font-size: 42px;
+	font-size: 3em;
 }
 .num footer {
 	/* align-self: flex-end; */

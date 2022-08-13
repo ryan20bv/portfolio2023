@@ -14,13 +14,11 @@ const Slider = (props) => {
 	// 0-1200 0 200 400 600 800 1000 1200
 	// 0 -320 53.3 106 159.9 213.2 266
 	const moveSlider = () => {
-		if (screenXValue < 200) {
+		if (screenXValue < 290) {
 			sliderDivRef.current.scrollLeft = 0;
-		} else if (screenXValue >= 200 && screenXValue < 400) {
-			sliderDivRef.current.scrollLeft = 55;
-		} else if (screenXValue >= 400 && screenXValue < 600) {
-			sliderDivRef.current.scrollLeft = 110;
-		} else if (screenXValue >= 600 && screenXValue < 800) {
+		} else if (screenXValue >= 290 && screenXValue < 555) {
+			sliderDivRef.current.scrollLeft = 80;
+		} else if (screenXValue >= 555 && screenXValue < 800) {
 			sliderDivRef.current.scrollLeft = 160;
 		} else if (screenXValue >= 800 && screenXValue < 1000) {
 			sliderDivRef.current.scrollLeft = 218;
