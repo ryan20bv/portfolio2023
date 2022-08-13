@@ -8,13 +8,16 @@ const SimonGame = () => {
 			</section>
 			<section className={classes.playArea}>
 				<button className={classes.start}>Press To Start</button>
-				<div className={classes.info}>score</div>
-				<div className={classes.playDiv}>
-					<div className={classes.button}></div>
-					<div className={classes.button}></div>
-					<div className={classes.button}></div>
-					<div className={classes.button}></div>
+				<div className={classes.wrapper}>
+					<div className={classes.info}>score</div>
+					<div className={classes.playDiv}>
+						<div className={classes.button}></div>
+						<div className={classes.button}></div>
+						<div className={classes.button}></div>
+						<div className={classes.button}></div>
+					</div>
 				</div>
+
 				<footer>@2022</footer>
 			</section>
 			<section className={classes.last}>
