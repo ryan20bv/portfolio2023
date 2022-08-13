@@ -1,8 +1,73 @@
 .randomizer {
-	background-color: black;
+	background-color: #ffaebc;
 	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 40px 20px 20px 20px;
 }
-
 .randomizer h1 {
-	color: yellow;
+	font-size: 4em;
+	margin-bottom: 20px;
+}
+.randomizer .range {
+	/* border: solid black; */
+	display: flex;
+	justify-content: space-around;
+	width: 25%;
+	margin-bottom: 30px;
+}
+.randomizer .range div {
+	display: flex;
+	flex-direction: column;
+	margin: 0 30px;
+}
+.randomizer .range div label {
+	font-size: 2em;
+}
+.randomizer .range div input {
+	font-size: 2em;
+	width: 60%;
+	padding: 5px 10px;
+	text-align: end;
+	align-self: flex-end;
+}
+.randomizer .button {
+	/* border: solid red; */
+	width: 40%;
+	display: flex;
+	justify-content: space-around;
+}
+.randomizer .button button {
+	font-size: 2em;
+	margin: 20px;
+	padding: 10px 20px;
+	border-radius: 10px;
+}
+.randomizer .button .single {
+	background-color: #35e3de;
+}
+.randomizer .button .reset {
+	background-color: #f03655;
+}
+.randomizer .button .automatic {
+	background-color: #4df981;
+}
+.randomizer .button button:hover {
+	background-color: lightgray;
+
+	cursor: pointer;
+}
+.randomizer .bottom {
+	display: flex;
+	margin: 30px;
+}
+.randomizer .bottom input {
+	border: solid #fbe7c6 1px;
+	border-radius: 50%;
+	margin: 20px;
+	font-size: 8em;
+	width: 1.5em;
+	text-align: center;
+	background-color: #fbe7c6;
 }
