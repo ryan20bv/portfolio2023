@@ -1,0 +1,55 @@
+.dice {
+	background-color: #393e46;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 50px;
+	color: #48a388;
+	font-family: "Lobster", cursive;
+}
+
+.dice .title {
+	font-size: 60px;
+}
+
+.dice .play_area {
+	/* border: solid red; */
+	margin: 50px;
+	width: 50%;
+	height: 80%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.dice .left,
+.dice .right {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.dice .info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.dice .info h2 {
+	font-size: 36px;
+	margin-bottom: 20px;
+}
+.dice .info p {
+	font-size: 36px;
+	margin-bottom: 20px;
+}
+.dice button {
+	background-color: #48a388;
+	font-size: 24px;
+	padding: 5px 10px;
+	border-radius: 10px;
+}
+.dice button:hover {
+	cursor: pointer;
+	background-color: lightgray;
+}
