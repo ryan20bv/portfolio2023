@@ -43,13 +43,30 @@
 	font-size: 36px;
 	margin-bottom: 20px;
 }
+.dice .options {
+	display: flex;
+	flex-direction: column;
+	align-content: flex-end;
+	justify-content: end;
+	height: 70%;
+}
 .dice button {
-	background-color: #48a388;
 	font-size: 24px;
 	padding: 5px 10px;
 	border-radius: 10px;
+	font-family: "Lobster", cursive;
+	color: #fff;
+}
+
+.dice button:first-child {
+	background-color: #48a388;
+}
+.dice button:last-child {
+	margin-top: 50px;
+	background-color: red;
 }
 .dice button:hover {
 	cursor: pointer;
 	background-color: lightgray;
+	color: black;
 }

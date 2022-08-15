@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
+import useDice from "./assets/hooks/use-dice";
 import classes from "./assets/styles/dice.module.css";
 const DiceGame = () => {
+	// const [leftValue, setLeftValue] = useState(6);
+	const { clickHandler, leftValue, rightValue } = useDice();
+
 	return (
 		<main className={classes.dice}>
 			<section className={classes.title}>
@@ -15,13 +19,16 @@ const DiceGame = () => {
 					</div>
 					<div className={classes.image}>
 						<img
-							src={process.env.PUBLIC_URL + "/assets/images/dice6.PNG"}
+							src={
+								process.env.PUBLIC_URL + `/assets/images/dice${leftValue}.PNG`
+							}
 							alt='dice'
 						/>
 					</div>
 				</div>
-				<div>
-					<button>Roll Dice</button>
+				<div className={classes.options}>
+					<button onClick={clickHandler}>Roll Dice</button>
+					<button>Reset</button>
 				</div>
 				<div className={classes.right}>
 					<div className={classes.info}>
@@ -30,7 +37,9 @@ const DiceGame = () => {
 					</div>
 					<div className={classes.image}>
 						<img
-							src={process.env.PUBLIC_URL + "/assets/images/dice6.PNG"}
+							src={
+								process.env.PUBLIC_URL + `/assets/images/dice${rightValue}.PNG`
+							}
 							alt='dice'
 						/>
 					</div>
