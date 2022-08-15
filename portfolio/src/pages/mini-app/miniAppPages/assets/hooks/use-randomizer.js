@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const useRandomizer = () => {
-	const [maxValue, setMaxValue] = useState(6);
+	const [maxValue, setMaxValue] = useState(42);
 	const [index, setIndex] = useState(0);
 	const [arrayValues, setArrayValues] = useState([]);
 	const [randomArray, setRandomArray] = useState([]);
@@ -9,25 +9,29 @@ const useRandomizer = () => {
 		if (arrayValues.length >= 6) {
 			return;
 		}
-		const singleNum = Math.ceil(Math.random() * maxValue);
+		let singleNum = Math.ceil(Math.random() * maxValue);
 		const found = arrayValues.find((element) => element === singleNum);
 		if (found) {
 			singleButtonHandler();
 			return;
+		}
+		if (singleNum < 10) {
+			singleNum = "0" + singleNum;
 		}
 		setArrayValues((prevState) => {
 			return [...prevState, singleNum];
 		});
 	};
 	const randomizedNumber = (ind) => {
-		console.log("one");
 		if (ind >= 6) {
-			console.log("return");
 			return;
 		}
 		let intervalId = setInterval(() => {
 			const copyOfRandom = [...randomArray];
-			const num = Math.ceil(Math.random() * maxValue);
+			let num = Math.ceil(Math.random() * maxValue);
+			if (num < 10) {
+				num = "0" + num;
+			}
 			copyOfRandom[ind] = num;
 			setRandomArray(copyOfRandom);
 		}, 100);
@@ -40,20 +44,22 @@ const useRandomizer = () => {
 		randomizedNumber(index);
 		if (index < 6) {
 			setIndex((prevState) => {
-				console.log("two");
 				return (prevState = prevState + 1);
 			});
 		}
 	};
+	let newIndex = 0;
 	const automaticClickHandler = () => {
-		singleClickHandler();
-		console.log("auto", index);
+		randomizedNumber(newIndex);
 		let timerId = setInterval(() => {
-			automaticClickHandler();
-		}, 2000);
+			newIndex++;
+			if (newIndex < 6) {
+				automaticClickHandler();
+			}
+		}, 3000);
 		setTimeout(() => {
 			clearInterval(timerId);
-		}, 2200);
+		}, 3500);
 	};
 	const resetValues = () => {
 		setIndex(0);
