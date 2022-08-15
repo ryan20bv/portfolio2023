@@ -3,11 +3,23 @@ import React, { useEffect } from "react";
 import useRandomizer from "./assets/hooks/use-randomizer";
 import classes from "./assets/styles/randomizer.module.css";
 const Randomizer = () => {
-	const { maxValue, changeMaxValue, singleButtonHandler, arrayValues } =
-		useRandomizer();
+	const {
+		maxValue,
+		changeMaxValue,
+		singleClickHandler,
+		arrayValues,
+		randomArray,
+		resetValues,
+		automaticClickHandler,
+		index,
+	} = useRandomizer();
 	useEffect(() => {
-		console.log(arrayValues);
-	}, [arrayValues]);
+		console.log(index);
+	}, [index]);
+	// useEffect(() => {
+	// 	console.log("random", randomArray);
+	// 	console.log("array", arrayValues);
+	// }, [arrayValues, randomArray]);
 	return (
 		<main className={classes.randomizer}>
 			<h1>Randomizer</h1>
@@ -34,30 +46,70 @@ const Randomizer = () => {
 				</div>
 			</section>
 			<section className={classes.button}>
-				<button className={classes.single} onClick={singleButtonHandler}>
+				<button className={classes.single} onClick={singleClickHandler}>
 					Single
 				</button>
-				<button className={classes.reset}>Reset</button>
-				<button className={classes.automatic}>Automatic</button>
+				<button className={classes.reset} onClick={resetValues}>
+					Reset
+				</button>
+				<button className={classes.automatic} onClick={automaticClickHandler}>
+					Automatic
+				</button>
 			</section>
 			<section className={classes.bottom}>
 				<div>
-					<p>{arrayValues[0] ? arrayValues[0] : "??"}</p>
+					<p>
+						{arrayValues[0]
+							? arrayValues[0]
+							: randomArray[0]
+							? randomArray[0]
+							: "??"}
+					</p>
 				</div>
 				<div>
-					<p>{arrayValues[1] ? arrayValues[1] : "??"}</p>
+					<p>
+						{arrayValues[1]
+							? arrayValues[1]
+							: randomArray[1]
+							? randomArray[1]
+							: "??"}
+					</p>
 				</div>
 				<div>
-					<p>{arrayValues[2] ? arrayValues[2] : "??"}</p>
+					<p>
+						{arrayValues[2]
+							? arrayValues[2]
+							: randomArray[2]
+							? randomArray[2]
+							: "??"}
+					</p>
 				</div>
 				<div>
-					<p>{arrayValues[3] ? arrayValues[3] : "??"}</p>
+					<p>
+						{arrayValues[3]
+							? arrayValues[3]
+							: randomArray[3]
+							? randomArray[3]
+							: "??"}
+					</p>
 				</div>
 				<div>
-					<p>{arrayValues[4] ? arrayValues[4] : "??"}</p>
+					<p>
+						{arrayValues[4]
+							? arrayValues[4]
+							: randomArray[4]
+							? randomArray[4]
+							: "??"}
+					</p>
 				</div>
 				<div>
-					<p>{arrayValues[5] ? arrayValues[5] : "??"}</p>
+					<p>
+						{arrayValues[5]
+							? arrayValues[5]
+							: randomArray[5]
+							? randomArray[5]
+							: "??"}
+					</p>
 				</div>
 			</section>
 			<footer>@2022</footer>
