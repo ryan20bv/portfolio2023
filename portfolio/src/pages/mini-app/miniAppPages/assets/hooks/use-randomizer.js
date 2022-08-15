@@ -65,6 +65,7 @@ const useRandomizer = () => {
 		setIndex(0);
 		setArrayValues([]);
 		setRandomArray([]);
+		newIndex = 0;
 	};
 	const changeMaxValue = (e) => {
 		setMaxValue(e.target.value);
@@ -77,7 +78,6 @@ const useRandomizer = () => {
 		randomArray,
 		resetValues,
 		automaticClickHandler,
-		index,
 	};
 };
 

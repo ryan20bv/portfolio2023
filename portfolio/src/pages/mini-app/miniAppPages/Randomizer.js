@@ -11,7 +11,6 @@ const Randomizer = () => {
 		randomArray,
 		resetValues,
 		automaticClickHandler,
-		index,
 	} = useRandomizer();
 	// useEffect(() => {
 	// 	console.log(index);
