@@ -4,7 +4,15 @@ import useDice from "./assets/hooks/use-dice";
 import classes from "./assets/styles/dice.module.css";
 const DiceGame = () => {
 	// const [leftValue, setLeftValue] = useState(6);
-	const { clickHandler, leftValue, rightValue } = useDice();
+	const {
+		startHandler,
+		leftValue,
+		rightValue,
+		leftScore,
+		rightScore,
+		message,
+		resetHandler,
+	} = useDice();
 
 	return (
 		<main className={classes.dice}>
@@ -15,7 +23,7 @@ const DiceGame = () => {
 				<div className={classes.left}>
 					<div className={classes.info}>
 						<h2>Player 1</h2>
-						<p>0</p>
+						<p>{leftScore}</p>
 					</div>
 					<div className={classes.image}>
 						<img
@@ -27,13 +35,14 @@ const DiceGame = () => {
 					</div>
 				</div>
 				<div className={classes.options}>
-					<button onClick={clickHandler}>Roll Dice</button>
-					<button>Reset</button>
+					<p>{message}</p>
+					<button onClick={startHandler}>Roll Dice</button>
+					<button onClick={resetHandler}>Reset</button>
 				</div>
 				<div className={classes.right}>
 					<div className={classes.info}>
 						<h2>Player 1</h2>
-						<p>0</p>
+						<p>{rightScore}</p>
 					</div>
 					<div className={classes.image}>
 						<img
