@@ -41,7 +41,7 @@ const DiceGame = () => {
 				</div>
 				<div className={classes.right}>
 					<div className={classes.info}>
-						<h2>Player 1</h2>
+						<h2>Player 2</h2>
 						<p>{rightScore}</p>
 					</div>
 					<div className={classes.image}>

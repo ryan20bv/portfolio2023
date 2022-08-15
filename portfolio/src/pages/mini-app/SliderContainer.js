@@ -25,7 +25,7 @@ const SliderContainer = ({ classes }) => {
 					src={process.env.PUBLIC_URL + "/assets/images/Num-to-word.PNG"}
 					alt='num to word'
 					id='one'
-					onMouseEnter={(e) => clickHandler(e)}
+					onClick={(e) => clickHandler(e)}
 				/>
 			</div>
 			<div className={classes.slider_content}>
@@ -33,7 +33,7 @@ const SliderContainer = ({ classes }) => {
 					src={process.env.PUBLIC_URL + "/assets/images/simon-game.PNG"}
 					alt='simon game'
 					id='simon-game'
-					onMouseEnter={(e) => clickHandler(e)}
+					onClick={(e) => clickHandler(e)}
 				/>
 			</div>
 			<div className={classes.slider_content}>
@@ -41,7 +41,7 @@ const SliderContainer = ({ classes }) => {
 					src={process.env.PUBLIC_URL + "/assets/images/Num-to-word.PNG"}
 					alt='num to word'
 					id='num-to-word'
-					onMouseEnter={(e) => clickHandler(e)}
+					onClick={(e) => clickHandler(e)}
 				/>
 			</div>
 			<div className={classes.slider_content}>
@@ -49,7 +49,7 @@ const SliderContainer = ({ classes }) => {
 					src={process.env.PUBLIC_URL + "/assets/images/randomizer.PNG"}
 					alt='randomizer'
 					id='randomizer'
-					onMouseEnter={(e) => clickHandler(e)}
+					onClick={(e) => clickHandler(e)}
 				/>
 			</div>
 			<div className={classes.slider_content}>
@@ -57,7 +57,7 @@ const SliderContainer = ({ classes }) => {
 					src={process.env.PUBLIC_URL + "/assets/images/dice-game.PNG"}
 					alt='dice game'
 					id='dice-game'
-					onMouseEnter={(e) => clickHandler(e)}
+					onClick={(e) => clickHandler(e)}
 				/>
 			</div>
 			<div className={classes.slider_content}>
@@ -65,7 +65,8 @@ const SliderContainer = ({ classes }) => {
 					src={process.env.PUBLIC_URL + "/assets/images/Num-to-word.PNG"}
 					alt='num to word'
 					id='six'
-					onMouseEnter={(e) => clickHandler(e)}
+					onClick={(e) => clickHandler(e)}
+					// onMouseEnter={(e) => clickHandler(e)}
 				/>
 			</div>
 		</div>

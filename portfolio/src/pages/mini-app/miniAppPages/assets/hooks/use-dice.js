@@ -68,7 +68,7 @@ const useDice = () => {
 		dispatchDice({ type: "START" });
 		intervalId = setInterval(() => {
 			randomNumberHandler();
-		}, 300);
+		}, 200);
 		setTimeout(() => {
 			clearInterval(intervalId);
 			randomNumberHandler();
