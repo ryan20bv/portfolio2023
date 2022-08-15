@@ -12,6 +12,7 @@ const NumToWords = () => {
 	const inputRef = useRef();
 	const changeHandler = (e) => {
 		let enteredValue = e.target.value;
+
 		if (e.target.value === "00") {
 			enteredValue = 0;
 		}

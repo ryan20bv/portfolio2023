@@ -73,8 +73,9 @@ const useNum = () => {
 		const quotient = Math.floor(val / 10);
 		return _tensArray[quotient];
 	};
-	const three_digit = (num) => {
-		let quotient = Math.floor(num / 100);
+	const three_digit = (val) => {
+		let quotient = Math.floor(val / 100);
+
 		return _onesArray[quotient];
 	};
 
@@ -85,7 +86,7 @@ const useNum = () => {
 		let newValue;
 		const valueLength = numValue.length;
 		if (valueLength === 3) {
-			if (newValue >= 100) {
+			if (numValue >= 100) {
 				returnedWord += three_digit(numValue);
 				returnedWord += "Hundred ";
 				if (numValue % 100 === 0) {
@@ -148,7 +149,6 @@ const useNum = () => {
 		originalLength = originalValue.length;
 		originalArray = [];
 		if (originalValue.trim() === "0") {
-			console.log("zero");
 			returnedWord = ones_Handler(originalValue);
 			showOutput(returnedWord);
 			return;

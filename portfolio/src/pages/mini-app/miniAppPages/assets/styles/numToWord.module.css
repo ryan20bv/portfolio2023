@@ -54,6 +54,9 @@
 }
 .num div p {
 	font-size: 3em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .num footer {
 	/* align-self: flex-end; */
