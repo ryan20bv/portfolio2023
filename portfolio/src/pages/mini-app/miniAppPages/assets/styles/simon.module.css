@@ -92,10 +92,14 @@
 	cursor: pointer;
 }
 .simon .playArea .playDiv div:first-child + div + div:hover {
-	background-color: #f0f06b;
+	background-color: #f0f090;
 	cursor: pointer;
 }
 .simon .playArea .playDiv div:last-child:hover {
 	background-color: #7575f4;
 	cursor: pointer;
+}
+
+.wrong {
+	background-color: red;
 }
