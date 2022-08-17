@@ -28,7 +28,13 @@ const SimonGame = () => {
 					Press To Start
 				</button>
 				<div className={classes.wrapper} ref={wrongRef}>
-					<div className={classes.info}>score</div>
+					<div className={classes.info}>
+						<h1>
+							Level <span>0</span>
+						</h1>
+
+						<p className={classes.timer}>5</p>
+					</div>
 					<div className={classes.playDiv}>
 						<div
 							className={classes.button}
