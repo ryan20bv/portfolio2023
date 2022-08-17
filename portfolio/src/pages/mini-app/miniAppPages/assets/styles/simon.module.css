@@ -63,7 +63,13 @@
 	width: 10em;
 	height: 10em;
 	margin: 20px 40px;
+	border-radius: 30px;
 }
+.simon .playArea .playDiv .button.pressed {
+	box-shadow: 0 0 20px white;
+	background-color: grey;
+}
+
 .simon .playArea .playDiv div:first-child {
 	background-color: #008000;
 }
@@ -75,4 +81,21 @@
 }
 .simon .playArea .playDiv div:last-child {
 	background-color: #0000ff;
+}
+
+.simon .playArea .playDiv div:first-child:hover {
+	background-color: #74ef74;
+	cursor: pointer;
+}
+.simon .playArea .playDiv div:first-child + div:hover {
+	background-color: #f46e6e;
+	cursor: pointer;
+}
+.simon .playArea .playDiv div:first-child + div + div:hover {
+	background-color: #f0f06b;
+	cursor: pointer;
+}
+.simon .playArea .playDiv div:last-child:hover {
+	background-color: #7575f4;
+	cursor: pointer;
 }
