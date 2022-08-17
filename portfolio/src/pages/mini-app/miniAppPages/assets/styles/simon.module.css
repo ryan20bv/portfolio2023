@@ -35,6 +35,9 @@
 	font-family: "Press Start 2P", cursive;
 	border-radius: 5px;
 }
+.simon .playArea .start:hover {
+	cursor: pointer;
+}
 .simon .playArea .wrapper {
 	border: solid red;
 	width: 100%;
@@ -120,4 +123,8 @@
 
 .wrong {
 	background-color: red;
+}
+
+.visible {
+	visibility: hidden;
 }

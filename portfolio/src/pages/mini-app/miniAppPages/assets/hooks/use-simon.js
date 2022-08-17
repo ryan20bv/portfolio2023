@@ -7,18 +7,10 @@ import blueMP3 from "../audio/blue.mp3";
 import wrongMp3 from "../audio/wrong.mp3";
 import classes from "../styles/simon.module.css";
 
-const useSimon = (green, red, yellow, blue, wrong) => {
+const useSimon = (green, red, yellow, blue, wrong, info) => {
+	const [level, setLevel] = useState(3);
 	const [playerArray, setPlayerArray] = useState([]);
-	const [computerArray, setComputerArray] = useState([
-		"green",
-		"green",
-		"red",
-		"red",
-		"green",
-		"yellow",
-		"blue",
-		"wrong",
-	]);
+	const [computerArray, setComputerArray] = useState([]);
 	const [index, setIndex] = useState(0);
 
 	const samplePlay = () => {
@@ -36,11 +28,7 @@ const useSimon = (green, red, yellow, blue, wrong) => {
 		}
 		myLoop();
 	};
-	const playStartHandler = () => {
-		setTimeout(() => {
-			samplePlay();
-		}, 200);
-	};
+
 	const playSound = (type) => {
 		switch (type) {
 			case "green":
@@ -95,14 +83,46 @@ const useSimon = (green, red, yellow, blue, wrong) => {
 		});
 	};
 	const playerClickHandler = (e) => {
-		console.log(e.target.id);
 		setPlayerArray((prevState) => {
 			return [...prevState, e.target.id];
 		});
 		compareBothArray(e.target.id);
 	};
+	const computerClickHandler = () => {
+		let loop = 1;
+		const selectionArray = ["green", "red", "yellow", "blue"];
+		const computerLoop = () => {
+			if (loop <= level) {
+				const randomNum = Math.floor(Math.random() * selectionArray.length);
+				const selectedColor = selectionArray[randomNum];
+				setComputerArray((prevState) => {
+					return [...prevState, selectedColor];
+				});
+				loop++;
+				playSound(selectedColor);
+				setTimeout(() => {
+					computerLoop();
+				}, 1000);
+			} else {
+				return;
+			}
+		};
+		computerLoop();
+	};
 
-	return { playStartHandler, playerClickHandler, playerArray, index };
+	const playStartHandler = () => {
+		setTimeout(() => {
+			computerClickHandler();
+		}, 500);
+
+		console.log("here");
+		// info.current.classList.add(`${classes.visible}`);
+		// setTimeout(() => {
+		// 	samplePlay();
+		// }, 200);
+	};
+
+	return { playStartHandler, playerClickHandler, level, computerArray, index };
 };
 
 export default useSimon;

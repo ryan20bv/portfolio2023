@@ -7,17 +7,13 @@ const SimonGame = () => {
 	const yellowRef = useRef();
 	const blueRef = useRef();
 	const wrongRef = useRef();
+	const infoRef = useRef();
 
-	const { playStartHandler, playerClickHandler, playerArray, index } = useSimon(
-		greenRef,
-		redRef,
-		yellowRef,
-		blueRef,
-		wrongRef
-	);
+	const { playStartHandler, playerClickHandler, level, computerArray, index } =
+		useSimon(greenRef, redRef, yellowRef, blueRef, wrongRef, infoRef);
 	useEffect(() => {
-		console.log(playerArray, index);
-	}, [playerArray, index]);
+		console.log(computerArray, index);
+	}, [computerArray, index]);
 	return (
 		<main className={classes.simon}>
 			<section className={classes.first}>
@@ -28,9 +24,9 @@ const SimonGame = () => {
 					Press To Start
 				</button>
 				<div className={classes.wrapper} ref={wrongRef}>
-					<div className={classes.info}>
+					<div className={classes.info} ref={infoRef}>
 						<h1>
-							Level <span>0</span>
+							Level <span>{level}</span>
 						</h1>
 
 						<p className={classes.timer}>5</p>
