@@ -5,9 +5,8 @@ import redMP3 from "../audio/red.mp3";
 import yellowMP3 from "../audio/yellow.mp3";
 import blueMP3 from "../audio/blue.mp3";
 import wrongMp3 from "../audio/wrong.mp3";
+import classes from "../styles/simon.module.css";
 const useSimon = () => {
-	console.log("simon");
-
 	const playSound = (type) => {
 		switch (type) {
 			case "green":
@@ -34,12 +33,16 @@ const useSimon = () => {
 				break;
 		}
 	};
+	const togglePressedClassHandler = (item) => {
+		item.target.classList.toggle(`${classes.pressed}`);
+	};
 
 	const mouseDownHandler = (e) => {
 		playSound(e.target.id);
+		togglePressedClassHandler(e);
 	};
 	const mouseUpHandler = (e) => {
-		console.log("up", e.target.id);
+		togglePressedClassHandler(e);
 	};
 
 	return { mouseDownHandler, mouseUpHandler };

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import useSimon from "./assets/hooks/use-simon";
 import classes from "./assets/styles/simon.module.css";
 const SimonGame = () => {
 	const { mouseDownHandler, mouseUpHandler } = useSimon();
+	const greenRef = useRef();
+
 	return (
 		<main className={classes.simon}>
 			<section className={classes.first}>
@@ -14,8 +16,9 @@ const SimonGame = () => {
 					<div className={classes.info}>score</div>
 					<div className={classes.playDiv}>
 						<div
-							className={`${classes.button} `}
+							className={classes.button}
 							id='green'
+							ref={greenRef}
 							onMouseDown={mouseDownHandler}
 							onMouseUp={mouseUpHandler}
 						></div>
