@@ -8,14 +8,16 @@ const SimonGame = () => {
 	const blueRef = useRef();
 	const wrongRef = useRef();
 
-	const { mouseDownHandler, mouseUpHandler, playStartHandler } = useSimon(
+	const { playStartHandler, playerClickHandler, playerArray, index } = useSimon(
 		greenRef,
 		redRef,
 		yellowRef,
 		blueRef,
 		wrongRef
 	);
-
+	useEffect(() => {
+		console.log(playerArray, index);
+	}, [playerArray, index]);
 	return (
 		<main className={classes.simon}>
 			<section className={classes.first}>
@@ -32,29 +34,25 @@ const SimonGame = () => {
 							className={classes.button}
 							id='green'
 							ref={greenRef}
-							onMouseDown={mouseDownHandler}
-							onMouseUp={mouseUpHandler}
+							onClick={playerClickHandler}
 						></div>
 						<div
 							className={classes.button}
 							id='red'
 							ref={redRef}
-							onMouseDown={mouseDownHandler}
-							onMouseUp={mouseUpHandler}
+							onClick={playerClickHandler}
 						></div>
 						<div
 							className={classes.button}
 							id='yellow'
 							ref={yellowRef}
-							onMouseDown={mouseDownHandler}
-							onMouseUp={mouseUpHandler}
+							onClick={playerClickHandler}
 						></div>
 						<div
 							className={classes.button}
 							id='blue'
 							ref={blueRef}
-							onMouseDown={mouseDownHandler}
-							onMouseUp={mouseUpHandler}
+							onClick={playerClickHandler}
 						></div>
 					</div>
 				</div>

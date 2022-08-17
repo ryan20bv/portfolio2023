@@ -8,8 +8,8 @@ import wrongMp3 from "../audio/wrong.mp3";
 import classes from "../styles/simon.module.css";
 
 const useSimon = (green, red, yellow, blue, wrong) => {
-	console.log(green);
-	const [sampleArray, setSampleArray] = useState([
+	const [playerArray, setPlayerArray] = useState([]);
+	const [computerArray, setComputerArray] = useState([
 		"green",
 		"green",
 		"red",
@@ -19,14 +19,15 @@ const useSimon = (green, red, yellow, blue, wrong) => {
 		"blue",
 		"wrong",
 	]);
+	const [index, setIndex] = useState(0);
 
 	const samplePlay = () => {
 		let i = 0;
 		function myLoop() {
 			setTimeout(function () {
-				playSound(sampleArray[i]);
+				playSound(computerArray[i]);
 				i++;
-				if (i < sampleArray.length) {
+				if (i < computerArray.length) {
 					myLoop();
 				} else {
 					return;
@@ -75,28 +76,33 @@ const useSimon = (green, red, yellow, blue, wrong) => {
 					blue.current.classList.remove(`${classes.pressed}`);
 				}, 100);
 				break;
-			case "wrong":
+
+			default:
 				wrong.current.classList.add(`${classes.wrong}`);
 				let wrongAudio = new Audio(wrongMp3);
 				wrongAudio.play();
 				break;
-			default:
-				break;
 		}
 	};
-	const togglePressedClassHandler = (item) => {
-		item.target.classList.toggle(`${classes.pressed}`);
+	const compareBothArray = (color) => {
+		if (color !== computerArray[index]) {
+			playSound();
+			return;
+		}
+		playSound(color);
+		setIndex((prevState) => {
+			return (prevState = prevState + 1);
+		});
+	};
+	const playerClickHandler = (e) => {
+		console.log(e.target.id);
+		setPlayerArray((prevState) => {
+			return [...prevState, e.target.id];
+		});
+		compareBothArray(e.target.id);
 	};
 
-	const mouseDownHandler = (e) => {
-		playSound(e.target.id);
-		// togglePressedClassHandler(e);
-	};
-	const mouseUpHandler = (e) => {
-		// togglePressedClassHandler(e);
-	};
-
-	return { mouseDownHandler, mouseUpHandler, playStartHandler };
+	return { playStartHandler, playerClickHandler, playerArray, index };
 };
 
 export default useSimon;
