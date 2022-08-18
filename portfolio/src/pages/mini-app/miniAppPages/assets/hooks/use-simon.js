@@ -8,10 +8,19 @@ import wrongMp3 from "../audio/wrong.mp3";
 import classes from "../styles/simon.module.css";
 
 const useSimon = (green, red, yellow, blue, wrong, info) => {
-	const [level, setLevel] = useState(3);
+	const [level, setLevel] = useState(0);
 	const [playerArray, setPlayerArray] = useState([]);
-	const [computerArray, setComputerArray] = useState([]);
+	const [computerArray, setComputerArray] = useState([
+		"green",
+		"red",
+		"yellow",
+		"blue",
+	]);
 	const [index, setIndex] = useState(0);
+	const [timerValue, setTimerValue] = useState(5);
+	const [isGameOver, setIsGameOver] = useState(false);
+	const [playerTurn, setPlayerTurn] = useState(false);
+	const [computerTurn, setComputerTurn] = useState(false);
 
 	const samplePlay = () => {
 		let i = 0;
@@ -74,6 +83,7 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 	};
 	const compareBothArray = (color) => {
 		if (color !== computerArray[index]) {
+			//this is for wrong
 			playSound();
 			return;
 		}
@@ -81,13 +91,36 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 		setIndex((prevState) => {
 			return (prevState = prevState + 1);
 		});
+		if (index === computerArray.length - 1) {
+			setTimeout(() => {
+				setPlayerTurn(false);
+
+				playStartHandler();
+			}, 500);
+		}
 	};
 	const playerClickHandler = (e) => {
-		setPlayerArray((prevState) => {
-			return [...prevState, e.target.id];
-		});
-		compareBothArray(e.target.id);
+		if (playerTurn) {
+			setPlayerArray((prevState) => {
+				return [...prevState, e.target.id];
+			});
+			compareBothArray(e.target.id);
+		}
 	};
+	let timerId = null;
+	const timerHandler = () => {
+		timerId = setInterval(() => {
+			setTimerValue((prevState) => {
+				return (prevState = prevState - 1);
+			});
+		}, 1000);
+	};
+	const clearTimerHandler = () => {
+		console.log("clearTimer");
+		console.log(timerId);
+		clearInterval(timerId);
+	};
+
 	const computerClickHandler = () => {
 		let loop = 1;
 		const selectionArray = ["green", "red", "yellow", "blue"];
@@ -104,13 +137,22 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 					computerLoop();
 				}, 1000);
 			} else {
-				return;
+				setComputerTurn(false);
+				setPlayerTurn(true);
+				// withOutTimer first
+				// timerHandler();
 			}
 		};
 		computerLoop();
 	};
 
 	const playStartHandler = () => {
+		setLevel((prevState) => {
+			return (prevState = prevState + 1);
+		});
+		setComputerArray([]);
+		setIndex(0);
+		setComputerTurn(true);
 		setTimeout(() => {
 			computerClickHandler();
 		}, 500);
@@ -122,7 +164,19 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 		// }, 200);
 	};
 
-	return { playStartHandler, playerClickHandler, level, computerArray, index };
+	return {
+		samplePlay,
+		playStartHandler,
+		playerClickHandler,
+		level,
+		computerArray,
+		index,
+		isGameOver,
+		playerTurn,
+		computerTurn,
+		clearTimerHandler,
+		timerValue,
+	};
 };
 
 export default useSimon;
