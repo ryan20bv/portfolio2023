@@ -184,15 +184,18 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 			// playStartHandler();
 		}
 	}; */
-	/* 	const playerClickHandler = (e) => {
-		if (playerTurn) {
-			setPlayerArray((prevState) => {
-				return [...prevState, e.target.id];
-			});
-			compareBothArray(e.target.id);
+
+	const playerClickHandler = (e) => {
+		if (simonState.gameStatus.playerTurn) {
+			console.log("player turn");
+			// setPlayerArray((prevState) => {
+			// 	return [...prevState, e.target.id];
+			// });
+			// compareBothArray(e.target.id);
+			return;
 		}
 	};
- */
+
 	const computerRandomHandler = () => {
 		let loop = 1;
 		const selectionArray = ["green", "red", "yellow", "blue"];
@@ -210,9 +213,24 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 					computerLoop();
 				}, 1000);
 			} else {
+				console.log("playerTurn");
+				playerTurnHandler();
 			}
 		};
 		computerLoop();
+	};
+
+	const playerTurnHandler = () => {
+		dispatchSimon({
+			type: actionCategories.GAME_START,
+			payload: {
+				gameStatus: {
+					isGameOver: false,
+					playerTurn: true,
+					computerTurn: false,
+				},
+			},
+		});
 	};
 
 	const computerTurnHandler = () => {
@@ -248,6 +266,7 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 		gameLevel: simonState.level,
 		gameStatus: simonState.gameStatus,
 		playStartHandler,
+		playerClickHandler,
 	};
 };
 

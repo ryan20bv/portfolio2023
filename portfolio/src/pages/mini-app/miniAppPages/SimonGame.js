@@ -9,8 +9,14 @@ const SimonGame = () => {
 	const wrongRef = useRef();
 	const infoRef = useRef();
 
-	const { samplePlay, timerValue, gameLevel, gameStatus, playStartHandler } =
-		useSimon(greenRef, redRef, yellowRef, blueRef, wrongRef, infoRef);
+	const {
+		samplePlay,
+		timerValue,
+		gameLevel,
+		gameStatus,
+		playStartHandler,
+		playerClickHandler,
+	} = useSimon(greenRef, redRef, yellowRef, blueRef, wrongRef, infoRef);
 	useEffect(() => {
 		samplePlay();
 	}, []);
@@ -40,25 +46,25 @@ const SimonGame = () => {
 							className={classes.button}
 							id='green'
 							ref={greenRef}
-							// onClick={playerClickHandler}
+							onClick={playerClickHandler}
 						></div>
 						<div
 							className={classes.button}
 							id='red'
 							ref={redRef}
-							// onClick={playerClickHandler}
+							onClick={playerClickHandler}
 						></div>
 						<div
 							className={classes.button}
 							id='yellow'
 							ref={yellowRef}
-							// onClick={playerClickHandler}
+							onClick={playerClickHandler}
 						></div>
 						<div
 							className={classes.button}
 							id='blue'
 							ref={blueRef}
-							// onClick={playerClickHandler}
+							onClick={playerClickHandler}
 						></div>
 					</div>
 				</div>
