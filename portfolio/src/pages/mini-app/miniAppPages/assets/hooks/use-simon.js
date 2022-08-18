@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useReducer } from "react";
 
 import greenMP3 from "../audio/green.mp3";
 import redMP3 from "../audio/red.mp3";
@@ -7,23 +7,38 @@ import blueMP3 from "../audio/blue.mp3";
 import wrongMp3 from "../audio/wrong.mp3";
 import classes from "../styles/simon.module.css";
 
+const initialState = {
+	level: 2,
+	playerArray: [],
+	computerArray: ["green", "red", "yellow", "blue"],
+	index: 1,
+	timerValue: 3,
+	gameStatus: {
+		isGameOver: false,
+		playerTurn: false,
+		computerTurn: false,
+	},
+	globalTimerId: null,
+};
+const actionCategories = {
+	TEST_ACTION: "TEST_ACTION",
+};
+
+const simonReducer = (state = initialState, action) => {
+	const { type, payload } = action;
+	switch (type) {
+		case actionCategories.TEST_ACTION:
+			break;
+
+		default:
+			break;
+	}
+};
+
 const useSimon = (green, red, yellow, blue, wrong, info) => {
-	const [level, setLevel] = useState(1);
-	const [playerArray, setPlayerArray] = useState([]);
-	const [computerArray, setComputerArray] = useState([
-		"green",
-		"red",
-		"yellow",
-		"blue",
-	]);
-	const [index, setIndex] = useState(1);
-	const [timerValue, setTimerValue] = useState(5);
-	const [isGameOver, setIsGameOver] = useState(false);
-	const [playerTurn, setPlayerTurn] = useState(false);
-	const [computerTurn, setComputerTurn] = useState(false);
-	// const [globalTimerId, setGlobalTimerId] = useState("");
-	let globalTimerId = "";
-	const samplePlay = () => {
+	const [simonState, dispatchSimon] = useReducer(simonReducer, initialState);
+
+	/* 	const samplePlay = () => {
 		let i = 0;
 		function myLoop() {
 			setTimeout(function () {
@@ -38,15 +53,15 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 		}
 		myLoop();
 	};
-
-	const resetGameHandler = () => {
+ */
+	/* 	const resetGameHandler = () => {
 		setIsGameOver(false);
 		wrong.current.classList.remove(`${classes.wrong}`);
 		setPlayerArray([]);
 		setLevel(1);
 	};
-
-	const wrongAnswerHandler = useCallback(() => {
+ */
+	/* 	const wrongAnswerHandler = useCallback(() => {
 		setIsGameOver(true);
 		setComputerTurn(false);
 		setPlayerTurn(false);
@@ -55,30 +70,30 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 		setTimeout(() => {
 			resetGameHandler();
 		}, 2000);
-	}, []);
-	useEffect(() => {
+	}, []); */
+	/* 	useEffect(() => {
 		if (timerValue === 0) {
 			wrongAnswerHandler();
 		}
 	}, [timerValue, wrongAnswerHandler]);
-
-	const clearTimerHandler = (id) => {
+ */
+	/* 	const clearTimerHandler = (id) => {
 		console.log("clearTimer");
 		console.log("out", id);
 		clearInterval(id);
 		setTimerValue(5);
 	};
-
-	const timerHandler = () => {
+ */
+	/* 	const timerHandler = () => {
 		globalTimerId = setInterval(() => {
 			setTimerValue((prevState) => {
 				return (prevState = prevState - 1);
 			});
 		}, 1000);
-		console.log("on", globalTimerId);
-		// setGlobalTimerId(timerId);
-	};
 
+
+	};
+ */
 	const playSound = (type) => {
 		switch (type) {
 			case "green":
@@ -123,7 +138,7 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 				break;
 		}
 	};
-	useEffect(() => {
+	/* 	useEffect(() => {
 		console.log(globalTimerId);
 		clearTimerHandler(globalTimerId);
 		if (level > 1) {
@@ -132,8 +147,8 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 			}, 500);
 		}
 	}, [level]);
-
-	const compareBothArray = (color) => {
+ */
+	/* 	const compareBothArray = (color) => {
 		if (color !== computerArray[index]) {
 			//this is for wrong
 			wrongAnswerHandler();
@@ -159,8 +174,8 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 			// setComputerTurn(true)
 			// playStartHandler();
 		}
-	};
-	const playerClickHandler = (e) => {
+	}; */
+	/* 	const playerClickHandler = (e) => {
 		if (playerTurn) {
 			setPlayerArray((prevState) => {
 				return [...prevState, e.target.id];
@@ -168,8 +183,8 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 			compareBothArray(e.target.id);
 		}
 	};
-
-	const computerClickHandler = () => {
+ */
+	/* 	const computerClickHandler = () => {
 		let loop = 1;
 		const selectionArray = ["green", "red", "yellow", "blue"];
 		const computerLoop = () => {
@@ -196,8 +211,8 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 		};
 		computerLoop();
 	};
-
-	const playStartHandler = useCallback(() => {
+ */
+	/* 	const playStartHandler = useCallback(() => {
 		setComputerArray([]);
 		setIndex(0);
 		setComputerTurn(true);
@@ -211,18 +226,11 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 		// 	samplePlay();
 		// }, 200);
 	}, []);
-
+ */
 	return {
-		samplePlay,
-		playStartHandler,
-		playerClickHandler,
-		level,
-		computerArray,
-		index,
-		isGameOver,
-		playerTurn,
-		computerTurn,
-		timerValue,
+		timerValue: simonState.timerValue,
+		gameLevel: simonState.level,
+		gameStatus: simonState.gameStatus,
 	};
 };
 

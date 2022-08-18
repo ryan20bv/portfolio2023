@@ -9,29 +9,28 @@ const SimonGame = () => {
 	const wrongRef = useRef();
 	const infoRef = useRef();
 
-	const {
-		samplePlay,
-		playStartHandler,
-		playerClickHandler,
-		level,
-		computerArray,
-		index,
-		isGameOver,
-		playerTurn,
-		computerTurn,
-
-		timerValue,
-	} = useSimon(greenRef, redRef, yellowRef, blueRef, wrongRef, infoRef);
-	useEffect(() => {
+	const { timerValue, gameLevel, gameStatus } = useSimon(
+		greenRef,
+		redRef,
+		yellowRef,
+		blueRef,
+		wrongRef,
+		infoRef
+	);
+	/* 	useEffect(() => {
 		samplePlay();
-	}, []);
+	}, []); */
+	const { isGameOver, playerTurn, computerTurn } = gameStatus;
 	return (
 		<main className={classes.simon}>
 			<section className={classes.first}>
 				<h1>SIMON</h1>
 			</section>
 			<section className={classes.playArea}>
-				<button className={classes.start} onClick={playStartHandler}>
+				<button
+					className={classes.start}
+					// onClick={playStartHandler}
+				>
 					{isGameOver && "Game Over"}
 					{!isGameOver && playerTurn && "Player Turn"}
 					{!isGameOver && computerTurn && "Computer Turn"}
@@ -40,7 +39,7 @@ const SimonGame = () => {
 				<div className={classes.wrapper} ref={wrongRef}>
 					<div className={classes.info} ref={infoRef}>
 						<h1>
-							Level <span>{level}</span>
+							Level <span>{gameLevel}</span>
 						</h1>
 
 						<p className={classes.timer}>{timerValue}</p>
@@ -50,25 +49,25 @@ const SimonGame = () => {
 							className={classes.button}
 							id='green'
 							ref={greenRef}
-							onClick={playerClickHandler}
+							// onClick={playerClickHandler}
 						></div>
 						<div
 							className={classes.button}
 							id='red'
 							ref={redRef}
-							onClick={playerClickHandler}
+							// onClick={playerClickHandler}
 						></div>
 						<div
 							className={classes.button}
 							id='yellow'
 							ref={yellowRef}
-							onClick={playerClickHandler}
+							// onClick={playerClickHandler}
 						></div>
 						<div
 							className={classes.button}
 							id='blue'
 							ref={blueRef}
-							onClick={playerClickHandler}
+							// onClick={playerClickHandler}
 						></div>
 					</div>
 				</div>
