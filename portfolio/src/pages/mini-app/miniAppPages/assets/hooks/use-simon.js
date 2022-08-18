@@ -23,6 +23,8 @@ const initialState = {
 const actionCategories = {
 	TEST_ACTION: "TEST_ACTION",
 	GAME_START: "GAME_START",
+	UPDATE_COMPUTER_ARRAY: "UPDATE_COMPUTER_ARRAY",
+	RESET_COMPUTER_ARRAY: "RESET_COMPUTER_ARRAY",
 };
 
 const simonReducer = (state = initialState, action) => {
@@ -31,7 +33,11 @@ const simonReducer = (state = initialState, action) => {
 		case actionCategories.GAME_START:
 			console.log("start");
 			return { ...state, gameStatus: payload.gameStatus };
-
+		case actionCategories.RESET_COMPUTER_ARRAY:
+			return { ...state, computerArray: [] };
+		case actionCategories.UPDATE_COMPUTER_ARRAY:
+			const newArray = [...state.computerArray, payload.item];
+			return { ...state, computerArray: newArray };
 		default:
 			return state;
 	}
@@ -39,7 +45,7 @@ const simonReducer = (state = initialState, action) => {
 
 const useSimon = (green, red, yellow, blue, wrong, info) => {
 	const [simonState, dispatchSimon] = useReducer(simonReducer, initialState);
-
+	console.log(simonState.computerArray);
 	/* 	const resetGameHandler = () => {
 		setIsGameOver(false);
 		wrong.current.classList.remove(`${classes.wrong}`);
@@ -140,6 +146,7 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 		}
 		myLoop();
 	};
+
 	/* 	useEffect(() => {
 		console.log(globalTimerId);
 		clearTimerHandler(globalTimerId);
@@ -186,15 +193,16 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 		}
 	};
  */
-	/* 	const computerClickHandler = () => {
+	const computerRandomHandler = () => {
 		let loop = 1;
 		const selectionArray = ["green", "red", "yellow", "blue"];
 		const computerLoop = () => {
-			if (loop <= level) {
+			if (loop <= simonState.level) {
 				const randomNum = Math.floor(Math.random() * selectionArray.length);
 				const selectedColor = selectionArray[randomNum];
-				setComputerArray((prevState) => {
-					return [...prevState, selectedColor];
+				dispatchSimon({
+					type: actionCategories.UPDATE_COMPUTER_ARRAY,
+					payload: { item: selectedColor },
 				});
 				loop++;
 				playSound(selectedColor);
@@ -202,18 +210,11 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 					computerLoop();
 				}, 1000);
 			} else {
-				setComputerTurn(false);
-				setPlayerTurn(true);
-				// withOutTimer first
-				setTimeout(() => {
-					console.log("timer 2");
-					timerHandler();
-				}, 1000);
 			}
 		};
 		computerLoop();
 	};
- */
+
 	const computerTurnHandler = () => {
 		dispatchSimon({
 			type: actionCategories.GAME_START,
@@ -225,9 +226,13 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 				},
 			},
 		});
+		setTimeout(() => {
+			computerRandomHandler();
+		}, 1000);
 	};
 
 	const playStartHandler = () => {
+		dispatchSimon({ type: actionCategories.RESET_COMPUTER_ARRAY });
 		computerTurnHandler();
 		// setComputerArray([]);
 		// setIndex(0);
