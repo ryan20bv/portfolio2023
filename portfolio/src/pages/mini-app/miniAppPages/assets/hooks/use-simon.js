@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 import greenMP3 from "../audio/green.mp3";
 import redMP3 from "../audio/red.mp3";
@@ -8,7 +8,7 @@ import wrongMp3 from "../audio/wrong.mp3";
 import classes from "../styles/simon.module.css";
 
 const useSimon = (green, red, yellow, blue, wrong, info) => {
-	const [level, setLevel] = useState(0);
+	const [level, setLevel] = useState(1);
 	const [playerArray, setPlayerArray] = useState([]);
 	const [computerArray, setComputerArray] = useState([
 		"green",
@@ -16,12 +16,13 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 		"yellow",
 		"blue",
 	]);
-	const [index, setIndex] = useState(0);
+	const [index, setIndex] = useState(1);
 	const [timerValue, setTimerValue] = useState(5);
 	const [isGameOver, setIsGameOver] = useState(false);
 	const [playerTurn, setPlayerTurn] = useState(false);
 	const [computerTurn, setComputerTurn] = useState(false);
-
+	// const [globalTimerId, setGlobalTimerId] = useState("");
+	let globalTimerId = "";
 	const samplePlay = () => {
 		let i = 0;
 		function myLoop() {
@@ -36,6 +37,46 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 			}, 500);
 		}
 		myLoop();
+	};
+
+	const resetGameHandler = () => {
+		setIsGameOver(false);
+		wrong.current.classList.remove(`${classes.wrong}`);
+		setPlayerArray([]);
+		setLevel(1);
+	};
+
+	const wrongAnswerHandler = useCallback(() => {
+		setIsGameOver(true);
+		setComputerTurn(false);
+		setPlayerTurn(false);
+		playSound();
+
+		setTimeout(() => {
+			resetGameHandler();
+		}, 2000);
+	}, []);
+	useEffect(() => {
+		if (timerValue === 0) {
+			wrongAnswerHandler();
+		}
+	}, [timerValue, wrongAnswerHandler]);
+
+	const clearTimerHandler = (id) => {
+		console.log("clearTimer");
+		console.log("out", id);
+		clearInterval(id);
+		setTimerValue(5);
+	};
+
+	const timerHandler = () => {
+		globalTimerId = setInterval(() => {
+			setTimerValue((prevState) => {
+				return (prevState = prevState - 1);
+			});
+		}, 1000);
+		console.log("on", globalTimerId);
+		// setGlobalTimerId(timerId);
 	};
 
 	const playSound = (type) => {
@@ -78,25 +119,45 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 				wrong.current.classList.add(`${classes.wrong}`);
 				let wrongAudio = new Audio(wrongMp3);
 				wrongAudio.play();
+
 				break;
 		}
 	};
+	useEffect(() => {
+		console.log(globalTimerId);
+		clearTimerHandler(globalTimerId);
+		if (level > 1) {
+			setTimeout(() => {
+				playStartHandler();
+			}, 500);
+		}
+	}, [level]);
+
 	const compareBothArray = (color) => {
 		if (color !== computerArray[index]) {
 			//this is for wrong
-			playSound();
+			wrongAnswerHandler();
 			return;
 		}
 		playSound(color);
 		setIndex((prevState) => {
 			return (prevState = prevState + 1);
 		});
+		console.log(globalTimerId);
+		clearTimerHandler(globalTimerId);
+		setTimeout(() => {
+			console.log("timer 1");
+			timerHandler();
+		}, 1000);
 		if (index === computerArray.length - 1) {
-			setTimeout(() => {
-				setPlayerTurn(false);
-
-				playStartHandler();
-			}, 500);
+			console.log(globalTimerId);
+			clearTimerHandler(globalTimerId);
+			setLevel((prevState) => {
+				return (prevState = prevState + 1);
+			});
+			setPlayerTurn(false);
+			// setComputerTurn(true)
+			// playStartHandler();
 		}
 	};
 	const playerClickHandler = (e) => {
@@ -106,19 +167,6 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 			});
 			compareBothArray(e.target.id);
 		}
-	};
-	let timerId = null;
-	const timerHandler = () => {
-		timerId = setInterval(() => {
-			setTimerValue((prevState) => {
-				return (prevState = prevState - 1);
-			});
-		}, 1000);
-	};
-	const clearTimerHandler = () => {
-		console.log("clearTimer");
-		console.log(timerId);
-		clearInterval(timerId);
 	};
 
 	const computerClickHandler = () => {
@@ -140,16 +188,16 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 				setComputerTurn(false);
 				setPlayerTurn(true);
 				// withOutTimer first
-				// timerHandler();
+				setTimeout(() => {
+					console.log("timer 2");
+					timerHandler();
+				}, 1000);
 			}
 		};
 		computerLoop();
 	};
 
-	const playStartHandler = () => {
-		setLevel((prevState) => {
-			return (prevState = prevState + 1);
-		});
+	const playStartHandler = useCallback(() => {
 		setComputerArray([]);
 		setIndex(0);
 		setComputerTurn(true);
@@ -162,7 +210,7 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 		// setTimeout(() => {
 		// 	samplePlay();
 		// }, 200);
-	};
+	}, []);
 
 	return {
 		samplePlay,
@@ -174,7 +222,6 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 		isGameOver,
 		playerTurn,
 		computerTurn,
-		clearTimerHandler,
 		timerValue,
 	};
 };

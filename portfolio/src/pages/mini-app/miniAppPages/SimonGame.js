@@ -19,15 +19,12 @@ const SimonGame = () => {
 		isGameOver,
 		playerTurn,
 		computerTurn,
-		clearTimerHandler,
+
 		timerValue,
 	} = useSimon(greenRef, redRef, yellowRef, blueRef, wrongRef, infoRef);
 	useEffect(() => {
 		samplePlay();
 	}, []);
-	useEffect(() => {
-		console.log(computerArray);
-	}, [computerArray]);
 	return (
 		<main className={classes.simon}>
 			<section className={classes.first}>
