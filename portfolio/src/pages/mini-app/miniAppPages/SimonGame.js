@@ -9,17 +9,11 @@ const SimonGame = () => {
 	const wrongRef = useRef();
 	const infoRef = useRef();
 
-	const { timerValue, gameLevel, gameStatus } = useSimon(
-		greenRef,
-		redRef,
-		yellowRef,
-		blueRef,
-		wrongRef,
-		infoRef
-	);
-	/* 	useEffect(() => {
+	const { samplePlay, timerValue, gameLevel, gameStatus, playStartHandler } =
+		useSimon(greenRef, redRef, yellowRef, blueRef, wrongRef, infoRef);
+	useEffect(() => {
 		samplePlay();
-	}, []); */
+	}, []);
 	const { isGameOver, playerTurn, computerTurn } = gameStatus;
 	return (
 		<main className={classes.simon}>
@@ -27,10 +21,7 @@ const SimonGame = () => {
 				<h1>SIMON</h1>
 			</section>
 			<section className={classes.playArea}>
-				<button
-					className={classes.start}
-					// onClick={playStartHandler}
-				>
+				<button className={classes.start} onClick={playStartHandler}>
 					{isGameOver && "Game Over"}
 					{!isGameOver && playerTurn && "Player Turn"}
 					{!isGameOver && computerTurn && "Computer Turn"}

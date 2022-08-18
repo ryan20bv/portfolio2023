@@ -22,38 +22,24 @@ const initialState = {
 };
 const actionCategories = {
 	TEST_ACTION: "TEST_ACTION",
+	GAME_START: "GAME_START",
 };
 
 const simonReducer = (state = initialState, action) => {
 	const { type, payload } = action;
 	switch (type) {
-		case actionCategories.TEST_ACTION:
-			break;
+		case actionCategories.GAME_START:
+			console.log("start");
+			return { ...state, gameStatus: payload.gameStatus };
 
 		default:
-			break;
+			return state;
 	}
 };
 
 const useSimon = (green, red, yellow, blue, wrong, info) => {
 	const [simonState, dispatchSimon] = useReducer(simonReducer, initialState);
 
-	/* 	const samplePlay = () => {
-		let i = 0;
-		function myLoop() {
-			setTimeout(function () {
-				playSound(computerArray[i]);
-				i++;
-				if (i < computerArray.length) {
-					myLoop();
-				} else {
-					return;
-				}
-			}, 500);
-		}
-		myLoop();
-	};
- */
 	/* 	const resetGameHandler = () => {
 		setIsGameOver(false);
 		wrong.current.classList.remove(`${classes.wrong}`);
@@ -138,6 +124,22 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 				break;
 		}
 	};
+
+	const samplePlay = () => {
+		let i = 0;
+		function myLoop() {
+			setTimeout(function () {
+				playSound(simonState.computerArray[i]);
+				i++;
+				if (i < simonState.computerArray.length) {
+					myLoop();
+				} else {
+					return;
+				}
+			}, 500);
+		}
+		myLoop();
+	};
 	/* 	useEffect(() => {
 		console.log(globalTimerId);
 		clearTimerHandler(globalTimerId);
@@ -212,25 +214,35 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 		computerLoop();
 	};
  */
-	/* 	const playStartHandler = useCallback(() => {
-		setComputerArray([]);
-		setIndex(0);
-		setComputerTurn(true);
-		setTimeout(() => {
-			computerClickHandler();
-		}, 500);
+	const computerTurnHandler = () => {
+		dispatchSimon({
+			type: actionCategories.GAME_START,
+			payload: {
+				gameStatus: {
+					isGameOver: false,
+					playerTurn: false,
+					computerTurn: true,
+				},
+			},
+		});
+	};
 
-		console.log("here");
-		// info.current.classList.add(`${classes.visible}`);
+	const playStartHandler = () => {
+		computerTurnHandler();
+		// setComputerArray([]);
+		// setIndex(0);
+		// setComputerTurn(true);
 		// setTimeout(() => {
-		// 	samplePlay();
-		// }, 200);
-	}, []);
- */
+		// 	computerClickHandler();
+		// }, 500);
+	};
+
 	return {
+		samplePlay,
 		timerValue: simonState.timerValue,
 		gameLevel: simonState.level,
 		gameStatus: simonState.gameStatus,
+		playStartHandler,
 	};
 };
 
