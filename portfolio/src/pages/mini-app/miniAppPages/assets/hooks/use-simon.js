@@ -76,15 +76,8 @@ const simonReducer = (state = initialState, action) => {
 
 const useSimon = (green, red, yellow, blue, wrong, timer) => {
 	const [simonState, dispatchSimon] = useReducer(simonReducer, initialState);
-	const {
-		level,
-		gameStatus,
-		computerArray,
-		index,
-		globalTimerId,
-		timerValue,
-		playerArray,
-	} = simonState;
+	const { level, gameStatus, computerArray, index, globalTimerId, timerValue } =
+		simonState;
 
 	const clearTimerHandler = (id) => {
 		clearInterval(id);
@@ -157,7 +150,7 @@ const useSimon = (green, red, yellow, blue, wrong, timer) => {
 		}
 	};
 
-	const samplePlay = () => {
+	const samplePlay = useCallback(() => {
 		let i = 0;
 		function myLoop() {
 			setTimeout(function () {
@@ -172,7 +165,7 @@ const useSimon = (green, red, yellow, blue, wrong, timer) => {
 			}, 500);
 		}
 		myLoop();
-	};
+	}, []);
 
 	const compareBothArray = (color) => {
 		let copyOfLevel = level;
@@ -183,7 +176,7 @@ const useSimon = (green, red, yellow, blue, wrong, timer) => {
 			clearTimerHandler(globalTimerId);
 			setTimeout(() => {
 				timerHandler();
-			}, 1000);
+			}, 200);
 
 			if (index === computerArray.length - 1) {
 				copyOfLevel++;
@@ -248,7 +241,7 @@ const useSimon = (green, red, yellow, blue, wrong, timer) => {
 	const playerTurnHandler = () => {
 		setTimeout(() => {
 			timerHandler();
-		}, 1000);
+		}, 200);
 		changeGameStatus("PLAYER_TURN");
 	};
 
