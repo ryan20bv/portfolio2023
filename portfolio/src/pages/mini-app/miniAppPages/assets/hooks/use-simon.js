@@ -13,7 +13,7 @@ const initialState = {
 	playerArray: [],
 	computerArray: ["green", "red", "yellow", "blue"],
 	index: 0,
-	timerValue: 3,
+	timerValue: 5,
 	gameStatus: {
 		isGameOver: false,
 		playerTurn: false,
@@ -31,6 +31,10 @@ const actionCategories = {
 	RESET_INDEX: "RESET_INDEX",
 	UPDATE_LEVEL: "UPDATE_LEVEL",
 	RESET_LEVEL: "RESET_LEVEL",
+	UPDATE_TIMER: "UPDATE_TIMER",
+	RESET_TIMER: "RESET_TIMER",
+	GET_TIMER_ID: "GET_TIMER_ID",
+	RESET_TIMER_ID: "RESET_TIMER_ID",
 };
 
 const simonReducer = (state = initialState, action) => {
@@ -56,57 +60,55 @@ const simonReducer = (state = initialState, action) => {
 			return { ...state, index: newIndex };
 		case actionCategories.RESET_INDEX:
 			return { ...state, index: 0 };
-
+		case actionCategories.UPDATE_TIMER:
+			const newTime = state.timerValue - 1;
+			return { ...state, timerValue: newTime };
+		case actionCategories.RESET_TIMER:
+			return { ...state, timerValue: 5 };
+		case actionCategories.GET_TIMER_ID:
+			return { ...state, globalTimerId: payload.timerId };
+		case actionCategories.RESET_TIMER_ID:
+			return { ...state, globalTimerId: null };
 		default:
 			return state;
 	}
 };
 
-const useSimon = (green, red, yellow, blue, wrong, info) => {
+const useSimon = (green, red, yellow, blue, wrong, timer) => {
 	const [simonState, dispatchSimon] = useReducer(simonReducer, initialState);
-	const { level, gameStatus, computerArray, index } = simonState;
-	console.log("comp", computerArray);
-	// console.log("level", simonState.level);
-	/* 	const resetGameHandler = () => {
-		setIsGameOver(false);
-		wrong.current.classList.remove(`${classes.wrong}`);
-		setPlayerArray([]);
-		setLevel(1);
-	};
- */
-	/* 	const wrongAnswerHandler = useCallback(() => {
-		setIsGameOver(true);
-		setComputerTurn(false);
-		setPlayerTurn(false);
-		playSound();
+	const { level, gameStatus, computerArray, index, globalTimerId, timerValue } =
+		simonState;
 
-		setTimeout(() => {
-			resetGameHandler();
-		}, 2000);
-	}, []); */
-	/* 	useEffect(() => {
-		if (timerValue === 0) {
+	// console.log("timer", timerValue);
+
+	const clearTimerHandler = (id) => {
+		// timer.current.classList.add(`${classes.notVisible}`);
+		clearInterval(id);
+		console.log("off", id);
+		dispatchSimon({ type: actionCategories.RESET_TIMER });
+	};
+
+	const timerHandler = () => {
+		clearTimerHandler(globalTimerId);
+		// timer.current.classList.remove(`${classes.notVisible}`);
+		const timerId = setInterval(() => {
+			dispatchSimon({ type: actionCategories.UPDATE_TIMER });
+		}, 1000);
+		console.log("on", timerId);
+		dispatchSimon({
+			type: actionCategories.GET_TIMER_ID,
+			payload: { timerId: timerId },
+		});
+	};
+	useEffect(() => {
+		clearTimerHandler(globalTimerId);
+	}, [index]);
+	useEffect(() => {
+		if (timerValue <= 0) {
 			wrongAnswerHandler();
 		}
-	}, [timerValue, wrongAnswerHandler]);
- */
-	/* 	const clearTimerHandler = (id) => {
-		console.log("clearTimer");
-		console.log("out", id);
-		clearInterval(id);
-		setTimerValue(5);
-	};
- */
-	/* 	const timerHandler = () => {
-		globalTimerId = setInterval(() => {
-			setTimerValue((prevState) => {
-				return (prevState = prevState - 1);
-			});
-		}, 1000);
+	}, [timerValue]);
 
-
-	};
- */
 	const playSound = (type) => {
 		switch (type) {
 			case "green":
@@ -160,6 +162,7 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 				if (i < simonState.computerArray.length) {
 					myLoop();
 				} else {
+					// timer.current.classList.add(`${classes.notVisible}`);
 					return;
 				}
 			}, 500);
@@ -167,27 +170,24 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 		myLoop();
 	};
 
-	/* 	useEffect(() => {
-		console.log(globalTimerId);
-		clearTimerHandler(globalTimerId);
-		if (level > 1) {
-			setTimeout(() => {
-				playStartHandler();
-			}, 500);
-		}
-	}, [level]);
- */
-
 	const compareBothArray = (color) => {
+		console.log("timer id", globalTimerId);
 		let copyOfLevel = level;
 		if (color === computerArray[index]) {
 			playSound(color);
-
 			dispatchSimon({ type: actionCategories.UPDATE_INDEX });
+			console.log("clear 1");
+			clearTimerHandler(globalTimerId);
+			setTimeout(() => {
+				console.log("timer 1");
+				timerHandler();
+			}, 1000);
 
 			if (index === computerArray.length - 1) {
 				copyOfLevel++;
 				setTimeout(() => {
+					console.log("clear 2");
+					// clearTimerHandler(globalTimerId);
 					dispatchSimon({ type: actionCategories.UPDATE_LEVEL });
 
 					computerTurnHandler(copyOfLevel);
@@ -210,24 +210,13 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 			compareBothArray(e.target.id);
 		}
 	};
-	/* 	const playerTurnHandler = () => {
-		// dispatchSimon({
-		// 	type: actionCategories.GAME_STATUS,
-		// 	payload: {
-		// 		gameStatus: {
-		// 			isGameOver: false,
-		// 			playerTurn: true,
-		// 			computerTurn: false,
-		// 		},
-		// 	},
-		// });
-	}; */
 
 	const computerRandomHandler = (passedLevel) => {
 		let loop = 1;
-
+		clearTimerHandler(globalTimerId);
 		const selectionArray = ["green", "red", "yellow", "blue"];
 		const computerLoop = () => {
+			clearTimerHandler(globalTimerId);
 			if (loop <= passedLevel) {
 				const randomNum = Math.floor(Math.random() * selectionArray.length);
 				const selectedColor = selectionArray[randomNum];
@@ -235,6 +224,7 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 					type: actionCategories.UPDATE_COMPUTER_ARRAY,
 					payload: { item: selectedColor },
 				});
+				console.log("comp", computerArray);
 				loop++;
 				playSound(selectedColor);
 				setTimeout(() => {
@@ -246,29 +236,31 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 		};
 		computerLoop();
 	};
-	const wrongAnswerHandler = () => {
-		changeGameStatus("GAME_OVER");
-		playSound("wrong");
+	const resetGameHandler = () => {
+		console.log("clear 3");
+		clearTimerHandler(globalTimerId);
 		setTimeout(() => {
 			changeGameStatus("RESET_GAME");
 		}, 3000);
 	};
+
+	const wrongAnswerHandler = () => {
+		changeGameStatus("GAME_OVER");
+		playSound("wrong");
+		resetGameHandler();
+	};
 	const playerTurnHandler = () => {
+		setTimeout(() => {
+			console.log("timer 2");
+			timerHandler();
+		}, 1000);
 		changeGameStatus("PLAYER_TURN");
 	};
 	const computerTurnHandler = (passedLevel) => {
+		console.log("clear 4");
+		clearTimerHandler(globalTimerId);
 		resetArrayHandler();
 		changeGameStatus("COMPUTER_TURN", passedLevel);
-		// dispatchSimon({
-		// 	type: actionCategories.GAME_STATUS,
-		// 	payload: {
-		// 		gameStatus: {
-		// 			isGameOver: false,
-		// 			playerTurn: false,
-		// 			computerTurn: true,
-		// 		},
-		// 	},
-		// });
 	};
 	const resetArrayHandler = () => {
 		dispatchSimon({ type: actionCategories.RESET_ARRAY });
@@ -276,9 +268,6 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 	};
 	const changeGameStatus = (status, passedLevel) => {
 		switch (status) {
-			// case "INCREASE_LEVEL":
-			// 	dispatchSimon({ type: actionCategories.UPDATE_LEVEL });
-			// 	break;
 			case "GAME_OVER":
 				dispatchSimon({
 					type: actionCategories.GAME_STATUS,
@@ -338,25 +327,9 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 				break;
 		}
 	};
-	// useEffect(() => {
-	// 	if (gameStatus.computerTurn) {
-	// 		resetArrayHandler();
-	// 		setTimeout(() => {
-	// 			computerRandomHandler();
-	// 		}, 1000);
-	// 	}
-	// }, [level, gameStatus.computerTurn, computerRandomHandler]);
 
 	const playStartHandler = () => {
-		// resetArrayHandler();
-
 		computerTurnHandler(level);
-		// setComputerArray([]);
-		// setIndex(0);
-		// setComputerTurn(true);
-		// setTimeout(() => {
-		// 	computerClickHandler();
-		// }, 500);
 	};
 
 	return {

@@ -71,6 +71,7 @@
 .simon .playArea .info .timer {
 	font-size: 60px;
 	color: red;
+	/* visibility: hidden; */
 }
 .simon .playArea .playDiv {
 	width: 60%;
@@ -78,6 +79,12 @@
 	flex-wrap: wrap;
 	justify-content: space-around;
 	margin-left: 50px;
+}
+.playerTurn {
+	background-color: rgb(92, 85, 85);
+}
+.computerTurn {
+	background-color: rgb(26, 24, 24);
 }
 .simon .playArea .playDiv .button {
 	border: solid black 10px;
@@ -125,6 +132,6 @@
 	background-color: red;
 }
 
-.visible {
+.notVisible {
 	visibility: hidden;
 }
