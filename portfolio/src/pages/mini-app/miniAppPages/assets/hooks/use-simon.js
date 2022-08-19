@@ -76,8 +76,15 @@ const simonReducer = (state = initialState, action) => {
 
 const useSimon = (green, red, yellow, blue, wrong, timer) => {
 	const [simonState, dispatchSimon] = useReducer(simonReducer, initialState);
-	const { level, gameStatus, computerArray, index, globalTimerId, timerValue } =
-		simonState;
+	const {
+		level,
+		gameStatus,
+		computerArray,
+		index,
+		globalTimerId,
+		timerValue,
+		playerArray,
+	} = simonState;
 
 	const clearTimerHandler = (id) => {
 		clearInterval(id);
@@ -186,7 +193,6 @@ const useSimon = (green, red, yellow, blue, wrong, timer) => {
 				}, 1000);
 			}
 		} else {
-			console.log("wrong Color");
 			// this is for wrong
 			wrongAnswerHandler();
 			return;

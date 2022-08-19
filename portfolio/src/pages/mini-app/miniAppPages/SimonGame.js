@@ -20,16 +20,16 @@ const SimonGame = () => {
 	} = useSimon(greenRef, redRef, yellowRef, blueRef, wrongRef, timerRef);
 	useEffect(() => {
 		samplePlay();
-	}, []);
+	}, [samplePlay]);
 
 	const { isGameOver, playerTurn, computerTurn } = gameStatus;
 	let classForDivPlay = `${classes.playDiv}`;
 	if (playerTurn) {
 		classForDivPlay = `${classes.playDiv} ${classes.playerTurn}`;
 	}
-	if (computerTurn) {
-		classForDivPlay = `${classes.playDiv} ${classes.computerTurn}`;
-	}
+	// if (computerTurn) {
+	// 	classForDivPlay = `${classes.playDiv} ${classes.computerTurn}`;
+	// }
 	return (
 		<main className={classes.simon}>
 			<section className={classes.first}>
