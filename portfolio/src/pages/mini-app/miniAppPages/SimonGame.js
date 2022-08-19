@@ -20,6 +20,7 @@ const SimonGame = () => {
 	useEffect(() => {
 		samplePlay();
 	}, []);
+
 	const { isGameOver, playerTurn, computerTurn } = gameStatus;
 	return (
 		<main className={classes.simon}>

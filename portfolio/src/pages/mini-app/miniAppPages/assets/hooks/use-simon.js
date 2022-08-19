@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useCallback, useReducer } from "react";
 
 import greenMP3 from "../audio/green.mp3";
 import redMP3 from "../audio/red.mp3";
@@ -6,12 +6,13 @@ import yellowMP3 from "../audio/yellow.mp3";
 import blueMP3 from "../audio/blue.mp3";
 import wrongMp3 from "../audio/wrong.mp3";
 import classes from "../styles/simon.module.css";
+import { useEffect } from "react";
 
 const initialState = {
-	level: 2,
+	level: 1,
 	playerArray: [],
 	computerArray: ["green", "red", "yellow", "blue"],
-	index: 1,
+	index: 0,
 	timerValue: 3,
 	gameStatus: {
 		isGameOver: false,
@@ -28,13 +29,19 @@ const actionCategories = {
 	RESET_ARRAY: "RESET_ARRAY",
 	UPDATE_INDEX: "UPDATE_INDEX",
 	RESET_INDEX: "RESET_INDEX",
+	UPDATE_LEVEL: "UPDATE_LEVEL",
+	RESET_LEVEL: "RESET_LEVEL",
 };
 
 const simonReducer = (state = initialState, action) => {
 	const { type, payload } = action;
 	switch (type) {
+		case actionCategories.UPDATE_LEVEL:
+			const newLevel = state.level + 1;
+			return { ...state, level: newLevel };
+		case actionCategories.RESET_LEVEL:
+			return { ...state, level: 1 };
 		case actionCategories.GAME_STATUS:
-			console.log("start");
 			return { ...state, gameStatus: payload.gameStatus };
 		case actionCategories.RESET_ARRAY:
 			return { ...state, computerArray: [], playerArray: [] };
@@ -49,6 +56,7 @@ const simonReducer = (state = initialState, action) => {
 			return { ...state, index: newIndex };
 		case actionCategories.RESET_INDEX:
 			return { ...state, index: 0 };
+
 		default:
 			return state;
 	}
@@ -56,9 +64,9 @@ const simonReducer = (state = initialState, action) => {
 
 const useSimon = (green, red, yellow, blue, wrong, info) => {
 	const [simonState, dispatchSimon] = useReducer(simonReducer, initialState);
-	console.log("comp", simonState.computerArray);
-	console.log("play", simonState.playerArray);
-	console.log("index", simonState.index);
+	const { level, gameStatus, computerArray, index } = simonState;
+	console.log("comp", computerArray);
+	// console.log("level", simonState.level);
 	/* 	const resetGameHandler = () => {
 		setIsGameOver(false);
 		wrong.current.classList.remove(`${classes.wrong}`);
@@ -139,7 +147,6 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 				wrong.current.classList.add(`${classes.wrong}`);
 				let wrongAudio = new Audio(wrongMp3);
 				wrongAudio.play();
-
 				break;
 		}
 	};
@@ -171,24 +178,30 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 	}, [level]);
  */
 	const compareBothArray = (color) => {
-		const { computerArray, index } = simonState;
-		if (color !== computerArray[index]) {
+		let copyOfLevel = level;
+		if (color === computerArray[index]) {
+			playSound(color);
+
+			dispatchSimon({ type: actionCategories.UPDATE_INDEX });
+
+			if (index === computerArray.length - 1) {
+				copyOfLevel++;
+				setTimeout(() => {
+					dispatchSimon({ type: actionCategories.UPDATE_LEVEL });
+
+					computerTurnHandler(copyOfLevel);
+				}, 1000);
+			}
+		} else {
 			console.log("wrong Color");
 			// this is for wrong
 			// wrongAnswerHandler();
 			return;
 		}
-		playSound(color);
-		dispatchSimon({ type: actionCategories.UPDATE_INDEX });
-
-		if (index === computerArray.length - 1) {
-			computerTurnHandler();
-		}
 	};
 
 	const playerClickHandler = (e) => {
-		if (simonState.gameStatus.playerTurn) {
-			console.log("player turn");
+		if (gameStatus.playerTurn) {
 			dispatchSimon({
 				type: actionCategories.UPDATE_PLAYER_ARRAY,
 				payload: { item: e.target.id },
@@ -196,24 +209,25 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 			compareBothArray(e.target.id);
 		}
 	};
-	const playerTurnHandler = () => {
-		dispatchSimon({
-			type: actionCategories.GAME_STATUS,
-			payload: {
-				gameStatus: {
-					isGameOver: false,
-					playerTurn: true,
-					computerTurn: false,
-				},
-			},
-		});
-	};
+	/* 	const playerTurnHandler = () => {
+		// dispatchSimon({
+		// 	type: actionCategories.GAME_STATUS,
+		// 	payload: {
+		// 		gameStatus: {
+		// 			isGameOver: false,
+		// 			playerTurn: true,
+		// 			computerTurn: false,
+		// 		},
+		// 	},
+		// });
+	}; */
 
-	const computerRandomHandler = () => {
+	const computerRandomHandler = (passedLevel) => {
 		let loop = 1;
+
 		const selectionArray = ["green", "red", "yellow", "blue"];
 		const computerLoop = () => {
-			if (loop <= simonState.level) {
+			if (loop <= passedLevel) {
 				const randomNum = Math.floor(Math.random() * selectionArray.length);
 				const selectedColor = selectionArray[randomNum];
 				dispatchSimon({
@@ -226,39 +240,83 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 					computerLoop();
 				}, 1000);
 			} else {
-				console.log("playerTurn");
 				playerTurnHandler();
 			}
 		};
 		computerLoop();
 	};
-
-	const computerTurnHandler = () => {
+	const playerTurnHandler = () => {
+		changeGameStatus("PLAYER_TURN");
+	};
+	const computerTurnHandler = (passedLevel) => {
 		resetArrayHandler();
-		dispatchSimon({
-			type: actionCategories.GAME_STATUS,
-			payload: {
-				gameStatus: {
-					isGameOver: false,
-					playerTurn: false,
-					computerTurn: true,
-				},
-			},
-		});
-
-		setTimeout(() => {
-			computerRandomHandler();
-		}, 1000);
+		changeGameStatus("COMPUTER_TURN", passedLevel);
+		// dispatchSimon({
+		// 	type: actionCategories.GAME_STATUS,
+		// 	payload: {
+		// 		gameStatus: {
+		// 			isGameOver: false,
+		// 			playerTurn: false,
+		// 			computerTurn: true,
+		// 		},
+		// 	},
+		// });
 	};
 	const resetArrayHandler = () => {
 		dispatchSimon({ type: actionCategories.RESET_ARRAY });
 		dispatchSimon({ type: actionCategories.RESET_INDEX });
 	};
+	const changeGameStatus = (status, passedLevel) => {
+		switch (status) {
+			case "INCREASE_LEVEL":
+				dispatchSimon({ type: actionCategories.UPDATE_LEVEL });
+				break;
+			case "PLAYER_TURN":
+				dispatchSimon({
+					type: actionCategories.GAME_STATUS,
+					payload: {
+						gameStatus: {
+							isGameOver: false,
+							playerTurn: true,
+							computerTurn: false,
+						},
+					},
+				});
+
+				break;
+			case "COMPUTER_TURN":
+				dispatchSimon({
+					type: actionCategories.GAME_STATUS,
+					payload: {
+						gameStatus: {
+							isGameOver: false,
+							playerTurn: false,
+							computerTurn: true,
+						},
+					},
+				});
+
+				setTimeout(() => {
+					computerRandomHandler(passedLevel);
+				}, 1000);
+				break;
+			default:
+				break;
+		}
+	};
+	// useEffect(() => {
+	// 	if (gameStatus.computerTurn) {
+	// 		resetArrayHandler();
+	// 		setTimeout(() => {
+	// 			computerRandomHandler();
+	// 		}, 1000);
+	// 	}
+	// }, [level, gameStatus.computerTurn, computerRandomHandler]);
 
 	const playStartHandler = () => {
 		// resetArrayHandler();
 
-		computerTurnHandler();
+		computerTurnHandler(level);
 		// setComputerArray([]);
 		// setIndex(0);
 		// setComputerTurn(true);
