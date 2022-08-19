@@ -79,22 +79,18 @@ const useSimon = (green, red, yellow, blue, wrong, timer) => {
 	const { level, gameStatus, computerArray, index, globalTimerId, timerValue } =
 		simonState;
 
-	// console.log("timer", timerValue);
-
 	const clearTimerHandler = (id) => {
-		// timer.current.classList.add(`${classes.notVisible}`);
 		clearInterval(id);
-		console.log("off", id);
+
 		dispatchSimon({ type: actionCategories.RESET_TIMER });
 	};
 
 	const timerHandler = () => {
 		clearTimerHandler(globalTimerId);
-		// timer.current.classList.remove(`${classes.notVisible}`);
+		timer.current.classList.remove(`${classes.notVisible}`);
 		const timerId = setInterval(() => {
 			dispatchSimon({ type: actionCategories.UPDATE_TIMER });
 		}, 1000);
-		console.log("on", timerId);
 		dispatchSimon({
 			type: actionCategories.GET_TIMER_ID,
 			payload: { timerId: timerId },
@@ -102,7 +98,8 @@ const useSimon = (green, red, yellow, blue, wrong, timer) => {
 	};
 	useEffect(() => {
 		clearTimerHandler(globalTimerId);
-	}, [index]);
+	}, [level]);
+
 	useEffect(() => {
 		if (timerValue <= 0) {
 			wrongAnswerHandler();
@@ -162,7 +159,7 @@ const useSimon = (green, red, yellow, blue, wrong, timer) => {
 				if (i < simonState.computerArray.length) {
 					myLoop();
 				} else {
-					// timer.current.classList.add(`${classes.notVisible}`);
+					timer.current.classList.add(`${classes.notVisible}`);
 					return;
 				}
 			}, 500);
@@ -171,25 +168,20 @@ const useSimon = (green, red, yellow, blue, wrong, timer) => {
 	};
 
 	const compareBothArray = (color) => {
-		console.log("timer id", globalTimerId);
 		let copyOfLevel = level;
 		if (color === computerArray[index]) {
 			playSound(color);
 			dispatchSimon({ type: actionCategories.UPDATE_INDEX });
-			console.log("clear 1");
+
 			clearTimerHandler(globalTimerId);
 			setTimeout(() => {
-				console.log("timer 1");
 				timerHandler();
 			}, 1000);
 
 			if (index === computerArray.length - 1) {
 				copyOfLevel++;
 				setTimeout(() => {
-					console.log("clear 2");
-					// clearTimerHandler(globalTimerId);
 					dispatchSimon({ type: actionCategories.UPDATE_LEVEL });
-
 					computerTurnHandler(copyOfLevel);
 				}, 1000);
 			}
@@ -213,10 +205,9 @@ const useSimon = (green, red, yellow, blue, wrong, timer) => {
 
 	const computerRandomHandler = (passedLevel) => {
 		let loop = 1;
-		clearTimerHandler(globalTimerId);
+
 		const selectionArray = ["green", "red", "yellow", "blue"];
 		const computerLoop = () => {
-			clearTimerHandler(globalTimerId);
 			if (loop <= passedLevel) {
 				const randomNum = Math.floor(Math.random() * selectionArray.length);
 				const selectedColor = selectionArray[randomNum];
@@ -224,7 +215,6 @@ const useSimon = (green, red, yellow, blue, wrong, timer) => {
 					type: actionCategories.UPDATE_COMPUTER_ARRAY,
 					payload: { item: selectedColor },
 				});
-				console.log("comp", computerArray);
 				loop++;
 				playSound(selectedColor);
 				setTimeout(() => {
@@ -237,10 +227,9 @@ const useSimon = (green, red, yellow, blue, wrong, timer) => {
 		computerLoop();
 	};
 	const resetGameHandler = () => {
-		console.log("clear 3");
-		clearTimerHandler(globalTimerId);
 		setTimeout(() => {
 			changeGameStatus("RESET_GAME");
+			wrong.current.classList.remove(`${classes.wrong}`);
 		}, 3000);
 	};
 
@@ -249,24 +238,30 @@ const useSimon = (green, red, yellow, blue, wrong, timer) => {
 		playSound("wrong");
 		resetGameHandler();
 	};
+
 	const playerTurnHandler = () => {
 		setTimeout(() => {
-			console.log("timer 2");
 			timerHandler();
 		}, 1000);
 		changeGameStatus("PLAYER_TURN");
 	};
+
 	const computerTurnHandler = (passedLevel) => {
-		console.log("clear 4");
 		clearTimerHandler(globalTimerId);
 		resetArrayHandler();
-		changeGameStatus("COMPUTER_TURN", passedLevel);
+		changeGameStatus("COMPUTER_TURN");
+		timer.current.classList.add(`${classes.notVisible}`);
+		setTimeout(() => {
+			computerRandomHandler(passedLevel);
+		}, 1000);
 	};
+
 	const resetArrayHandler = () => {
 		dispatchSimon({ type: actionCategories.RESET_ARRAY });
 		dispatchSimon({ type: actionCategories.RESET_INDEX });
 	};
-	const changeGameStatus = (status, passedLevel) => {
+
+	const changeGameStatus = (status) => {
 		switch (status) {
 			case "GAME_OVER":
 				dispatchSimon({
@@ -305,9 +300,6 @@ const useSimon = (green, red, yellow, blue, wrong, timer) => {
 					},
 				});
 
-				setTimeout(() => {
-					computerRandomHandler(passedLevel);
-				}, 1000);
 				break;
 			case "RESET_GAME":
 				dispatchSimon({ type: actionCategories.RESET_LEVEL });
@@ -321,7 +313,7 @@ const useSimon = (green, red, yellow, blue, wrong, timer) => {
 						},
 					},
 				});
-				wrong.current.classList.remove(`${classes.wrong}`);
+
 				break;
 			default:
 				break;

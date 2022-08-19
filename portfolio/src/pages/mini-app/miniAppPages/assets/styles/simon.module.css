@@ -39,7 +39,7 @@
 	cursor: pointer;
 }
 .simon .playArea .wrapper {
-	border: solid red;
+	/* border: solid red; */
 	width: 100%;
 	display: flex;
 	padding: 50px;
