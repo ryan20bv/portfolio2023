@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer } from "react";
+import { useCallback, useReducer } from "react";
 
 import greenMP3 from "../audio/green.mp3";
 import redMP3 from "../audio/red.mp3";
@@ -79,11 +79,11 @@ const useSimon = (green, red, yellow, blue, wrong, timer) => {
 	const { level, gameStatus, computerArray, index, globalTimerId, timerValue } =
 		simonState;
 
-	const clearTimerHandler = (id) => {
+	const clearTimerHandler = useCallback((id) => {
 		clearInterval(id);
 
 		dispatchSimon({ type: actionCategories.RESET_TIMER });
-	};
+	}, []);
 
 	const timerHandler = () => {
 		clearTimerHandler(globalTimerId);
@@ -96,15 +96,21 @@ const useSimon = (green, red, yellow, blue, wrong, timer) => {
 			payload: { timerId: timerId },
 		});
 	};
+	const wrongAnswerHandler = useCallback(() => {
+		changeGameStatus("GAME_OVER");
+		playSound("wrong");
+		resetGameHandler();
+	}, []);
+
 	useEffect(() => {
 		clearTimerHandler(globalTimerId);
-	}, [level]);
+	}, [level, clearTimerHandler]);
 
 	useEffect(() => {
 		if (timerValue <= 0) {
 			wrongAnswerHandler();
 		}
-	}, [timerValue]);
+	}, [timerValue, wrongAnswerHandler]);
 
 	const playSound = (type) => {
 		switch (type) {
@@ -230,12 +236,6 @@ const useSimon = (green, red, yellow, blue, wrong, timer) => {
 			changeGameStatus("RESET_GAME");
 			wrong.current.classList.remove(`${classes.wrong}`);
 		}, 3000);
-	};
-
-	const wrongAnswerHandler = () => {
-		changeGameStatus("GAME_OVER");
-		playSound("wrong");
-		resetGameHandler();
 	};
 
 	const playerTurnHandler = () => {
