@@ -177,10 +177,7 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 		}
 	}, [level]);
  */
-	const wrongAnswerHandler = () => {
-		changeGameStatus("GAME_OVER");
-		playSound("wrong");
-	};
+
 	const compareBothArray = (color) => {
 		let copyOfLevel = level;
 		if (color === computerArray[index]) {
@@ -249,6 +246,13 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 		};
 		computerLoop();
 	};
+	const wrongAnswerHandler = () => {
+		changeGameStatus("GAME_OVER");
+		playSound("wrong");
+		setTimeout(() => {
+			changeGameStatus("RESET_GAME");
+		}, 3000);
+	};
 	const playerTurnHandler = () => {
 		changeGameStatus("PLAYER_TURN");
 	};
@@ -315,6 +319,20 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 				setTimeout(() => {
 					computerRandomHandler(passedLevel);
 				}, 1000);
+				break;
+			case "RESET_GAME":
+				dispatchSimon({ type: actionCategories.RESET_LEVEL });
+				dispatchSimon({
+					type: actionCategories.GAME_STATUS,
+					payload: {
+						gameStatus: {
+							isGameOver: false,
+							playerTurn: false,
+							computerTurn: false,
+						},
+					},
+				});
+				wrong.current.classList.remove(`${classes.wrong}`);
 				break;
 			default:
 				break;
