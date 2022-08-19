@@ -142,7 +142,7 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 					blue.current.classList.remove(`${classes.pressed}`);
 				}, 100);
 				break;
-
+			case "wrong":
 			default:
 				wrong.current.classList.add(`${classes.wrong}`);
 				let wrongAudio = new Audio(wrongMp3);
@@ -177,6 +177,10 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 		}
 	}, [level]);
  */
+	const wrongAnswerHandler = () => {
+		changeGameStatus("GAME_OVER");
+		playSound("wrong");
+	};
 	const compareBothArray = (color) => {
 		let copyOfLevel = level;
 		if (color === computerArray[index]) {
@@ -195,7 +199,7 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 		} else {
 			console.log("wrong Color");
 			// this is for wrong
-			// wrongAnswerHandler();
+			wrongAnswerHandler();
 			return;
 		}
 	};
@@ -268,8 +272,20 @@ const useSimon = (green, red, yellow, blue, wrong, info) => {
 	};
 	const changeGameStatus = (status, passedLevel) => {
 		switch (status) {
-			case "INCREASE_LEVEL":
-				dispatchSimon({ type: actionCategories.UPDATE_LEVEL });
+			// case "INCREASE_LEVEL":
+			// 	dispatchSimon({ type: actionCategories.UPDATE_LEVEL });
+			// 	break;
+			case "GAME_OVER":
+				dispatchSimon({
+					type: actionCategories.GAME_STATUS,
+					payload: {
+						gameStatus: {
+							isGameOver: true,
+							playerTurn: false,
+							computerTurn: false,
+						},
+					},
+				});
 				break;
 			case "PLAYER_TURN":
 				dispatchSimon({
