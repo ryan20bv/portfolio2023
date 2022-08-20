@@ -1,7 +1,7 @@
 import React from "react";
 
 const SliderOne = () => {
-	return <div>SliderOne</div>;
+	return <div>Raffle</div>;
 };
 
 export default SliderOne;

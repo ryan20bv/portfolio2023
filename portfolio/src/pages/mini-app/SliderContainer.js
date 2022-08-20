@@ -24,7 +24,7 @@ const SliderContainer = ({ classes }) => {
 				<img
 					src={process.env.PUBLIC_URL + "/assets/images/Num-to-word.PNG"}
 					alt='num to word'
-					id='one'
+					id='raffle'
 					onClick={(e) => clickHandler(e)}
 				/>
 			</div>

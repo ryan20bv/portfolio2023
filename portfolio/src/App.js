@@ -12,7 +12,7 @@ const MiniApp = React.lazy(() => import("./pages/mini-app/MiniApp"));
 
 const App = () => {
 	return (
-		<React.Suspense fallback={<>...</>}>
+		<React.Suspense fallback={<>Loading...</>}>
 			<Routes>
 				<Route path='*' element={<Navigate to='/home' />} />
 				<Route path='/home/*' element={<Home />} exact />
