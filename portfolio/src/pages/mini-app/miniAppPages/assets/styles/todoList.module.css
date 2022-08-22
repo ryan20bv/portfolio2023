@@ -1,0 +1,18 @@
+/* *{
+  #105799
+  #867308
+  #265670
+  #6C6967
+  #7F7B77
+  #bebcba;
+} */
+
+.raffle {
+	background-color: #105799;
+	height: 100%;
+}
+.raffle .header {
+	border: solid red;
+	padding-top: 2em;
+	padding-bottom: 1em;
+}
