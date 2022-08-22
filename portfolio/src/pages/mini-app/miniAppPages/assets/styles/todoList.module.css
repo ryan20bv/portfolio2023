@@ -12,7 +12,6 @@
 	height: 100%;
 }
 .raffle .header {
-	border: solid red;
 	padding: 2em;
 	display: flex;
 	align-items: center;
@@ -28,29 +27,88 @@
 }
 .raffle .header form {
 	display: flex;
+	position: relative;
 }
 .raffle .header form input {
-	width: 600px;
+	width: 650px;
 	margin-right: 20px;
 	display: flex;
 	align-items: center;
 }
-.raffle .header form .form_btn {
-	margin-left: 20px;
+.raffle .header form input:focus {
+	outline: none;
+}
+.raffle .header form div {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
-.raffle .header form input + button {
+.raffle .header form div .FA_icon {
+	border-radius: 50%;
+	font-size: 40px;
+	border: solid black 1px;
 	background-color: rgb(5, 165, 5);
-	border: solid 1px rgb(5, 165, 5);
+	color: black;
+	margin-left: 30px;
 }
-.raffle .header form input + button + button {
-	background-color: rgb(193, 203, 6);
-	border: solid 1px rgb(193, 203, 6);
-}
-.raffle .header form .form_btn:hover {
+.raffle .header form div .FA_icon:hover {
 	cursor: pointer;
-	color: #fff;
-	box-shadow: 0px 0px 1px 1px #858383;
+	background-color: black;
+	color: rgb(5, 165, 5);
+}
+.raffle .header form div .delete_icon {
+	color: black;
+	font-size: 40px;
+	position: absolute;
+	right: 120px;
+}
+.raffle .header form div .delete_icon:hover {
+	color: red;
+	cursor: pointer;
+}
+
+.raffle .content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 20px;
+}
+.raffle .content .wrapper {
+	/* border: solid red; */
+	max-width: 45%;
+}
+.raffle .content .wrapper li {
+	/* border: solid red; */
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: dashed #bebcba 3px;
+}
+.raffle .content .wrapper li div {
+	display: flex;
+	font-size: 32px;
+	margin: 20px 0 10px 0;
+	padding: 10px 20px 10px 30px;
+}
+/* .raffle .content .wrapper li div:last-child {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+} */
+.raffle .content .wrapper li input {
+	width: 30px;
+	height: auto;
+	margin-right: 30px;
+}
+.raffle .content .wrapper .FA_icon {
+	/* border: solid red; */
+	margin: 0 10px;
+}
+.raffle .content .wrapper .FA_icon:hover {
+	cursor: pointer;
+	color: yellow;
+}
+.raffle .content .wrapper .FA_icon:hover:last-child {
+	color: red;
 }
