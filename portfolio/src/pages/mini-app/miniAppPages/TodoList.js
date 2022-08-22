@@ -12,69 +12,62 @@ import useTodo from "./assets/hooks/use-todo";
 
 import classes from "./assets/styles/todoList.module.css";
 const SliderOne = () => {
-	const array = [
-		{
-			id: 101,
-			task: "Exercise",
-		},
-		{
-			id: 102,
-			task: "Eat",
-		},
-		{
-			id: 103,
-			task: "Study",
-		},
-	];
-	const { listArray } = useTodo(array);
+	const {
+		listArray,
+		isNotEmpty,
+		inputValue,
+		strikeItemHandler,
+		inputChangeHandler,
+		clearInputHandler,
+		addTodoHandler,
+	} = useTodo(classes);
 	return (
-		<main className={classes.raffle}>
+		<main className={classes.todo}>
 			<section className={classes.header}>
-				<form action=''>
-					<input type='text' placeholder='add todo here' maxLength='30' />
-					<div>
-						<FontAwesomeIcon
-							icon={solid("multiply")}
-							className={classes.delete_icon}
-							classes={classes}
-						/>
-					</div>
+				<form action='' onSubmit={addTodoHandler}>
+					<input
+						type='text'
+						placeholder='add todo here'
+						maxLength='30'
+						onChange={inputChangeHandler}
+						value={inputValue}
+					/>
+					{isNotEmpty && (
+						<div>
+							<FontAwesomeIcon
+								icon={solid("multiply")}
+								className={classes.delete_icon}
+								onClick={clearInputHandler}
+							/>
+						</div>
+					)}
 
-					<div>
+					<button>
 						<FontAwesomeIcon
 							icon={solid("plus-circle")}
 							className={classes.FA_icon}
 						/>
-					</div>
+					</button>
 				</form>
 			</section>
 			<section className={classes.content}>
-				<ul className={classes.wrapper}>
-					{listArray.map((todo) => {
-						return <TodoListItem classes={classes} key={todo.id} todo={todo} />;
-					})}
-
-					<li className={classes.strike}>
-						<div>
-							<input type='checkbox' name='' id='' />
-							<p>123121231232131231231231231231</p>
-						</div>
-						<div>
-							<FontAwesomeIcon
-								icon={regular("edit")}
-								className={classes.FA_icon}
-								classes={classes}
-							/>
-
-							<FontAwesomeIcon
-								icon={regular("trash-alt")}
-								className={classes.FA_icon}
-								classes={classes}
-								// bounce
-							/>
-						</div>
-					</li>
-				</ul>
+				{listArray.length === 0 && (
+					<p className={classes.listEmpty}>Todo Empty</p>
+				)}
+				{listArray.length > 0 && (
+					<ul className={classes.wrapper}>
+						{listArray.map((todo) => {
+							return (
+								<TodoListItem
+									classes={classes}
+									key={todo.id}
+									todo={todo}
+									onStrike={strikeItemHandler}
+								/>
+							);
+						})}
+					</ul>
+				)}
 			</section>
 		</main>
 	);

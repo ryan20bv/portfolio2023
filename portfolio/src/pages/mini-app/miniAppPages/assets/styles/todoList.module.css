@@ -7,77 +7,83 @@
   #bebcba;
 } */
 
-.raffle {
+.todo {
 	background-color: #105799;
 	height: 100%;
 }
-.raffle .header {
+.todo .header {
 	padding: 2em;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
-.raffle .header form input,
-.raffle .header form .form_btn {
+.todo .header form input,
+.todo .header form .form_btn {
 	height: 50px;
 	font-size: 36px;
 	font-weight: 300;
 	padding: 5px 20px;
 	border-radius: 30px;
 }
-.raffle .header form {
+.todo .header form {
 	display: flex;
 	position: relative;
 }
-.raffle .header form input {
+.todo .header form input {
+	/* border: solid red; */
 	width: 700px;
 	margin-right: 20px;
 	display: flex;
 	align-items: center;
 }
-.raffle .header form input:focus {
+.todo .header form input:focus {
 	outline: none;
 }
-.raffle .header form div {
+.todo .header form div {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
-.raffle .header form div .FA_icon {
+
+.todo .header form button {
+	border: solid black 1px;
+	margin-left: 30px;
+	display: contents;
+}
+.todo .header form .FA_icon {
 	border-radius: 50%;
 	font-size: 40px;
-	border: solid black 1px;
+	align-self: center;
 	background-color: rgb(5, 165, 5);
 	color: black;
-	margin-left: 30px;
 }
-.raffle .header form div .FA_icon:hover {
+.todo .header form .FA_icon:hover {
 	cursor: pointer;
 	background-color: black;
 	color: rgb(5, 165, 5);
 }
-.raffle .header form div .delete_icon {
+.todo .header form .delete_icon {
 	color: black;
 	font-size: 40px;
 	position: absolute;
-	right: 120px;
+	right: 90px;
 }
-.raffle .header form div .delete_icon:hover {
+.todo .header form .delete_icon:hover {
 	color: red;
 	cursor: pointer;
 }
 
-.raffle .content {
+.todo .content {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	padding-top: 20px;
 }
-.raffle .content .wrapper {
+.todo .content .wrapper {
 	/* border: solid red; */
 	width: 40%;
 }
-.raffle .content .wrapper li {
+.todo .content .wrapper li {
 	/* border: solid red; */
 	list-style: none;
 	display: flex;
@@ -85,33 +91,36 @@
 	justify-content: space-between;
 	border-bottom: dashed #bebcba 3px;
 }
-.raffle .content .wrapper li div {
+.todo .content .wrapper li div {
 	display: flex;
 	font-size: 32px;
 	margin: 20px 0 10px 0;
 	padding: 10px 20px 10px 30px;
 }
-/* .raffle .content .wrapper li div:last-child {
+/* .todo .content .wrapper li div:last-child {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 } */
-.raffle .content .wrapper li input {
+.todo .content .wrapper li input {
 	width: 30px;
 	height: auto;
 	margin-right: 30px;
 }
-.raffle .content .wrapper .FA_icon {
+.todo .content .wrapper .FA_icon {
 	/* border: solid red; */
 	margin: 0 10px;
 }
-.raffle .content .wrapper .FA_icon:hover {
+.todo .content .wrapper .FA_icon:hover {
 	cursor: pointer;
 	color: yellow;
 }
-.raffle .content .wrapper .FA_icon:hover:last-child {
+.todo .content .wrapper .FA_icon:hover:last-child {
 	color: red;
 }
 .strike {
 	text-decoration: line-through;
+}
+.todo .content .listEmpty {
+	font-size: 36px;
 }
