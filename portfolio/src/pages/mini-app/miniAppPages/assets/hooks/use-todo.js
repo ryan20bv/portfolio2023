@@ -29,6 +29,7 @@ const actionType = {
 	INITIATE_LIST: "INITIATE_LIST",
 	CHANGE_INPUT_VALUE: "CHANGE_INPUT_VALUE",
 	CHECK_INPUT: "CHECK_INPUT",
+	ADD_TODO: "ADD_TODO",
 };
 
 const todoReducer = (state = initialState, action) => {
@@ -40,6 +41,9 @@ const todoReducer = (state = initialState, action) => {
 			return { ...state, inputValue: payload.enteredValue };
 		case actionType.CHECK_INPUT:
 			return { ...state, isNotEmpty: payload.status };
+		case actionType.ADD_TODO:
+			const newArray = [...state.listArray, payload.newTodo];
+			return { ...state, listArray: newArray };
 		default:
 			return state;
 	}
@@ -66,7 +70,8 @@ const useTodo = () => {
 		});
 	};
 	const inputChangeHandler = (e) => {
-		const enteredValue = e.target.value;
+		let enteredValue = e.target.value;
+
 		if (enteredValue.trim() !== "") {
 			dispatchTodo({ type: actionType.CHECK_INPUT, payload: { status: true } });
 		} else {
@@ -86,7 +91,17 @@ const useTodo = () => {
 		console.log(e);
 	};
 	const addTodoHandler = (e) => {
-		console.log(e);
+		e.preventDefault();
+		const newTodo = {
+			id: Math.random(),
+			task: todoState.inputValue,
+			isDone: false,
+		};
+		dispatchTodo({
+			type: actionType.ADD_TODO,
+			payload: { newTodo: newTodo },
+		});
+		clearInputHandler();
 	};
 
 	return {

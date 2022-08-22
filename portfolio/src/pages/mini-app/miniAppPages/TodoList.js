@@ -30,6 +30,7 @@ const SliderOne = () => {
 						placeholder='add todo here'
 						maxLength='30'
 						onChange={inputChangeHandler}
+						id='input_todo'
 						value={inputValue}
 					/>
 					{isNotEmpty && (
