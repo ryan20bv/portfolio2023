@@ -13,6 +13,44 @@
 }
 .raffle .header {
 	border: solid red;
-	padding-top: 2em;
-	padding-bottom: 1em;
+	padding: 2em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.raffle .header form input,
+.raffle .header form .form_btn {
+	height: 50px;
+	font-size: 36px;
+	font-weight: 300;
+	padding: 5px 20px;
+	border-radius: 30px;
+}
+.raffle .header form {
+	display: flex;
+}
+.raffle .header form input {
+	width: 600px;
+	margin-right: 20px;
+	display: flex;
+	align-items: center;
+}
+.raffle .header form .form_btn {
+	margin-left: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.raffle .header form input + button {
+	background-color: rgb(5, 165, 5);
+	border: solid 1px rgb(5, 165, 5);
+}
+.raffle .header form input + button + button {
+	background-color: rgb(193, 203, 6);
+	border: solid 1px rgb(193, 203, 6);
+}
+.raffle .header form .form_btn:hover {
+	cursor: pointer;
+	color: #fff;
+	box-shadow: 0px 0px 1px 1px #858383;
 }
