@@ -112,3 +112,6 @@
 .raffle .content .wrapper .FA_icon:hover:last-child {
 	color: red;
 }
+.strike {
+	text-decoration: line-through;
+}

@@ -8,9 +8,11 @@ import {
 } from "@fortawesome/fontawesome-svg-core/import.macro";
 import TodoListItem from "./todoListPages/todoListItem";
 
+import useTodo from "./assets/hooks/use-todo";
+
 import classes from "./assets/styles/todoList.module.css";
 const SliderOne = () => {
-	const listArray = [
+	const array = [
 		{
 			id: 101,
 			task: "Exercise",
@@ -24,7 +26,7 @@ const SliderOne = () => {
 			task: "Study",
 		},
 	];
-
+	const { listArray } = useTodo(array);
 	return (
 		<main className={classes.raffle}>
 			<section className={classes.header}>
@@ -52,7 +54,7 @@ const SliderOne = () => {
 						return <TodoListItem classes={classes} key={todo.id} todo={todo} />;
 					})}
 
-					<li>
+					<li className={classes.strike}>
 						<div>
 							<input type='checkbox' name='' id='' />
 							<p>123121231232131231231231231231</p>
