@@ -16,15 +16,30 @@ const SliderOne = () => {
 		listArray,
 		isNotEmpty,
 		inputValue,
-		strikeItemHandler,
+		isDoneItemHandler,
 		inputChangeHandler,
 		clearInputHandler,
 		addTodoHandler,
+		deleteTodoHandler,
 	} = useTodo(classes);
+
+	const submitHandler = (e) => {
+		e.preventDefault();
+		addTodoHandler();
+	};
+	const checkboxStatusHandler = (e) => {
+		const selectedItemId = e.target.id;
+		isDoneItemHandler(selectedItemId);
+	};
+	const deleteTaskHandler = (itemToDeleteId) => {
+		// const itemToDeleteId = e.target.id;
+		deleteTodoHandler(itemToDeleteId);
+	};
+
 	return (
 		<main className={classes.todo}>
 			<section className={classes.header}>
-				<form action='' onSubmit={addTodoHandler}>
+				<form action='' onSubmit={submitHandler}>
 					<input
 						type='text'
 						placeholder='add todo here'
@@ -63,7 +78,8 @@ const SliderOne = () => {
 									classes={classes}
 									key={todo.id}
 									todo={todo}
-									onStrike={strikeItemHandler}
+									onStrike={checkboxStatusHandler}
+									onDelete={deleteTaskHandler}
 								/>
 							);
 						})}

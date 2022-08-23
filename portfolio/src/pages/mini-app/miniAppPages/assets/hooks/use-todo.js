@@ -31,6 +31,7 @@ const actionType = {
 	CHECK_INPUT: "CHECK_INPUT",
 	ADD_TODO: "ADD_TODO",
 	IS_DONE_STATUS: "IS_DONE_STATUS",
+	DELETE_TODO: "DELETE_TODO",
 };
 
 const todoReducer = (state = initialState, action) => {
@@ -58,7 +59,13 @@ const todoReducer = (state = initialState, action) => {
 			let updatedArray = [...state.listArray];
 			updatedArray[searchedIndex] = searchedItem;
 			return { ...state, listArray: updatedArray };
-
+		case actionType.DELETE_TODO:
+			console.log("delete", payload.id);
+			const reducedArray = state.listArray.filter((item) => {
+				return item.id !== payload.id;
+			});
+			console.log(reducedArray);
+			return { ...state, listArray: reducedArray };
 		default:
 			return state;
 	}
@@ -102,14 +109,16 @@ const useTodo = () => {
 		});
 	};
 
-	const strikeItemHandler = (e) => {
+	const isDoneItemHandler = (id) => {
 		dispatchTodo({
 			type: actionType.IS_DONE_STATUS,
-			payload: { id: e.target.id },
+			payload: { id: id },
 		});
 	};
-	const addTodoHandler = (e) => {
-		e.preventDefault();
+	const deleteTodoHandler = (id) => {
+		dispatchTodo({ type: actionType.DELETE_TODO, payload: { id } });
+	};
+	const addTodoHandler = () => {
 		const newTodo = {
 			id: Math.random().toString(),
 			task: todoState.inputValue,
@@ -126,10 +135,11 @@ const useTodo = () => {
 		listArray: todoState.listArray,
 		inputValue: todoState.inputValue,
 		isNotEmpty: todoState.isNotEmpty,
-		strikeItemHandler,
+		isDoneItemHandler,
 		inputChangeHandler,
 		clearInputHandler,
 		addTodoHandler,
+		deleteTodoHandler,
 	};
 };
 

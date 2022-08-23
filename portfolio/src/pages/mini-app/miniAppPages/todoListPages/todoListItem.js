@@ -7,7 +7,7 @@ import {
 	brands,
 } from "@fortawesome/fontawesome-svg-core/import.macro";
 
-const TodoListItem = ({ classes, todo, onStrike }) => {
+const TodoListItem = ({ classes, todo, onStrike, onDelete }) => {
 	// console.log(todo);
 	const classIfDone = todo.isDone ? `${classes.strike}` : "";
 	return (
@@ -30,6 +30,7 @@ const TodoListItem = ({ classes, todo, onStrike }) => {
 					icon={regular("trash-alt")}
 					className={classes.FA_icon}
 					// bounce
+					onClick={() => onDelete(todo.id)}
 				/>
 			</div>
 		</li>
