@@ -3,17 +3,17 @@ import React, { useState, useReducer, useEffect } from "react";
 
 const array = [
 	{
-		id: 101,
+		id: "101",
 		task: "Exercise",
 		isDone: false,
 	},
 	{
-		id: 102,
+		id: "102",
 		task: "Eat",
 		isDone: false,
 	},
 	{
-		id: 103,
+		id: "103",
 		task: "Study",
 		isDone: true,
 	},
@@ -30,6 +30,7 @@ const actionType = {
 	CHANGE_INPUT_VALUE: "CHANGE_INPUT_VALUE",
 	CHECK_INPUT: "CHECK_INPUT",
 	ADD_TODO: "ADD_TODO",
+	IS_DONE_STATUS: "IS_DONE_STATUS",
 };
 
 const todoReducer = (state = initialState, action) => {
@@ -44,6 +45,20 @@ const todoReducer = (state = initialState, action) => {
 		case actionType.ADD_TODO:
 			const newArray = [...state.listArray, payload.newTodo];
 			return { ...state, listArray: newArray };
+		case actionType.IS_DONE_STATUS:
+			const searchedIndex = state.listArray.findIndex((item) => {
+				return item.id === payload.id;
+			});
+			let searchedItem = state.listArray[searchedIndex];
+			searchedItem = {
+				id: searchedItem.id,
+				task: searchedItem.task,
+				isDone: searchedItem.isDone ? false : true,
+			};
+			let updatedArray = [...state.listArray];
+			updatedArray[searchedIndex] = searchedItem;
+			return { ...state, listArray: updatedArray };
+
 		default:
 			return state;
 	}
@@ -88,12 +103,15 @@ const useTodo = () => {
 	};
 
 	const strikeItemHandler = (e) => {
-		console.log(e);
+		dispatchTodo({
+			type: actionType.IS_DONE_STATUS,
+			payload: { id: e.target.id },
+		});
 	};
 	const addTodoHandler = (e) => {
 		e.preventDefault();
 		const newTodo = {
-			id: Math.random(),
+			id: Math.random().toString(),
 			task: todoState.inputValue,
 			isDone: false,
 		};
