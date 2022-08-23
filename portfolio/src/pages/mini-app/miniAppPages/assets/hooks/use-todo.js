@@ -7,11 +7,7 @@ const array = [
 		task: "Exercise",
 		isDone: false,
 	},
-	{
-		id: "102",
-		task: "Eat",
-		isDone: false,
-	},
+
 	{
 		id: "103",
 		task: "Study",
@@ -35,6 +31,7 @@ const actionType = {
 	IS_DONE_STATUS: "IS_DONE_STATUS",
 	DELETE_TODO: "DELETE_TODO",
 	IS_EDITING_STATUS: "IS_EDITING_STATUS",
+	CONFIRM_EDIT: "CONFIRM_EDIT",
 };
 
 const todoReducer = (state = initialState, action) => {
@@ -63,15 +60,25 @@ const todoReducer = (state = initialState, action) => {
 			updatedArray[searchedIndex] = searchedItem;
 			return { ...state, listArray: updatedArray };
 		case actionType.DELETE_TODO:
-			console.log("delete", payload.id);
 			const reducedArray = state.listArray.filter((item) => {
 				return item.id !== payload.id;
 			});
-			console.log(reducedArray);
+
 			return { ...state, listArray: reducedArray };
 
 		case actionType.IS_EDITING_STATUS:
-			return { ...state, isEditing: payload.status };
+			return { ...state, isEditing: payload.status, itemToEdit: payload.item };
+		case actionType.CONFIRM_EDIT:
+			const foundItemIndex = state.listArray.findIndex((item) => {
+				return item.id === payload.itemToEdit.id;
+			});
+
+			const copyOfArray = [...state.listArray];
+			copyOfArray[foundItemIndex] = {
+				...payload.itemToEdit,
+				task: state.inputValue,
+			};
+			return { ...state, listArray: copyOfArray };
 		default:
 			return state;
 	}
@@ -86,7 +93,6 @@ const useTodo = (validateValue) => {
 	useEffect(() => {
 		dispatchTodo({ type: actionType.INITIATE_LIST, payload: { array } });
 	}, []);
-
 	const clearInputHandler = () => {
 		dispatchTodo({
 			type: actionType.CHANGE_INPUT_VALUE,
@@ -137,10 +143,13 @@ const useTodo = (validateValue) => {
 		clearInputHandler();
 	};
 	const isEditingHandler = (item) => {
-		console.log(item);
+		if (todoState.isEditing) {
+			console.log("cancel first");
+			return;
+		}
 		dispatchTodo({
 			type: actionType.IS_EDITING_STATUS,
-			payload: { status: true },
+			payload: { status: true, item: item },
 		});
 		dispatchTodo({
 			type: actionType.CHANGE_INPUT_VALUE,
@@ -150,12 +159,25 @@ const useTodo = (validateValue) => {
 	const cancelEditingHandler = () => {
 		dispatchTodo({
 			type: actionType.IS_EDITING_STATUS,
-			payload: { status: false },
+			payload: { status: false, item: {} },
 		});
 		dispatchTodo({
 			type: actionType.CHANGE_INPUT_VALUE,
 			payload: { enteredValue: "" },
 		});
+		dispatchTodo({
+			type: actionType.CHECK_INPUT,
+			payload: { status: false },
+		});
+	};
+
+	const confirmEditHandler = () => {
+		// console.log("confirm");
+		dispatchTodo({
+			type: actionType.CONFIRM_EDIT,
+			payload: { itemToEdit: todoState.itemToEdit },
+		});
+		cancelEditingHandler();
 	};
 
 	return {
@@ -171,6 +193,7 @@ const useTodo = (validateValue) => {
 		deleteTodoHandler,
 		isEditingHandler,
 		cancelEditingHandler,
+		confirmEditHandler,
 	};
 };
 

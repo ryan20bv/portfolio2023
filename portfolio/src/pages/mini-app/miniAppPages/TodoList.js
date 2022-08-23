@@ -25,6 +25,7 @@ const SliderOne = () => {
 		deleteTodoHandler,
 		isEditingHandler,
 		cancelEditingHandler,
+		confirmEditHandler,
 	} = useTodo((inputValue) => inputValue.trim() !== "");
 	const submitHandler = (e) => {
 		e.preventDefault();
@@ -45,6 +46,9 @@ const SliderOne = () => {
 	};
 	const cancelEditHandler = () => {
 		cancelEditingHandler();
+	};
+	const confirmHandler = () => {
+		confirmEditHandler();
 	};
 	return (
 		<main className={classes.todo}>
@@ -95,6 +99,7 @@ const SliderOne = () => {
 										<FontAwesomeIcon
 											icon={solid("circle-check")}
 											className={classes.circle_check}
+											onClick={confirmHandler}
 										/>
 									</section>
 								)}
