@@ -22,7 +22,7 @@ const SliderContainer = ({ classes }) => {
 		<div className={classes.slider_container} id='slider_container'>
 			<div className={classes.slider_content}>
 				<img
-					src={process.env.PUBLIC_URL + "/assets/images/Num-to-word.PNG"}
+					src={process.env.PUBLIC_URL + "/assets/images/todoList.PNG"}
 					alt='num to word'
 					id='todo'
 					onClick={(e) => clickHandler(e)}

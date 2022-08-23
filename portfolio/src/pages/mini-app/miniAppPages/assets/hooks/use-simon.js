@@ -115,36 +115,36 @@ const useSimon = (green, red, yellow, blue, wrong, timer) => {
 	const playSound = (type) => {
 		switch (type) {
 			case "green":
-				green.current.classList.add(`${classes.pressed}`);
+				green?.current?.classList.add(`${classes.pressed}`);
 				let greenAudio = new Audio(greenMP3);
 				greenAudio.play();
 
 				setTimeout(() => {
-					green.current.classList.remove(`${classes.pressed}`);
+					green.current?.classList.remove(`${classes.pressed}`);
 				}, 100);
 				break;
 			case "red":
-				red.current.classList.add(`${classes.pressed}`);
+				red?.current?.classList.add(`${classes.pressed}`);
 				let redAudio = new Audio(redMP3);
 				redAudio.play();
 				setTimeout(() => {
-					red.current.classList.remove(`${classes.pressed}`);
+					red.current?.classList.remove(`${classes.pressed}`);
 				}, 100);
 				break;
 			case "yellow":
-				yellow.current.classList.add(`${classes.pressed}`);
+				yellow?.current?.classList.add(`${classes.pressed}`);
 				let yellowAudio = new Audio(yellowMP3);
 				yellowAudio.play();
 				setTimeout(() => {
-					yellow.current.classList.remove(`${classes.pressed}`);
+					yellow.current?.classList.remove(`${classes.pressed}`);
 				}, 100);
 				break;
 			case "blue":
-				blue.current.classList.add(`${classes.pressed}`);
+				blue?.current?.classList.add(`${classes.pressed}`);
 				let blueAudio = new Audio(blueMP3);
 				blueAudio.play();
 				setTimeout(() => {
-					blue.current.classList.remove(`${classes.pressed}`);
+					blue.current?.classList.remove(`${classes.pressed}`);
 				}, 100);
 				break;
 			case "wrong":
@@ -165,7 +165,7 @@ const useSimon = (green, red, yellow, blue, wrong, timer) => {
 				if (i < simonState.computerArray.length) {
 					myLoop();
 				} else {
-					timer.current.classList.add(`${classes.notVisible}`);
+					timer.current?.classList.add(`${classes.notVisible}`);
 					return;
 				}
 			}, 500);
