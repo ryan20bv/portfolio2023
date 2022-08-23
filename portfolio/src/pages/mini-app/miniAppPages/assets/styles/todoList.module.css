@@ -75,38 +75,10 @@
 	border-radius: 50%;
 	background-color: black;
 	color: rgb(5, 165, 5);
-	/* margin-left: 30px; */
 }
 .todo .header form div .cancel:hover {
 	color: yellow;
 }
-
-/* .todo .header form button {
-	border: solid black 1px;
-	margin-left: 30px;
-} */
-/* .todo .header form .FA_icon {
-	border-radius: 50%;
-	font-size: 40px;
-	align-self: center;
-	background-color: rgb(5, 165, 5);
-	color: black;
-} */
-/* .todo .header form .FA_icon:hover {
-	cursor: pointer;
-	background-color: black;
-	color: rgb(5, 165, 5);
-} */
-/* .todo .header form .delete_icon {
-	color: black;
-	font-size: 40px;
-	position: absolute;
-	right: 90px;
-} */
-/* .todo .header form .delete_icon:hover {
-	color: red;
-	cursor: pointer;
-} */
 
 .todo .content {
 	display: flex;
@@ -115,11 +87,9 @@
 	padding-top: 20px;
 }
 .todo .content .wrapper {
-	/* border: solid red; */
 	width: 40%;
 }
 .todo .content .wrapper li {
-	/* border: solid red; */
 	list-style: none;
 	display: flex;
 	align-items: center;
@@ -132,18 +102,13 @@
 	margin: 20px 0 10px 0;
 	padding: 10px 20px 10px 30px;
 }
-/* .todo .content .wrapper li div:last-child {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-} */
+
 .todo .content .wrapper li input {
 	width: 30px;
 	height: auto;
 	margin-right: 30px;
 }
 .todo .content .wrapper .FA_icon {
-	/* border: solid red; */
 	margin: 0 10px;
 }
 .todo .content .wrapper .FA_icon:hover {

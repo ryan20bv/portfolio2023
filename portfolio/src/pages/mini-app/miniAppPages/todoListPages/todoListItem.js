@@ -27,7 +27,7 @@ const TodoListItem = ({ classes, todo, onStrike, onDelete, onEditing }) => {
 					<FontAwesomeIcon
 						icon={regular("edit")}
 						className={classes.FA_icon}
-						onClick={() => onEditing(todo.id)}
+						onClick={() => onEditing(todo)}
 					/>
 				)}
 				<FontAwesomeIcon

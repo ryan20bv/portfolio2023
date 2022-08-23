@@ -71,7 +71,6 @@ const todoReducer = (state = initialState, action) => {
 			return { ...state, listArray: reducedArray };
 
 		case actionType.IS_EDITING_STATUS:
-			console.log("IS_EDITING_STATUS");
 			return { ...state, isEditing: payload.status };
 		default:
 			return state;
@@ -137,10 +136,25 @@ const useTodo = (validateValue) => {
 		});
 		clearInputHandler();
 	};
-	const isEditingHandler = (id) => {
+	const isEditingHandler = (item) => {
+		console.log(item);
 		dispatchTodo({
 			type: actionType.IS_EDITING_STATUS,
 			payload: { status: true },
+		});
+		dispatchTodo({
+			type: actionType.CHANGE_INPUT_VALUE,
+			payload: { enteredValue: item.task },
+		});
+	};
+	const cancelEditingHandler = () => {
+		dispatchTodo({
+			type: actionType.IS_EDITING_STATUS,
+			payload: { status: false },
+		});
+		dispatchTodo({
+			type: actionType.CHANGE_INPUT_VALUE,
+			payload: { enteredValue: "" },
 		});
 	};
 
@@ -156,6 +170,7 @@ const useTodo = (validateValue) => {
 		addTodoHandler,
 		deleteTodoHandler,
 		isEditingHandler,
+		cancelEditingHandler,
 	};
 };
 

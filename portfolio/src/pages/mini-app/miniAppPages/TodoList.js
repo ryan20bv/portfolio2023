@@ -24,8 +24,8 @@ const SliderOne = () => {
 		addTodoHandler,
 		deleteTodoHandler,
 		isEditingHandler,
+		cancelEditingHandler,
 	} = useTodo((inputValue) => inputValue.trim() !== "");
-	console.log(valueIsValid);
 	const submitHandler = (e) => {
 		e.preventDefault();
 
@@ -39,9 +39,12 @@ const SliderOne = () => {
 		// const itemToDeleteId = e.target.id;
 		deleteTodoHandler(itemToDeleteId);
 	};
-	const editTaskHandler = (itemToEditId) => {
+	const editTaskHandler = (itemToEdit) => {
 		// console.log(itemToEditId);
-		isEditingHandler(itemToEditId);
+		isEditingHandler(itemToEdit);
+	};
+	const cancelEditHandler = () => {
+		cancelEditingHandler();
 	};
 	return (
 		<main className={classes.todo}>
@@ -84,6 +87,7 @@ const SliderOne = () => {
 									<FontAwesomeIcon
 										icon={solid("cancel")}
 										className={classes.cancel}
+										onClick={cancelEditHandler}
 									/>
 								</section>
 								{valueIsValid && (
