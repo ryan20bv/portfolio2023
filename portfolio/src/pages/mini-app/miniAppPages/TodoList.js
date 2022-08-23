@@ -16,15 +16,19 @@ const SliderOne = () => {
 		listArray,
 		isNotEmpty,
 		inputValue,
+		isEditing,
+		valueIsValid,
 		isDoneItemHandler,
 		inputChangeHandler,
 		clearInputHandler,
 		addTodoHandler,
 		deleteTodoHandler,
-	} = useTodo(classes);
-
+		isEditingHandler,
+	} = useTodo((inputValue) => inputValue.trim() !== "");
+	console.log(valueIsValid);
 	const submitHandler = (e) => {
 		e.preventDefault();
+
 		addTodoHandler();
 	};
 	const checkboxStatusHandler = (e) => {
@@ -35,35 +39,64 @@ const SliderOne = () => {
 		// const itemToDeleteId = e.target.id;
 		deleteTodoHandler(itemToDeleteId);
 	};
-
+	const editTaskHandler = (itemToEditId) => {
+		// console.log(itemToEditId);
+		isEditingHandler(itemToEditId);
+	};
 	return (
 		<main className={classes.todo}>
 			<section className={classes.header}>
-				<form action='' onSubmit={submitHandler}>
-					<input
-						type='text'
-						placeholder='add todo here'
-						maxLength='30'
-						onChange={inputChangeHandler}
-						id='input_todo'
-						value={inputValue}
-					/>
-					{isNotEmpty && (
-						<div>
-							<FontAwesomeIcon
-								icon={solid("multiply")}
-								className={classes.delete_icon}
-								onClick={clearInputHandler}
-							/>
-						</div>
-					)}
-
-					<button>
-						<FontAwesomeIcon
-							icon={solid("plus-circle")}
-							className={classes.FA_icon}
+				<form action=''>
+					<section className={classes.form_left}>
+						<input
+							type='text'
+							placeholder='add todo here'
+							maxLength='30'
+							onChange={inputChangeHandler}
+							id='input_todo'
+							value={inputValue}
 						/>
-					</button>
+					</section>
+					<section className={classes.form_right}>
+						{isNotEmpty && (
+							<div>
+								<FontAwesomeIcon
+									icon={solid("multiply")}
+									className={classes.delete_icon}
+									onClick={clearInputHandler}
+								/>
+							</div>
+						)}
+
+						{valueIsValid && !isEditing && (
+							<div>
+								<FontAwesomeIcon
+									icon={solid("plus-circle")}
+									className={classes.plus_circle}
+									onClick={submitHandler}
+								/>
+							</div>
+						)}
+
+						{isEditing && (
+							<div className={classes.editing_icon}>
+								<section>
+									<FontAwesomeIcon
+										icon={solid("cancel")}
+										className={classes.cancel}
+									/>
+								</section>
+								{valueIsValid && (
+									<section>
+										<FontAwesomeIcon
+											icon={solid("circle-check")}
+											className={classes.circle_check}
+										/>
+									</section>
+								)}
+							</div>
+						)}
+					</section>
 				</form>
 			</section>
 			<section className={classes.content}>
@@ -80,6 +113,7 @@ const SliderOne = () => {
 									todo={todo}
 									onStrike={checkboxStatusHandler}
 									onDelete={deleteTaskHandler}
+									onEditing={editTaskHandler}
 								/>
 							);
 						})}

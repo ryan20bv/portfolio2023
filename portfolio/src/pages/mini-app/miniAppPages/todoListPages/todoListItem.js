@@ -7,7 +7,7 @@ import {
 	brands,
 } from "@fortawesome/fontawesome-svg-core/import.macro";
 
-const TodoListItem = ({ classes, todo, onStrike, onDelete }) => {
+const TodoListItem = ({ classes, todo, onStrike, onDelete, onEditing }) => {
 	// console.log(todo);
 	const classIfDone = todo.isDone ? `${classes.strike}` : "";
 	return (
@@ -24,7 +24,11 @@ const TodoListItem = ({ classes, todo, onStrike, onDelete }) => {
 			</div>
 			<div>
 				{!todo.isDone && (
-					<FontAwesomeIcon icon={regular("edit")} className={classes.FA_icon} />
+					<FontAwesomeIcon
+						icon={regular("edit")}
+						className={classes.FA_icon}
+						onClick={() => onEditing(todo.id)}
+					/>
 				)}
 				<FontAwesomeIcon
 					icon={regular("trash-alt")}

@@ -23,6 +23,8 @@ const initialState = {
 	listArray: [],
 	inputValue: "",
 	isNotEmpty: false,
+	isEditing: false,
+	itemToEdit: {},
 };
 
 const actionType = {
@@ -32,6 +34,7 @@ const actionType = {
 	ADD_TODO: "ADD_TODO",
 	IS_DONE_STATUS: "IS_DONE_STATUS",
 	DELETE_TODO: "DELETE_TODO",
+	IS_EDITING_STATUS: "IS_EDITING_STATUS",
 };
 
 const todoReducer = (state = initialState, action) => {
@@ -66,14 +69,18 @@ const todoReducer = (state = initialState, action) => {
 			});
 			console.log(reducedArray);
 			return { ...state, listArray: reducedArray };
+
+		case actionType.IS_EDITING_STATUS:
+			console.log("IS_EDITING_STATUS");
+			return { ...state, isEditing: payload.status };
 		default:
 			return state;
 	}
 };
 
-const useTodo = () => {
+const useTodo = (validateValue) => {
 	const [todoState, dispatchTodo] = useReducer(todoReducer, initialState);
-
+	const valueIsValid = validateValue(todoState.inputValue);
 	// const [inputValue, setInputValue] = useState("");
 	// const [isNotEmpty, setIsNotEmpty] = useState(false);
 
@@ -130,16 +137,25 @@ const useTodo = () => {
 		});
 		clearInputHandler();
 	};
+	const isEditingHandler = (id) => {
+		dispatchTodo({
+			type: actionType.IS_EDITING_STATUS,
+			payload: { status: true },
+		});
+	};
 
 	return {
 		listArray: todoState.listArray,
 		inputValue: todoState.inputValue,
 		isNotEmpty: todoState.isNotEmpty,
+		isEditing: todoState.isEditing,
+		valueIsValid,
 		isDoneItemHandler,
 		inputChangeHandler,
 		clearInputHandler,
 		addTodoHandler,
 		deleteTodoHandler,
+		isEditingHandler,
 	};
 };
 

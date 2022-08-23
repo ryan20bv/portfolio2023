@@ -17,61 +17,96 @@
 	align-items: center;
 	justify-content: center;
 }
-.todo .header form input,
-.todo .header form .form_btn {
-	height: 50px;
+.todo .header form {
+	border: solid red;
+	border-radius: 30px;
+	width: 45%;
+	display: flex;
+	font-size: 40px;
+	background-color: #fff;
+}
+.todo .header form .form_left {
+	width: 80%;
+}
+.todo .header form .form_right {
+	position: relative;
+	width: 20%;
+	display: flex;
+	align-items: center;
+}
+.todo .header form .form_right .editing_icon {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.todo .header form input {
 	font-size: 36px;
 	font-weight: 300;
 	padding: 5px 20px;
 	border-radius: 30px;
+	border: none;
+	width: 100%;
 }
-.todo .header form {
-	display: flex;
-	position: relative;
-}
-.todo .header form input {
-	/* border: solid red; */
-	width: 700px;
-	margin-right: 20px;
-	display: flex;
-	align-items: center;
-}
+
 .todo .header form input:focus {
 	outline: none;
 }
-.todo .header form div {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+
+.todo .header form div:hover {
+	cursor: pointer;
 }
 
-.todo .header form button {
+.todo .header form div .delete_icon {
+	position: absolute;
+	left: -50px;
+	top: 8px;
+}
+.todo .header form div .cancel,
+.todo .header form div .plus_circle {
+	margin: 0 30px;
+}
+
+.todo .header form div .delete_icon:hover {
+	color: red;
+}
+
+.todo .header form div .plus_circle:hover,
+.todo .header form div .circle_check:hover {
+	border-radius: 50%;
+	background-color: black;
+	color: rgb(5, 165, 5);
+	/* margin-left: 30px; */
+}
+.todo .header form div .cancel:hover {
+	color: yellow;
+}
+
+/* .todo .header form button {
 	border: solid black 1px;
 	margin-left: 30px;
-	display: contents;
-}
-.todo .header form .FA_icon {
+} */
+/* .todo .header form .FA_icon {
 	border-radius: 50%;
 	font-size: 40px;
 	align-self: center;
 	background-color: rgb(5, 165, 5);
 	color: black;
-}
-.todo .header form .FA_icon:hover {
+} */
+/* .todo .header form .FA_icon:hover {
 	cursor: pointer;
 	background-color: black;
 	color: rgb(5, 165, 5);
-}
-.todo .header form .delete_icon {
+} */
+/* .todo .header form .delete_icon {
 	color: black;
 	font-size: 40px;
 	position: absolute;
 	right: 90px;
-}
-.todo .header form .delete_icon:hover {
+} */
+/* .todo .header form .delete_icon:hover {
 	color: red;
 	cursor: pointer;
-}
+} */
 
 .todo .content {
 	display: flex;
