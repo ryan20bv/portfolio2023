@@ -7,7 +7,7 @@ import SimonGame from "./miniAppPages/SimonGame";
 import NumToWords from "./miniAppPages/NumToWords";
 import Randomizer from "./miniAppPages/Randomizer";
 import DiceGame from "./miniAppPages/DiceGame";
-import SliderSix from "./miniAppPages/SliderSix";
+import Pizzalated from "./miniAppPages/Pizzalated";
 
 const MiniApp = () => {
 	return (
@@ -18,7 +18,7 @@ const MiniApp = () => {
 				<Route path='/num-to-word' element={<NumToWords />} />
 				<Route path='/randomizer' element={<Randomizer />} />
 				<Route path='/dice-game' element={<DiceGame />} />
-				<Route path='/Six' element={<SliderSix />} />
+				<Route path='/Pizzalated' element={<Pizzalated />} />
 			</Routes>
 		</MiniAppWrapper>
 	);

@@ -1,0 +1,62 @@
+.pizzalated {
+	border: solid black;
+	height: 100%;
+}
+.pizzalated header nav {
+	padding: 10px 100px;
+	font-size: 1.5em;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.pizzalated header .logo {
+	font-size: 2em;
+}
+.pizzalated header .icon {
+	font-size: 1.3em;
+}
+.pizzalated header .icon:hover {
+	cursor: pointer;
+}
+.pizzalated header .input_div {
+	/* border: solid black; */
+	width: 40%;
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+.pizzalated header input {
+	font-size: 1em;
+	padding: 10px 80px;
+	border-radius: 30px;
+	width: 80%;
+}
+
+.pizzalated header .input_div .search {
+	color: red;
+	position: absolute;
+	left: 20px;
+}
+.pizzalated header .input_div .clear {
+	position: absolute;
+	right: 180px;
+}
+.pizzalated header .cart_div {
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+.pizzalated header .cart_div span {
+	position: absolute;
+	background-color: #fff;
+	font-size: smaller;
+	border: solid red;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	left: 25px;
+	top: 15px;
+}
