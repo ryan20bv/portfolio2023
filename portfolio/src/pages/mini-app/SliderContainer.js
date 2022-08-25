@@ -62,7 +62,7 @@ const SliderContainer = ({ classes }) => {
 			</div>
 			<div className={classes.slider_content}>
 				<img
-					src={process.env.PUBLIC_URL + "/assets/images/Num-to-word.PNG"}
+					src={require("./miniAppPages/assets/images/pizzalated.PNG")}
 					alt='num to word'
 					id='pizzalated'
 					onClick={(e) => clickHandler(e)}
