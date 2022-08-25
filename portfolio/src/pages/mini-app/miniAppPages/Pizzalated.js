@@ -16,11 +16,14 @@ const Pizzalated = () => {
 				<PizzaNav classes={classes} />
 			</header>
 			<section>
-				<div>
+				<div className={classes.arrow_left}>
 					<FontAwesomeIcon icon={solid("chevron-circle-left")} />
 				</div>
-				<PizzaContent classes={classes} />
-				<div>
+				<div className={classes.pizza_wrapper}>
+					<PizzaContent classes={classes} />
+				</div>
+
+				<div className={classes.arrow_right}>
 					<FontAwesomeIcon icon={solid("chevron-circle-right")} />
 				</div>
 			</section>

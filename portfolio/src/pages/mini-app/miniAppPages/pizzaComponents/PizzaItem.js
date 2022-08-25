@@ -1,15 +1,12 @@
 import React from "react";
 
-const PizzaItem = ({ classes }) => {
+const PizzaItem = ({ classes, pizza }) => {
 	return (
 		<div className={classes.card}>
-			<img
-				src='https://www.ezcater.com/lunchrush/wp-content/uploads/sites/2/2017/10/shutterstock_623344781.jpg.webp'
-				alt='content 1'
-			/>
+			<img src={pizza.img} alt={pizza.flavor} />
 			<div className={classes.info}>
-				<h1>Cheesy</h1>
-				<p>$ 3.15</p>
+				<h1>{pizza.flavor}</h1>
+				<p>$ {pizza.price}</p>
 			</div>
 			<div>
 				<form action=''>

@@ -68,17 +68,32 @@
 	align-items: center;
 	justify-content: space-between;
 }
+.pizzalated section .arrow_left,
+.pizzalated section .arrow_right {
+	/* border: solid black 2px; */
+	font-size: 3em;
+	margin: 0 30px;
+}
+.pizzalated section .pizza_wrapper {
+	/* border: solid black 2px; */
+	width: 80%;
+	overflow-x: scroll;
+}
 .pizzalated section .content {
-	border: solid red;
+	/* border: solid red; */
+	/* width: 80%; */
+	display: inline-flex;
+	/* flex-direction: row; */
+	/* overflow-x: scroll; */
 }
 .pizzalated section .card {
 	border: solid gray 1px;
 	border-radius: 30px;
 	overflow: hidden;
-	width: 20em;
-	height: 25em;
+	width: 20%;
+	height: 20%;
 	box-shadow: 2px 5px 2px 2px lightgray;
-	margin: 0 3em;
+	margin: 0 2em;
 }
 .pizzalated section .card img {
 	width: 20em;
