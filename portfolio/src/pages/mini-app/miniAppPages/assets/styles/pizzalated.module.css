@@ -68,12 +68,17 @@
 	align-items: center;
 	justify-content: space-between;
 }
+.pizzalated section .content {
+	border: solid red;
+}
 .pizzalated section .card {
-	border: solid black 1px;
+	border: solid gray 1px;
 	border-radius: 30px;
 	overflow: hidden;
 	width: 20em;
 	height: 25em;
+	box-shadow: 2px 5px 2px 2px lightgray;
+	margin: 0 3em;
 }
 .pizzalated section .card img {
 	width: 20em;
@@ -95,6 +100,7 @@
 	font-size: 1.5em;
 	color: red;
 	font-weight: bolder;
+	margin-right: 1.5em;
 }
 .pizzalated section .card form {
 	display: flex;
@@ -113,7 +119,7 @@
 .pizzalated section .card form div label {
 	margin-right: 20px;
 }
-.pizzalated section .card form div button {
+.pizzalated section .card form div .btn {
 	font-size: 2em;
 	width: 10%;
 	display: contents;
@@ -137,7 +143,8 @@
 	font-weight: bold;
 }
 
-.pizzalated section .card form button:hover {
+.pizzalated section .card form button:hover,
+.pizzalated section .card form div .btn:hover {
 	cursor: pointer;
 }
 .pizzalated section .card form .btn_submit:hover {
