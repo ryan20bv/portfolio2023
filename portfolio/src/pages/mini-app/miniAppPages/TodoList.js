@@ -62,6 +62,7 @@ const SliderOne = () => {
 							onChange={inputChangeHandler}
 							id='input_todo'
 							value={inputValue}
+							autoComplete='off'
 						/>
 					</section>
 					<section className={classes.form_right}>

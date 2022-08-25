@@ -5,7 +5,7 @@ import {
 	regular,
 	brands,
 } from "@fortawesome/fontawesome-svg-core/import.macro";
-import PizzaNav from "./pizzaComponents/PizzaNav";
+import PizzaNav from "./pizzaComponents/pizzaNav";
 import PizzaContent from "./pizzaComponents/PizzaContent";
 
 import classes from "./assets/styles/pizzalated.module.css";

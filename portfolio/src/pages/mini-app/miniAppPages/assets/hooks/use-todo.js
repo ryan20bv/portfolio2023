@@ -131,15 +131,18 @@ const useTodo = (validateValue) => {
 		dispatchTodo({ type: actionType.DELETE_TODO, payload: { id } });
 	};
 	const addTodoHandler = () => {
-		const newTodo = {
-			id: Math.random().toString(),
-			task: todoState.inputValue,
-			isDone: false,
-		};
-		dispatchTodo({
-			type: actionType.ADD_TODO,
-			payload: { newTodo: newTodo },
-		});
+		if (todoState.listArray.length < 5) {
+			const newTodo = {
+				id: Math.random().toString(),
+				task: todoState.inputValue,
+				isDone: false,
+			};
+			dispatchTodo({
+				type: actionType.ADD_TODO,
+				payload: { newTodo: newTodo },
+			});
+		}
+
 		clearInputHandler();
 	};
 	const isEditingHandler = (item) => {
