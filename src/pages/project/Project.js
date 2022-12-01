@@ -12,6 +12,7 @@ const Project = () => {
 				// fontFamily='Great Vibes'
 				headColor='red'
 				listColor='red'
+				addedClass={classes.project_nav}
 			/>
 		</main>
 	);

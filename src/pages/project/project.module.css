@@ -3,13 +3,18 @@
 	padding: 8em;
 	position: fixed;
 	width: 50%;
-	/* min-height: 100vh; */
+	min-height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	top: 250px;
+	/* top: 250px; */
 }
 .container {
-	border: solid red 2px;
 	height: 50vh;
+}
+.project_nav {
+	width: 100%;
+}
+.project_nav div {
+	margin-bottom: 4rem;
 }

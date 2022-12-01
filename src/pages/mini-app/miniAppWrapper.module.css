@@ -6,24 +6,22 @@
 	/* overflow-x: scroll; */
 }
 .main .nav_container {
-	border: solid black;
-	height: 8%;
+	border-top: solid black 2px;
+	border-bottom: solid black 2px;
+	/* height: 8%; */
 	/* overflow: hidden; */
 }
 
 .mini_app_nav {
-	/* border: solid red; */
-	position: relative;
-	width: 99vw;
-	/* overflow: hidden; */
-	height: 250px;
-	top: -180px;
-	margin: 10px auto 0;
-	padding: 10px 80px 10px 0;
-	display: flex;
-	align-items: flex-end;
-	justify-content: center;
+	width: 100%;
 }
+.mini_app_nav ul {
+	/* border: solid red 1px; */
+}
+.mini_app_nav ul a {
+	color: red;
+}
+
 .main .content {
 	/* border: solid black; */
 	height: 92%;

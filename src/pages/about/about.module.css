@@ -1,23 +1,22 @@
 .about_left {
-	/* border: solid black; */
 	width: 50%;
 	background-color: red;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	padding: 8em;
 	min-height: 100vh;
 	position: fixed;
 }
 .about_left img {
 	border: solid rgb(91, 89, 89) 1px;
 	border-radius: 50%;
-	width: 200px;
-	height: 200px;
+	width: 150px;
+	height: 150px;
 	position: relative;
 	align-self: flex-end;
-	right: -230px;
+	top: -50px;
+	right: -75px;
 }
 .about_right {
 	padding: 5em 6em 5em 10em;
@@ -35,6 +34,14 @@
 .about_right p {
 	font-size: 20px;
 	margin-bottom: 20px;
+}
+
+.about_nav {
+	position: relative;
+	top: -50px;
+}
+.about_nav div {
+	margin-bottom: 3rem;
 }
 .section {
 	margin-bottom: 30px;

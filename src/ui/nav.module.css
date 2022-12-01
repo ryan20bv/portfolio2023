@@ -10,13 +10,13 @@
 	/* border: solid red; */
 	font-family: var(--satisfy);
 	/* color: #fff; */
+	/* margin-bottom: 1rem; */
 }
 .nav .head h1 {
 	font-size: 12rem;
 	word-wrap: normal;
 	text-align: center;
 	line-height: 220px;
-	margin-bottom: 1rem;
 }
 
 .nav ul {

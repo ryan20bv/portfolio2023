@@ -10,7 +10,7 @@ const MiniAppWrapper = (props) => {
 		<>
 			<main className={classes.main}>
 				<section className={classes.nav_container}>
-					<Nav miniAppClassName={classes.mini_app_nav} />
+					<Nav addedClass={classes.mini_app_nav} />
 				</section>
 				<section className={classes.content}>
 					<div className={classes.output}>{props.children}</div>

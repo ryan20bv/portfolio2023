@@ -2,11 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 import classes from "./nav.module.css";
-const Nav = ({ fontFamily, head, headColor, listColor, miniAppClassName }) => {
+const Nav = ({ fontFamily, head, headColor, listColor, addedClass }) => {
 	return (
-		<nav
-			className={`${classes.nav} ${miniAppClassName ? miniAppClassName : ""}`}
-		>
+		<nav className={`${classes.nav} ${addedClass ? addedClass : ""}`}>
 			<div className={classes.head}>
 				<h1 style={{ fontFamily: fontFamily, color: headColor }}>{head}</h1>
 			</div>

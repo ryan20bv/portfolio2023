@@ -20,6 +20,7 @@ const About = () => {
 				// fontFamily='Great Vibes'
 				headColor='white'
 				listColor='black'
+				addedClass = {classes.about_nav}
 			/>
 		</div>
 	);
