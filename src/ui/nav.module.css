@@ -10,11 +10,13 @@
 	/* border: solid red; */
 	font-family: var(--satisfy);
 	/* color: #fff; */
+}
+.nav .head h1 {
+	font-size: 12rem;
 	word-wrap: normal;
-	font-size: 10em;
 	text-align: center;
 	line-height: 220px;
-	margin-bottom: 1em;
+	margin-bottom: 1rem;
 }
 
 .nav ul {
@@ -24,11 +26,11 @@
 	align-items: center;
 	justify-content: space-around;
 	list-style: none;
-	font-size: 1.5em;
+	font-size: 1.5rem;
 	/* color: red; */
 }
 .nav li {
-	padding: 10px 10px;
+	padding: 10px 15px;
 }
 .nav a {
 	/* color: red; */
