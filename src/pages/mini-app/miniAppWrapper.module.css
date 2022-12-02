@@ -1,44 +1,44 @@
 .main {
-	/* border: solid red; */
+	/* border: solid red 1px; */
 	height: 100vh;
-	/* position: relative; */
-	/* overflow: hidden; */
-	/* overflow-x: scroll; */
+	position: relative;
 }
 .main .nav_container {
-	border-top: solid black 2px;
 	border-bottom: solid black 2px;
 	/* height: 8%; */
 	/* overflow: hidden; */
+	width: 100%;
+	position: absolute;
+	top: 0;
 }
 
 .mini_app_nav {
 	width: 100%;
 }
-.mini_app_nav ul {
-	/* border: solid red 1px; */
-}
 .mini_app_nav ul a {
 	color: red;
 }
 
-.main .content {
-	/* border: solid black; */
-	height: 92%;
-}
+/* .main .content {
+	height: 100%;
+} */
 .main .output {
-	/* border: solid black; */
+	border: solid red 1px;
 	align-content: center;
-	height: 75%;
+	height: 100%;
 }
 .main .slider_div {
-	border-top: solid black;
-	height: 25%;
-	width: 100%;
+	border: solid black 1px;
+	height: 20%;
+	width: 90%;
 	/* overflow-x: scroll; */
 	overflow: hidden;
 	opacity: 0.5;
 	transition: opacity 1s;
+	position: absolute;
+	bottom: 2rem;
+	left: 5%;
+	justify-self: center;
 }
 .main .slider_div:hover {
 	opacity: 1;

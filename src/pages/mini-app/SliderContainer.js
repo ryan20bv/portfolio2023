@@ -1,5 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import SliderItem from "./SliderItem";
+
+const miniAppItems = [
+	{
+		src: "todoList.PNG",
+		alt: "num to word",
+		id: "todo",
+	},
+	{
+		src: "simon-game.PNG",
+		alt: "simon game",
+		id: "simon-game",
+	},
+	{
+		src: "Num-to-word.PNG",
+		alt: "num to word",
+		id: "num-to-word",
+	},
+	{
+		src: "randomizer.PNG",
+		alt: "randomizer",
+		id: "randomizer",
+	},
+	{
+		src: "dice-game.PNG",
+		alt: "dice game",
+		id: "dice-game",
+	},
+	{
+		src: "pizzalated.PNG",
+		alt: "num to word",
+		id: "pizzalated",
+	},
+];
 
 const SliderContainer = ({ classes }) => {
 	const [contentId, setContentId] = useState("");
@@ -20,55 +54,27 @@ const SliderContainer = ({ classes }) => {
 	}, [contentId, navigate]);
 	return (
 		<div className={classes.slider_container} id='slider_container'>
-			<div className={classes.slider_content}>
+			{miniAppItems.map((item) => {
+				return (
+					<SliderItem
+						key={item.id}
+						classes={classes}
+						src={item.src}
+						alt={item.alt}
+						id={item.id}
+						clickHandler={clickHandler}
+					/>
+				);
+			})}
+
+			{/* <div className={classes.slider_content}>
 				<img
-					src={process.env.PUBLIC_URL + "/assets/images/todoList.PNG"}
+					src={require("./miniAppPages/assets/images/todoList.PNG")}
 					alt='num to word'
 					id='todo'
 					onClick={(e) => clickHandler(e)}
 				/>
-			</div>
-			<div className={classes.slider_content}>
-				<img
-					src={process.env.PUBLIC_URL + "/assets/images/simon-game.PNG"}
-					alt='simon game'
-					id='simon-game'
-					onClick={(e) => clickHandler(e)}
-				/>
-			</div>
-			<div className={classes.slider_content}>
-				<img
-					src={process.env.PUBLIC_URL + "/assets/images/Num-to-word.PNG"}
-					alt='num to word'
-					id='num-to-word'
-					onClick={(e) => clickHandler(e)}
-				/>
-			</div>
-			<div className={classes.slider_content}>
-				<img
-					src={process.env.PUBLIC_URL + "/assets/images/randomizer.PNG"}
-					alt='randomizer'
-					id='randomizer'
-					onClick={(e) => clickHandler(e)}
-				/>
-			</div>
-			<div className={classes.slider_content}>
-				<img
-					src={process.env.PUBLIC_URL + "/assets/images/dice-game.PNG"}
-					alt='dice game'
-					id='dice-game'
-					onClick={(e) => clickHandler(e)}
-				/>
-			</div>
-			<div className={classes.slider_content}>
-				<img
-					src={require("./miniAppPages/assets/images/pizzalated.PNG")}
-					alt='num to word'
-					id='pizzalated'
-					onClick={(e) => clickHandler(e)}
-					// onMouseEnter={(e) => clickHandler(e)}
-				/>
-			</div>
+			</div> */}
 		</div>
 	);
 };
