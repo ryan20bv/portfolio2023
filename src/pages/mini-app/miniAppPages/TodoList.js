@@ -58,7 +58,7 @@ const SliderOne = () => {
 						<input
 							type='text'
 							placeholder='add todo here'
-							maxLength='30'
+							maxLength='20'
 							onChange={inputChangeHandler}
 							id='input_todo'
 							value={inputValue}
@@ -111,7 +111,7 @@ const SliderOne = () => {
 			</section>
 			<section className={classes.content}>
 				{listArray.length === 0 && (
-					<p className={classes.listEmpty}>Todo Empty</p>
+					<p className={classes.listEmpty}>Todo List is Empty</p>
 				)}
 				{listArray.length > 0 && (
 					<ul className={classes.wrapper}>
