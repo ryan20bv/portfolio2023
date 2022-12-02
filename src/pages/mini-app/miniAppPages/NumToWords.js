@@ -21,7 +21,9 @@ const NumToWords = () => {
 			inputRef.current.value = "";
 			return;
 		}
-		const formatValue = enteredValue.replaceAll(",", "");
+
+		let formatValue = enteredValue.replaceAll(",", "");
+
 		hookInputChangeHandler(formatValue);
 		const localeStringValue = parseInt(formatValue).toLocaleString();
 

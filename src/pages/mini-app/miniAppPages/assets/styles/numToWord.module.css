@@ -1,21 +1,21 @@
 .num {
+	border: solid red 1px;
 	background-color: #faebd7;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 40px 20px 20px 2px;
+	padding: 3.5rem 20px 20px 2px;
 }
 .num h1 {
 	font-size: 3em;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 .num form {
 	/* border: solid red; */
 	display: flex;
 	flex-direction: column;
 	width: 60%;
-	margin-bottom: 30px;
 }
 .num form label {
 	font-size: larger;
@@ -35,8 +35,7 @@
 .num form button {
 	width: 30%;
 	margin: auto;
-	height: 50px;
-	font-size: 2em;
+	font-size: 1.8em;
 	border-radius: 10px;
 	border: solid black 1px;
 }
@@ -47,7 +46,7 @@
 }
 
 .num div {
-	/* border: solid red; */
+	/* border: solid red 1px; */
 	height: 50%;
 	width: 80%;
 	padding: 1em 2em;
