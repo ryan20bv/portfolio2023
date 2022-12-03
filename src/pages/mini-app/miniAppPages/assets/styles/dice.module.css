@@ -4,30 +4,25 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 50px;
+	padding-top: 3rem;
 	color: #48a388;
 	font-family: "Lobster", cursive;
 }
 
 .dice .title {
-	font-size: 60px;
+	font-size: 3rem;
 }
 
 .dice .play_area {
-	/* border: solid red; */
-	margin: 50px;
 	width: 50%;
 	height: 80%;
 	display: flex;
-	align-items: center;
 	justify-content: space-around;
 }
 .dice .left,
 .dice .right {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
 }
 .dice .info {
 	display: flex;
@@ -44,7 +39,6 @@
 	margin-bottom: 20px;
 }
 .dice .options {
-	/* border: solid red; */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
