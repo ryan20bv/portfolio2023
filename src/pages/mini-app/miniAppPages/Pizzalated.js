@@ -61,7 +61,7 @@ const Pizzalated = () => {
 					</b>
 				</p>
 				<p>
-					Sample only - Please visit the full-page{" "}
+					Please visit the full-page{" "}
 					<b>
 						<a href='https://pizzalated-efb81.web.app/' target='_blank'>
 							Pizzalated
