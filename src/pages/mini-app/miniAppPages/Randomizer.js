@@ -24,7 +24,7 @@ const Randomizer = () => {
 			<h1>Randomizer</h1>
 			<section className={classes.range}>
 				<div>
-					<label htmlFor='min'>min number: </label>
+					<label htmlFor='min'>min: </label>
 					<input
 						type='number'
 						maxLength='3'
@@ -34,7 +34,7 @@ const Randomizer = () => {
 					/>
 				</div>
 				<div>
-					<label htmlFor='max'>max number:</label>
+					<label htmlFor='max'>max:</label>
 					<input
 						type='number'
 						maxLength='3'
