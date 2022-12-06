@@ -1,7 +1,11 @@
 import React, { useRef, useEffect, useState } from "react";
 
 const Slider = (props) => {
+	const sliderDivRef = useRef();
 	const [screenXValue, setScreenXValue] = useState(0);
+	const [difference, setDifference] = useState(0);
+	const leftArrow = "<";
+	const rightArrow = ">";
 	onmousemove = (e) => {
 		// console.log(e.screenX);
 		// console.dir(e);
@@ -10,11 +14,19 @@ const Slider = (props) => {
 
 	// console.log(screenXValue);
 
-	const sliderDivRef = useRef();
-	// console.dir(sliderDivRef);
 	useEffect(() => {
 		sliderDivRef.current.scrollLeft = 0;
+		// console.log(
+		// 	sliderDivRef.current.firstElementChild.clientWidth -
+		// 		sliderDivRef.current.clientWidth
+		// );
+		// setDifference(
+		// 	sliderDivRef.current.firstElementChild.clientWidth -
+		// 		sliderDivRef.current.clientWidth
+		// );
 	}, []);
+	// console.dir(sliderDivRef);
+
 	const value = props.outPutClientWidth / 6;
 	// 0-1200 0 200 400 600 800 1000 1200
 	// 0 -320 53.3 106 159.9 213.2 266
@@ -31,19 +43,47 @@ const Slider = (props) => {
 			sliderDivRef.current.scrollLeft = 350;
 		}
 	};
+	const leftScrollhandler = () => {
+		if (sliderDivRef.current.scrollLeft <= 0) {
+			return;
+		}
+
+		sliderDivRef.current.scrollLeft -= 150;
+	};
+	const rightScrollhandler = () => {
+		if (sliderDivRef.current.scrollLeft >= 300) {
+			return;
+		}
+
+		sliderDivRef.current.scrollLeft += 150;
+	};
 
 	const enterSliderDivHandler = () => {
 		// console.log(sliderDivRef.current.scrollLeft);
 		moveSlider();
 	};
 	return (
-		<div
-			className={props.classes.slider_div}
-			ref={sliderDivRef}
-			onMouseEnter={enterSliderDivHandler}
-			onMouseMove={moveSlider}
-		>
-			{props.children}
+		<div className={props.classes.slider_outer}>
+			<button
+				className={props.classes.slider_arrow}
+				onClick={leftScrollhandler}
+			>
+				{leftArrow}
+			</button>
+			<div
+				className={props.classes.slider_div}
+				ref={sliderDivRef}
+				onMouseEnter={enterSliderDivHandler}
+				onMouseMove={moveSlider}
+			>
+				{props.children}
+			</div>
+			<button
+				className={props.classes.slider_arrow}
+				onClick={rightScrollhandler}
+			>
+				{rightArrow}
+			</button>
 		</div>
 	);
 };

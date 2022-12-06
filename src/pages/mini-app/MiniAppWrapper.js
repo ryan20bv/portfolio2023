@@ -7,6 +7,7 @@ import SliderContainer from "./SliderContainer";
 import classes from "./miniAppWrapper.module.css";
 const MiniAppWrapper = (props) => {
 	const outPutRef = useRef();
+
 	const [outPutClientWidth, setOutPutClientWidth] = useState();
 
 	useEffect(() => {

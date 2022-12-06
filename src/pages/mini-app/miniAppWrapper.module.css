@@ -26,16 +26,32 @@
 	align-content: center;
 	height: 100%;
 }
+.main .slider_outer {
+	/* border: solid blue 1px; */
+	height: 10rem;
+	position: absolute;
+	bottom: 2rem;
+	display: flex;
+	align-items: center;
+}
+.main .slider_outer .slider_arrow {
+	/* border: solid red 1px; */
+	border: none;
+	font-size: 3rem;
+	margin: 0 1.5rem;
+	background-color: rgb(176, 174, 174);
+	opacity: 0.6;
+	cursor: pointer;
+}
 .main .slider_div {
 	border: solid black 1px;
-	height: 20%;
+	height: inherit;
 	width: 90%;
 	/* overflow-x: scroll; */
 	overflow: hidden;
 	opacity: 0.5;
 	transition: opacity 1s;
-	position: absolute;
-	bottom: 2rem;
+
 	left: 5%;
 	justify-self: center;
 }
