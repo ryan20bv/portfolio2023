@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-
+import ScrollNav from "./ui/ScrollNav";
 // import Home from "./pages/home/Home";
 // import About from "./pages/about/About";
 // import Project from "./pages/project/Project";
@@ -19,6 +19,7 @@ const App = () => {
 				<Route path='/about' element={<About />} />
 				<Route path='/project' element={<Project />} />
 				<Route path='/mini-app/*' element={<MiniApp />} />
+				<Route path='/scrollnav' element={<ScrollNav />} />
 			</Routes>
 		</React.Suspense>
 	);
