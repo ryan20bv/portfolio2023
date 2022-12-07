@@ -11,6 +11,7 @@ const Home = () => {
 				fontFamily='Great Vibes'
 				headColor='white'
 				listColor='red'
+				addedClass={classes.home_responsive}
 			/>
 		</div>
 	);
