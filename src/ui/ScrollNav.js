@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import Nav from "./Nav";
 
 import classes from "./scrollNav.module.css";
 
-const ScrollNav = () => {
+const ScrollNav = (props) => {
 	const [burgerMenuIsOpen, setBurgerMenuIsOpen] = useState(false);
 
 	const burgerMenuHandler = () => {
@@ -16,12 +16,15 @@ const ScrollNav = () => {
 	const optionClass = !burgerMenuIsOpen && `${classes.display}`;
 
 	return (
-		<div className={classes.scroll_main}>
+		<div
+			className={classes.scroll_main}
+			style={{ backgroundColor: props.bgColor }}
+		>
 			<header>
 				<img src={require("./assets/images/dog.jpeg")} alt='logo' />
 				<h2>RBV</h2>
 			</header>
-			<h1>About</h1>
+			<h1>{props.where}</h1>
 			<div className={classes.magic_nav}>
 				<div className={`${classes.view} ${optionClass}`}>
 					<Nav
