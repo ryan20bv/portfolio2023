@@ -1,6 +1,6 @@
 .project {
 	min-height: inherit;
-	padding: 8em;
+	padding: 4rem;
 	position: fixed;
 	width: 50%;
 	min-height: 100vh;
@@ -11,6 +11,7 @@
 }
 
 .project_nav {
+	/* border: solid red 1px; */
 	width: 100%;
 }
 .project_nav div {
@@ -35,6 +36,10 @@
 	padding: 3px 10px;
 	border-radius: 10px;
 }
+.right .container button a {
+	text-decoration: none;
+	color: black;
+}
 .right .container .details {
 	/* margin: 2rem; */
 	position: absolute;
@@ -53,11 +58,12 @@
 }
 .right .container .details.close {
 	right: 2rem;
-	width: 2rem;
+	width: 4rem;
 }
 .right .container .details.open {
 	right: 0;
 	width: 100%;
+	overflow: hidden;
 }
 .right .container .details.close p {
 	/* display: none; */
@@ -93,6 +99,12 @@
 	font-weight: bolder;
 }
 
+@media screen and (max-width: 1200px) {
+	.project {
+		padding: 4rem 1rem;
+	}
+}
+
 @media screen and (max-width: 1000px) {
 	.project {
 		position: relative;
@@ -103,5 +115,37 @@
 
 	.project_nav div {
 		margin: 0;
+	}
+	.right .container img {
+		border-radius: 20px;
+		width: 70%;
+		height: 20rem;
+	}
+	.right .container button {
+		left: 8rem;
+	}
+}
+@media screen and (max-width: 800px) {
+	.right .container {
+		/* border: solid black 1px; */
+		height: 100%;
+		padding: 1rem;
+	}
+	.right .container img {
+		width: 65%;
+		height: 18rem;
+	}
+	.right .container button {
+		left: 6rem;
+	}
+}
+@media screen and (max-width: 700px) {
+	.right .container img {
+		width: 70%;
+	}
+}
+@media screen and (max-width: 450px) {
+	.project {
+		padding: 1rem 0;
 	}
 }

@@ -1,5 +1,4 @@
 import React from "react";
-import PizzaItem from "../mini-app/miniAppPages/pizzaComponents/PizzaItem";
 
 const ProjectItem = ({
 	classes,
