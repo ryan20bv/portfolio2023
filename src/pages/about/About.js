@@ -33,7 +33,12 @@ const About = () => {
 
 	return (
 		<>
-			<DivWrapper leftContent={leftContent} rightContent={rightContent} />
+			<DivWrapper
+				leftContent={leftContent}
+				rightContent={rightContent}
+				bgColor='red'
+				where='About'
+			/>
 		</>
 	);
 };

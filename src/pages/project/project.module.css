@@ -48,7 +48,7 @@
 	justify-content: center;
 	/* background-color: rgb(39, 38, 38); */
 	background-color: rgba(39, 38, 38, 0.8);
-	z-index: 5;
+	z-index: 3;
 	transition: width 2s;
 }
 .right .container .details.close {
@@ -91,4 +91,17 @@
 	margin-bottom: 1rem;
 	font-size: 2rem;
 	font-weight: bolder;
+}
+
+@media screen and (max-width: 1000px) {
+	.project {
+		position: relative;
+		width: 100%;
+		min-height: 10rem;
+		padding: 1rem;
+	}
+
+	.project_nav div {
+		margin: 0;
+	}
 }

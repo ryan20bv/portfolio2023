@@ -24,7 +24,7 @@ const DivWrapper = (props) => {
 				{props.leftContent}
 			</div>
 			{isLessThan && scrollMoreThenLeftRef && (
-				<ScrollNav bgColor='red' where='About' />
+				<ScrollNav bgColor={props.bgColor} where={props.where} />
 			)}
 
 			<div className={classes.right}>{props.rightContent}</div>

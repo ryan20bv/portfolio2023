@@ -26,7 +26,10 @@ const ScrollNav = (props) => {
 			</header>
 			<h1>{props.where}</h1>
 			<div className={classes.magic_nav}>
-				<div className={`${classes.view} ${optionClass}`}>
+				<div
+					className={`${classes.view} ${optionClass}`}
+					style={{ backgroundColor: props.bgColor }}
+				>
 					<Nav
 						head='About'
 						// fontFamily='Great Vibes'

@@ -67,7 +67,12 @@ const Project = () => {
 	);
 	return (
 		<>
-			<DivWrapper leftContent={leftComponent} rightContent={rightComponent} />
+			<DivWrapper
+				leftContent={leftComponent}
+				rightContent={rightComponent}
+				bgColor='gray'
+				where='Project'
+			/>
 		</>
 	);
 };
