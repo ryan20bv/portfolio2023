@@ -77,3 +77,72 @@
 .display {
 	display: none;
 }
+
+@media screen and (max-width: 850px) {
+	.scroll_nav ul {
+		font-size: 1.3rem;
+	}
+	.view {
+		width: 450px;
+	}
+}
+@media screen and (max-width: 700px) {
+	.magic_nav {
+		flex-direction: column-reverse;
+	}
+	.view {
+		width: 150px;
+		top: 3rem;
+		right: -1rem;
+	}
+	.scroll_nav ul {
+		flex-direction: column;
+	}
+	.scroll_main {
+		padding: 10px 40px;
+	}
+	.scroll_main header img {
+		width: 2.7rem;
+		height: 2.7rem;
+	}
+	.scroll_main header h2 {
+		font-size: 1.7rem;
+	}
+}
+@media screen and (max-width: 600px) {
+	.scroll_main {
+		padding: 10px 30px;
+	}
+	.scroll_main header img {
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+	.scroll_main header h2 {
+		font-size: 1.5rem;
+	}
+}
+@media screen and (max-width: 500px) {
+	.scroll_main {
+		padding: 10px 25px;
+	}
+	.scroll_main header img {
+		width: 2.3rem;
+		height: 2.3rem;
+	}
+	.scroll_main header h2 {
+		font-size: 1.5rem;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.scroll_main {
+		padding: 10px 20px;
+	}
+	.scroll_main header img {
+		width: 2rem;
+		height: 2rem;
+	}
+	.scroll_main header h2 {
+		font-size: 1.3rem;
+	}
+}

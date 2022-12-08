@@ -22,13 +22,13 @@ const frontEnd = [
 ];
 const backEnd = [
 	{
-		title: "Node JS",
+		title: "NodeJS",
 		img: "node.png",
 	},
 ];
 const dataBase = [
 	{
-		title: "Mongo DB",
+		title: "MongoDB",
 		img: "mongoDb.png",
 	},
 	{

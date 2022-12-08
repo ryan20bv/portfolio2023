@@ -1,8 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useWindowSize } from "../windowSize/use-windowSize";
 
 import classes from "./nav.module.css";
 const Nav = ({ fontFamily, head, headColor, listColor, addedClass }) => {
+	const [windowWidth] = useWindowSize();
+	const smallScreen = windowWidth < 700;
 	return (
 		<nav className={`${classes.nav} ${addedClass ? addedClass : ""}`}>
 			<div className={classes.head}>
@@ -18,7 +21,8 @@ const Nav = ({ fontFamily, head, headColor, listColor, addedClass }) => {
 						Home
 					</NavLink>
 				</li>
-				<span>/</span>
+				{!smallScreen && <span>/</span>}
+
 				<li>
 					<NavLink
 						style={{ color: listColor }}
@@ -28,7 +32,7 @@ const Nav = ({ fontFamily, head, headColor, listColor, addedClass }) => {
 						About
 					</NavLink>
 				</li>
-				<span>/</span>
+				{!smallScreen && <span>/</span>}
 				<li>
 					<NavLink
 						to='/project'
@@ -38,7 +42,7 @@ const Nav = ({ fontFamily, head, headColor, listColor, addedClass }) => {
 						Project
 					</NavLink>
 				</li>
-				<span>/</span>
+				{!smallScreen && <span>/</span>}
 				<li>
 					<NavLink
 						to='/mini-app'

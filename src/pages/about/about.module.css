@@ -21,15 +21,7 @@
 
 @media screen and (max-width: 1300px) {
 	.about_nav {
-		/* border: solid yellow 1px; */
-	}
-	.card {
-		width: 6rem;
-		height: 6.5rem;
-	}
-	.card img {
-		width: 5rem;
-		height: 4rem;
+		width: 100%;
 	}
 }
 @media screen and (max-width: 1200px) {
@@ -37,9 +29,6 @@
 		width: 120px;
 		height: 120px;
 		right: -60px;
-	}
-	.about_right {
-		padding: 4rem 2.5rem 2rem 4.5rem;
 	}
 }
 @media screen and (max-width: 1000px) {
@@ -52,5 +41,15 @@
 	}
 	.about_left img {
 		display: none;
+	}
+}
+@media screen and (max-width: 600px) {
+	.about_left {
+		min-height: 14rem;
+	}
+}
+@media screen and (max-width: 500px) {
+	.about_left {
+		min-height: 12rem;
 	}
 }

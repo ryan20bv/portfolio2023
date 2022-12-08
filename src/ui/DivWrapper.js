@@ -14,7 +14,7 @@ const DivWrapper = (props) => {
 	const isLessThan = windowWidth < 1000;
 	const scrollPosition = useScrollHandler();
 	const elementHeight = useClientHeight(leftRef);
-	const scrollMoreThenLeftRef = scrollPosition > elementHeight - 50;
+	const scrollMoreThenLeftRef = scrollPosition > elementHeight - 70;
 
 	return (
 		<section className={classes.wrapper}>
