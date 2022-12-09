@@ -47,7 +47,7 @@ const NumToWords = () => {
 		<div className={classes.num}>
 			<h1>Number to Word</h1>
 			<form onSubmit={(e) => submitHandler(e)}>
-				<label htmlFor='numInput'>Input the number here:</label>
+				{/* <label htmlFor='numInput'>Input the number here:</label> */}
 				<input
 					type='text'
 					id='numInput'

@@ -25,3 +25,23 @@
 .change .bar3 {
 	transform: translate(0, -11px) rotate(45deg);
 }
+@media screen and (max-width: 600px) {
+	.change .bar1 {
+		transform: translate(0, 9px) rotate(-45deg);
+	}
+	.burger_menu .bar1,
+	.burger_menu .bar2,
+	.burger_menu .bar3 {
+		width: 35px;
+		height: 4px;
+	}
+}
+
+@media screen and (max-width: 450px) {
+	.burger_menu .bar1,
+	.burger_menu .bar2,
+	.burger_menu .bar3 {
+		width: 35px;
+		height: 4px;
+	}
+}

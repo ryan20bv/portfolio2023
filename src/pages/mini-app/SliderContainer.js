@@ -36,7 +36,6 @@ const miniAppItems = [
 ];
 
 const SliderContainer = ({ classes, burgerMenuIsOpen }) => {
-	console.log(burgerMenuIsOpen);
 	const [contentId, setContentId] = useState("");
 	const navigate = useNavigate();
 	const clickHandler = (e) => {

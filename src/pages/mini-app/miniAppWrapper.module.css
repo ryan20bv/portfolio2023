@@ -15,6 +15,7 @@
 .mini_app_nav {
 	width: 100%;
 }
+
 .mini_app_nav ul a {
 	color: red;
 }
@@ -89,6 +90,7 @@
 		height: max-content;
 	}
 	.main .slider_container {
+		background-color: rgba(184, 180, 176, 0.598);
 		flex-direction: column;
 		align-items: center;
 		height: 0;
@@ -119,5 +121,28 @@
 	}
 	.main .slider_outer .slider_arrow {
 		display: none;
+	}
+}
+@media screen and (max-width: 600px) {
+	.miniApp_burger {
+		right: 1rem;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.mini_app_nav ul li {
+		padding: 10px 10px;
+	}
+	.mini_app_nav ul a {
+		font-size: 1.4rem;
+	}
+}
+@media screen and (max-width: 450px) {
+	.miniApp_burger {
+		right: 0.5rem;
+		top: 0.3rem;
+	}
+	.mini_app_nav ul a {
+		font-size: 1.2rem;
 	}
 }
