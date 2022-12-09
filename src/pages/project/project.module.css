@@ -142,10 +142,35 @@
 @media screen and (max-width: 700px) {
 	.right .container img {
 		width: 70%;
+		height: 16rem;
+	}
+	.right .container .details.close {
+		right: 1rem;
+		width: 3rem;
+	}
+}
+@media screen and (max-width: 600px) {
+	.right .container img {
+		width: 80%;
+		/* height: 16rem; */
+	}
+	.right .container button {
+		left: 3rem;
+	}
+}
+@media screen and (max-width: 500px) {
+	.right .container img {
+		width: 90%;
+		height: 14rem;
 	}
 }
 @media screen and (max-width: 450px) {
 	.project {
 		padding: 1rem 0;
+	}
+}
+@media screen and (max-width: 400px) {
+	.right .container img {
+		height: 12rem;
 	}
 }
