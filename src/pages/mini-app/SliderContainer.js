@@ -35,7 +35,8 @@ const miniAppItems = [
 	},
 ];
 
-const SliderContainer = ({ classes }) => {
+const SliderContainer = ({ classes, burgerMenuIsOpen }) => {
+	console.log(burgerMenuIsOpen);
 	const [contentId, setContentId] = useState("");
 	const navigate = useNavigate();
 	const clickHandler = (e) => {
@@ -52,8 +53,12 @@ const SliderContainer = ({ classes }) => {
 	useEffect(() => {
 		navigate(`/mini-app/${contentId}`);
 	}, [contentId, navigate]);
+	const addedClass = burgerMenuIsOpen && `${classes.open}`;
 	return (
-		<div className={classes.slider_container} id='slider_container'>
+		<div
+			className={`${classes.slider_container} ${addedClass}`}
+			id='slider_container'
+		>
 			{miniAppItems.map((item) => {
 				return (
 					<SliderItem

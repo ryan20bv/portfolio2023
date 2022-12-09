@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Nav from "./Nav";
+import BurgerMenu from "./BurgerMenu";
 
 import classes from "./scrollNav.module.css";
 
@@ -10,8 +11,6 @@ const ScrollNav = (props) => {
 	const burgerMenuHandler = () => {
 		setBurgerMenuIsOpen((prevData) => !prevData);
 	};
-
-	const burgerClass = burgerMenuIsOpen && `${classes.change}`;
 
 	const optionClass = !burgerMenuIsOpen && `${classes.display}`;
 
@@ -38,15 +37,19 @@ const ScrollNav = (props) => {
 						addedClass={classes.scroll_nav}
 					/>
 				</div>
+				<BurgerMenu
+					burgerMenuIsOpen={burgerMenuIsOpen}
+					burgerMenuHandler={burgerMenuHandler}
+				/>
 
-				<section
+				{/* <section
 					className={`${classes.burger_menu} ${burgerClass}`}
 					onClick={burgerMenuHandler}
 				>
 					<div className={classes.bar1}></div>
 					<div className={classes.bar2}></div>
 					<div className={classes.bar3}></div>
-				</section>
+				</section> */}
 			</div>
 		</div>
 	);

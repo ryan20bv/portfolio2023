@@ -18,6 +18,11 @@
 .mini_app_nav ul a {
 	color: red;
 }
+.miniApp_burger {
+	position: absolute;
+	right: 3rem;
+	top: 0.5rem;
+}
 
 /* .main .content {
 	height: 100%;
@@ -27,7 +32,6 @@
 	height: 100%;
 }
 .main .slider_outer {
-	/* border: solid blue 1px; */
 	height: 10rem;
 	position: absolute;
 	bottom: 2rem;
@@ -44,7 +48,6 @@
 	cursor: pointer;
 }
 .main .slider_div {
-	border: solid black 1px;
 	height: inherit;
 	width: 90%;
 	/* overflow-x: scroll; */
@@ -59,7 +62,7 @@
 	opacity: 1;
 }
 .main .slider_container {
-	/* border: solid black; */
+	border: solid black 1px;
 	width: 120%;
 	height: 100%;
 	/* overflow-x: scroll; */
@@ -76,4 +79,45 @@
 }
 .main .slider_content img:hover {
 	cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+	.main .slider_outer {
+		top: 5rem;
+		right: 1rem;
+		flex-direction: column;
+		height: max-content;
+	}
+	.main .slider_container {
+		flex-direction: column;
+		align-items: center;
+		height: 0;
+		overflow-y: scroll;
+		border: none;
+		transition: height 1s ease-in;
+	}
+	.main .slider_container.open {
+		height: 80vh;
+		border: solid black 1px;
+	}
+	.main .slider_div {
+		width: 17.5rem;
+		opacity: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.main .slider_content {
+		width: 100%;
+		height: inherit;
+	}
+	.main .slider_content img {
+		border: solid black 1px;
+		margin: 10px 0;
+		width: 17rem;
+		height: 10rem;
+	}
+	.main .slider_outer .slider_arrow {
+		display: none;
+	}
 }
