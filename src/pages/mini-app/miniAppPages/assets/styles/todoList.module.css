@@ -13,18 +13,16 @@
 	height: 100%;
 }
 .todo .header {
-	/* border: solid red 1px; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 .todo .header form {
-	/* border: solid red; */
 	border-radius: 30px;
 	width: 45%;
 	display: flex;
 	font-size: 30px;
-	background-color: #fff;
+	background-color: rgb(218, 210, 210);
 }
 .todo .header form .form_left {
 	width: 80%;
@@ -41,6 +39,7 @@
 	align-items: center;
 }
 .todo .header form input {
+	background-color: rgb(218, 210, 210);
 	font-size: 2rem;
 	font-weight: 300;
 	padding: 0 20px;
@@ -61,24 +60,36 @@
 	position: absolute;
 	left: -50px;
 	top: 4px;
+	color: red;
 }
 .todo .header form div .cancel,
 .todo .header form div .plus_circle {
 	margin: 0 30px;
 }
+.todo .header form div .plus_circle,
+.todo .header form div .circle_check {
+	color: rgb(5, 165, 5);
+}
 
 .todo .header form div .delete_icon:hover {
-	color: red;
+	color: black;
 }
 
 .todo .header form div .plus_circle:hover,
 .todo .header form div .circle_check:hover {
 	border-radius: 50%;
 	background-color: black;
-	color: rgb(5, 165, 5);
+	/* color: rgb(5, 165, 5); */
+}
+.todo .header form div .cancel {
+	border-radius: 50%;
+	background-color: black;
+
+	color: yellow;
 }
 .todo .header form div .cancel:hover {
-	color: yellow;
+	color: black;
+	background-color: yellow;
 }
 
 .todo .content {
@@ -87,7 +98,7 @@
 	justify-content: center;
 }
 .todo .content .wrapper {
-	width: 40%;
+	width: 50%;
 	margin-top: 20px;
 }
 .todo .content .wrapper li {
@@ -111,18 +122,81 @@
 }
 .todo .content .wrapper .FA_icon {
 	margin: 0 10px;
+	color: yellow;
+}
+.todo .content .wrapper .FA_icon:last-child {
+	color: red;
 }
 .todo .content .wrapper .FA_icon:hover {
 	cursor: pointer;
-	color: yellow;
+	color: black;
 }
-.todo .content .wrapper .FA_icon:hover:last-child {
-	color: red;
-}
+
 .strike {
 	text-decoration: line-through;
 }
 .todo .content .listEmpty {
 	margin-top: 3rem;
 	font-size: 36px;
+}
+@media screen and (max-width: 1200px) {
+	.todo .header form {
+		width: 60%;
+	}
+	.todo .content .wrapper {
+		width: 60%;
+	}
+}
+@media screen and (max-width: 1050px) {
+	.todo .header form {
+		width: 70%;
+	}
+	.todo .content .wrapper {
+		width: 70%;
+	}
+}
+@media screen and (max-width: 900px) {
+	.todo .header form {
+		width: 80%;
+	}
+	.todo .content .wrapper {
+		width: 80%;
+	}
+}
+@media screen and (max-width: 800px) {
+	.todo .header form {
+		width: 90%;
+	}
+	.todo .content .wrapper {
+		width: 90%;
+	}
+}
+@media screen and (max-width: 800px) {
+	.todo .header form .form_left {
+		width: 70%;
+	}
+	.todo .header form {
+		font-size: 1.8rem;
+	}
+	.todo .header form input {
+		font-size: 1.8rem;
+	}
+}
+@media screen and (max-width: 500px) {
+	.todo .content .wrapper li div {
+		font-size: 1.8rem;
+	}
+}
+@media screen and (max-width: 450px) {
+	.todo .header form {
+		font-size: 1.5rem;
+		width: 95%;
+	}
+	.todo .content .wrapper li div {
+		font-size: 1.8rem;
+		padding: 1px;
+	}
+	.todo .header form input {
+		font-size: 1.5rem;
+	}
 }

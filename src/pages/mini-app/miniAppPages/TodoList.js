@@ -58,7 +58,7 @@ const SliderOne = () => {
 						<input
 							type='text'
 							placeholder='add todo here'
-							maxLength='20'
+							maxLength='10'
 							onChange={inputChangeHandler}
 							id='input_todo'
 							value={inputValue}
