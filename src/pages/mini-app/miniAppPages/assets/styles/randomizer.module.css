@@ -7,28 +7,27 @@
 	padding: 3rem 20px 20px 20px;
 }
 .randomizer h1 {
-	font-size: 3em;
+	font-size: 3rem;
 	margin-bottom: 20px;
 }
 .randomizer .range {
 	/* border: solid black; */
 	display: flex;
 	justify-content: space-around;
-	/* width: 25%; */
+	width: 40%;
 	margin-bottom: 20px;
 }
 .randomizer .range div {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin: 0 30px;
 }
 .randomizer .range div label {
-	font-size: 2em;
+	font-size: 2rem;
 	margin-right: 20px;
 }
 .randomizer .range div input {
-	font-size: 2em;
+	font-size: 2rem;
 	width: 7rem;
 	padding: 5px 10px;
 	text-align: center;
@@ -40,7 +39,7 @@
 	justify-content: space-around;
 }
 .randomizer .button button {
-	font-size: 2em;
+	font-size: 2rem;
 	margin: 20px;
 	padding: 10px 20px;
 	border-radius: 10px;
@@ -62,13 +61,100 @@
 .randomizer .bottom {
 	display: flex;
 	margin: 30px;
+	align-items: center;
+	justify-content: center;
 }
 .randomizer .bottom div {
 	border: solid #fbe7c6 1px;
 	border-radius: 50%;
 	margin: 20px;
-	font-size: 8em;
-	width: 1.5em;
-	text-align: center;
+	font-size: 8rem;
+	width: 10rem;
+	height: 10rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	background-color: #fbe7c6;
+}
+@media screen and (max-width: 1200px) {
+	.randomizer .range {
+		width: 60%;
+	}
+	.randomizer .bottom {
+		margin: 20px;
+	}
+	.randomizer .bottom div {
+		font-size: 6rem;
+		width: 8rem;
+		height: 8rem;
+	}
+}
+@media screen and (max-width: 1000px) {
+	.randomizer .bottom {
+		flex-wrap: wrap;
+		width: 60%;
+	}
+}
+@media screen and (max-width: 900px) {
+	.randomizer .bottom {
+		width: 70%;
+	}
+}
+@media screen and (max-width: 800px) {
+	.randomizer .range {
+		width: 70%;
+	}
+	.randomizer .bottom {
+		width: 80%;
+	}
+}
+@media screen and (max-width: 700px) {
+	.randomizer .range {
+		width: 80%;
+	}
+	.randomizer .bottom {
+		width: 100%;
+	}
+}
+@media screen and (max-width: 600px) {
+	.randomizer .range {
+		width: 100%;
+	}
+	.randomizer {
+		padding: 3rem 0;
+	}
+	.randomizer .button button {
+		font-size: 1.8rem;
+		margin: 20px;
+		padding: 5px 10px;
+	}
+	.randomizer .bottom {
+		margin: 10px;
+	}
+	.randomizer .bottom div {
+		font-size: 6rem;
+		width: 7rem;
+		height: 7rem;
+	}
+}
+@media screen and (max-width: 500px) {
+	.randomizer .range div label {
+		font-size: 1.5rem;
+		/* margin-right: 20px; */
+	}
+	.randomizer .range div input {
+		font-size: 1.5rem;
+		width: 5rem;
+		padding: 3px 10px;
+		text-align: center;
+	}
+	.randomizer .button button {
+		font-size: 1.5rem;
+		padding: 5px 10px;
+	}
+}
+@media screen and (max-width: 450px) {
+	.randomizer .button button {
+		margin: 10px;
+	}
 }
