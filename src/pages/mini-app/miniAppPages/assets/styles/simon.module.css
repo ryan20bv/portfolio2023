@@ -166,12 +166,20 @@ footer {
 	}
 }
 @media screen and (max-width: 1000px) {
+	.simon {
+		align-items: center;
+	}
 	.simon .first,
 	.simon .last {
 		width: 10%;
 	}
 	.simon .playArea {
 		width: 80%;
+	}
+}
+@media screen and (max-width: 900px) {
+	.simon .playArea .start {
+		width: 90%;
 	}
 }
 @media screen and (max-width: 850px) {
