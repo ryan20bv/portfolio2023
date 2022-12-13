@@ -8,7 +8,6 @@
 }
 .simon .first,
 .simon .last {
-	/* border: solid red 1px; */
 	width: 15%;
 	color: #fff;
 	writing-mode: vertical-rl;
@@ -33,7 +32,7 @@
 .simon .playArea .start {
 	background-color: #008000;
 	width: 60%;
-	font-size: 2em;
+	font-size: 2rem;
 	padding: 5px 30px;
 	font-family: "Press Start 2P", cursive;
 	border-radius: 5px;
@@ -42,6 +41,8 @@
 	cursor: pointer;
 }
 .simon .playArea .wrapper {
+	margin-top: 1rem;
+
 	width: 100%;
 	display: flex;
 	/* padding: 2rem; */
@@ -55,18 +56,19 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	padding: 50px;
 }
 .simon .playArea .info h1 {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-around;
 	margin: auto;
 	width: 80%;
 	font-size: 4rem;
-	margin-bottom: 2rem;
-	word-wrap: normal;
-	line-height: 7rem;
+	/* margin-bottom: 2rem; */
+	/* word-wrap: normal; */
+	line-height: 5rem;
 }
 
 .simon .playArea .info .timer {
@@ -75,12 +77,11 @@
 	/* visibility: visible; */
 }
 .simon .playArea .playDiv {
-	/* border: solid red 1px; */
 	width: 60%;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
-	margin-left: 50px;
+	/* margin-left: 50px; */
 }
 .playerTurn {
 	background-color: rgb(92, 85, 85);
@@ -90,9 +91,9 @@
 }
 .simon .playArea .playDiv .button {
 	border: solid black 10px;
-	width: 10em;
-	height: 10em;
-	margin: 20px 40px;
+	width: 10rem;
+	height: 10rem;
+	margin: 20px 20px;
 	border-radius: 30px;
 }
 .pressed {
@@ -146,4 +147,117 @@ footer {
 	position: absolute;
 	bottom: 10px;
 	color: #fff;
+}
+@media screen and (max-width: 1300px) {
+	.simon .playArea .start {
+		width: 80%;
+	}
+	.simon .playArea .info {
+		width: 40%;
+	}
+	.simon .playArea .info h1 {
+		font-size: 3rem;
+	}
+}
+@media screen and (max-width: 1200px) {
+	.simon .playArea .playDiv .button {
+		width: 9rem;
+		height: 9rem;
+	}
+}
+@media screen and (max-width: 1000px) {
+	.simon .first,
+	.simon .last {
+		width: 10%;
+	}
+	.simon .playArea {
+		width: 80%;
+	}
+}
+@media screen and (max-width: 850px) {
+	.simon {
+		flex-direction: column;
+		padding-top: 4rem;
+	}
+	.simon .first,
+	.simon .last {
+		width: 100%;
+		padding: 0;
+		writing-mode: horizontal-tb;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.8rem;
+	}
+	.simon .playArea {
+		margin: 0;
+		padding: 30px;
+		width: 100%;
+	}
+}
+@media screen and (max-width: 700px) {
+	.simon .playArea .start {
+		font-size: 1.7rem;
+	}
+	.simon .playArea .playDiv .button {
+		width: 8rem;
+		height: 8rem;
+	}
+}
+@media screen and (max-width: 650px) {
+	.simon .first,
+	.simon .last {
+		font-size: 1rem;
+	}
+	.simon .playArea .wrapper {
+		flex-direction: column;
+		align-items: center;
+	}
+	.simon .playArea {
+		padding: 20px;
+	}
+	.simon .playArea .info {
+		width: 100%;
+		padding: 0;
+	}
+	.simon .playArea .info h1 {
+		flex-direction: row;
+		width: 100%;
+		font-size: 2rem;
+	}
+	.simon .playArea .playDiv {
+		width: 80%;
+	}
+}
+@media screen and (max-width: 600px) {
+	.simon .playArea .start {
+		width: 100%;
+	}
+	.simon .playArea .info .timer {
+		font-size: 3rem;
+	}
+}
+@media screen and (max-width: 500px) {
+	.simon .playArea .start {
+		font-size: 1.5rem;
+	}
+	.simon .playArea .playDiv {
+		width: 100%;
+	}
+}
+@media screen and (max-width: 450px) {
+	.simon .playArea .start {
+		font-size: 1.2rem;
+	}
+}
+@media screen and (max-width: 400px) {
+	.simon .playArea .playDiv .button {
+		width: 7rem;
+		height: 7rem;
+	}
+}
+@media screen and (max-width: 380px) {
+	.simon .playArea .start {
+		font-size: 1rem;
+	}
 }
