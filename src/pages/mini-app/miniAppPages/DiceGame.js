@@ -33,11 +33,14 @@ const DiceGame = () => {
 							alt='dice'
 						/>
 					</div>
+
+					{(message === "1" || message === "Draw") && (
+						<p>{message === "Draw" ? "Draw" : "Win"}</p>
+					)}
 				</div>
 				<div className={classes.options}>
-					<p>{message}</p>
-					<button onClick={startHandler}>Roll Dice</button>
 					<button onClick={resetHandler}>Reset</button>
+					<button onClick={startHandler}>Roll Dice</button>
 				</div>
 				<div className={classes.right}>
 					<div className={classes.info}>
@@ -52,6 +55,10 @@ const DiceGame = () => {
 							alt='dice'
 						/>
 					</div>
+
+					{(message === "2" || message === "Draw") && (
+						<p>{message === "Draw" ? "Draw" : "Win"}</p>
+					)}
 				</div>
 			</section>
 			<footer>@2022</footer>

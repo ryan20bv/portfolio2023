@@ -10,19 +10,29 @@
 }
 
 .dice .title {
-	font-size: 3rem;
+	font-size: 2rem;
+	margin-bottom: 10px;
 }
 
 .dice .play_area {
 	width: 50%;
-	height: 80%;
+	/* height: 80%; */
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 }
 .dice .left,
 .dice .right {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+}
+.dice .image img {
+	width: 13rem;
+	height: 13rem;
+}
+.dice .image + p {
+	color: goldenrod;
+	font-size: 1.5rem;
 }
 .dice .info {
 	display: flex;
@@ -42,20 +52,12 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-between;
-	height: 70%;
-}
-.dice .options p {
-	font-size: 36px;
-	margin-bottom: 50px;
-	color: goldenrod;
-	/* border: solid red; */
-	height: 50px;
-	width: 200px;
-	display: flex;
-	/* align-content: center; */
 	justify-content: center;
+	position: absolute;
+	height: 50%;
+	width: 50%;
 }
+
 .dice .options button {
 	font-size: 24px;
 	padding: 5px 10px;
@@ -64,15 +66,94 @@
 	color: #fff;
 }
 
-.dice .options p + button {
-	background-color: #48a388;
+.dice .options button:first-child {
+	background-color: red;
 }
 .dice .options button:last-child {
 	margin-top: 50px;
-	background-color: red;
+	background-color: #48a388;
 }
 .dice .options button:hover {
 	cursor: pointer;
 	background-color: lightgray;
 	color: black;
+}
+@media screen and (max-width: 1200px) {
+	.dice .play_area {
+		width: 65%;
+	}
+	.dice .options {
+		width: 65%;
+	}
+}
+@media screen and (max-width: 1000px) {
+	.dice .play_area {
+		width: 75%;
+	}
+	.dice .options {
+		width: 75%;
+	}
+}
+@media screen and (max-width: 800px) {
+	.dice .play_area {
+		width: 80%;
+	}
+	.dice .options {
+		width: 80%;
+	}
+}
+@media screen and (max-width: 700px) {
+	.dice .options {
+		/* border: solid red 1px; */
+		position: absolute;
+		bottom: 5rem;
+		width: 80%;
+		height: max-content;
+	}
+}
+@media screen and (max-width: 600px) {
+	.dice .play_area {
+		width: 90%;
+	}
+	.dice .options {
+		width: 90%;
+	}
+}
+@media screen and (max-width: 500px) {
+	.dice .play_area {
+		flex-direction: column;
+	}
+	.dice .left,
+	.dice .right {
+		margin-bottom: 20px;
+		position: relative;
+		height: 13rem;
+	}
+	.dice .info {
+		/* flex-direction: row; */
+		position: absolute;
+		left: 0;
+		top: 2rem;
+	}
+	.dice .image {
+		position: absolute;
+		right: 0;
+	}
+	.dice .image + p {
+		position: absolute;
+		left: 2rem;
+		bottom: 1rem;
+	}
+	.dice .options {
+		bottom: 3rem;
+	}
+	.dice .options button:last-child {
+		margin-top: 1rem;
+	}
+}
+@media screen and (max-width: 400px) {
+	.dice .image img {
+		width: 11rem;
+		height: 11rem;
+	}
 }

@@ -29,10 +29,10 @@ const diceReducer = (state, action) => {
 		case "CHECK":
 			if (state.leftValue > state.rightValue) {
 				state.leftScore++;
-				state.message = "Player 1 Win";
+				state.message = "1";
 			} else if (state.leftValue < state.rightValue) {
 				state.rightScore++;
-				state.message = "Player 2 Win";
+				state.message = "2";
 			} else {
 				state.message = "Draw";
 			}
@@ -48,7 +48,7 @@ const useDice = () => {
 		rightValue: 6,
 		leftScore: 0,
 		rightScore: 0,
-		message: "",
+		message: "Draw",
 	});
 
 	let intervalId = "";
