@@ -6,12 +6,20 @@
 	align-items: center;
 	justify-content: flex-end;
 	flex-direction: column;
-	padding-bottom: 5em;
+	padding-bottom: 5rem;
 }
 
 @media screen and (min-width: 1650px) {
 	.home .home_responsive {
 		width: 50%;
+	}
+}
+@media screen and (max-width: 1200px) {
+	.home .home_responsive div {
+	}
+	.home .home_responsive h1 {
+		font-size: 12rem;
+		line-height: 230px;
 	}
 }
 @media screen and (max-width: 900px) {

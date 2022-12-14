@@ -25,6 +25,7 @@ const About = () => {
 			/>
 		</div>
 	);
+	const fromAboutPage = "black";
 	const rightContent = (
 		<>
 			<AboutRight />

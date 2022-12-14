@@ -40,6 +40,7 @@ const ScrollNav = (props) => {
 				<BurgerMenu
 					burgerMenuIsOpen={burgerMenuIsOpen}
 					burgerMenuHandler={burgerMenuHandler}
+					where={props.where}
 				/>
 
 				{/* <section
