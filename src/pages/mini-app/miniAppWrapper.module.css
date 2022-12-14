@@ -96,7 +96,7 @@
 		height: 0;
 		overflow-y: scroll;
 		border: none;
-		transition: height 1s ease-in;
+		transition: height 0.5s ease-in;
 	}
 	.main .slider_container.open {
 		height: 80vh;
