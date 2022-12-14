@@ -45,13 +45,60 @@ const pizzaList = [
 		price: 3.15,
 	},
 ];
-const PizzaContent = ({ classes }) => {
+const PizzaContent = ({ classes, windowWidth, searchValue }) => {
+	let foundItem = [];
+	pizzaList.forEach((item) => {
+		if (item.flavor.toLowerCase().includes(searchValue)) {
+			foundItem.push(item);
+		}
+	});
+	if (foundItem.length === 0 || !foundItem) {
+		foundItem = pizzaList;
+	}
+	let pizzaItem1 = [];
+	let pizzaItem2 = [];
+	if (windowWidth <= 900) {
+		const itemLength = foundItem.length;
+		const firstHalfLength = Math.ceil(itemLength / 2);
+
+		foundItem.forEach((item, index) => {
+			if (index < firstHalfLength) {
+				pizzaItem1.push(item);
+			} else {
+				pizzaItem2.push(item);
+			}
+		});
+	}
+
+	const isBetween600And900 = windowWidth >= 600 && windowWidth <= 900;
 	return (
-		<div className={classes.content}>
-			{pizzaList.map((pizza) => {
-				return <PizzaItem classes={classes} key={pizza.id} pizza={pizza} />;
-			})}
-		</div>
+		<>
+			{!isBetween600And900 && (
+				<div className={classes.content}>
+					{foundItem.map((pizza) => {
+						return <PizzaItem classes={classes} key={pizza.id} pizza={pizza} />;
+					})}
+				</div>
+			)}
+			{isBetween600And900 && (
+				<>
+					<div className={classes.content}>
+						{pizzaItem1.map((pizza) => {
+							return (
+								<PizzaItem classes={classes} key={pizza.id} pizza={pizza} />
+							);
+						})}
+					</div>
+					<div className={classes.content}>
+						{pizzaItem2.map((pizza) => {
+							return (
+								<PizzaItem classes={classes} key={pizza.id} pizza={pizza} />
+							);
+						})}
+					</div>
+				</>
+			)}
+		</>
 	);
 };
 
