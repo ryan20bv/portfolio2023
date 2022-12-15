@@ -29,7 +29,7 @@ const backEnd = [
 const dataBase = [
 	{
 		title: "MongoDB",
-		img: "mongoDb.png",
+		img: "mongodb.png",
 	},
 	{
 		title: "Firebase",

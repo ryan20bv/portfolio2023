@@ -69,14 +69,17 @@
 		font-size: 6rem;
 		line-height: 120px;
 	}
+	.nav ul li {
+		font-size: 1.1rem;
+	}
 }
 @media screen and (max-width: 450px) {
-	.nav ul {
-		font-size: 1.3rem;
+	.nav ul li {
+		font-size: 0.8rem;
 	}
 }
 @media screen and (max-width: 400px) {
-	.nav ul {
-		font-size: 1.1rem;
+	.nav ul li {
+		font-size: 0.5rem;
 	}
 }

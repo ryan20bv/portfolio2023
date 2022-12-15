@@ -27,9 +27,7 @@ const DiceGame = () => {
 					</div>
 					<div className={classes.image}>
 						<img
-							src={
-								process.env.PUBLIC_URL + `/assets/images/dice${leftValue}.PNG`
-							}
+							src={require(`./assets/images/dice${leftValue}.png`)}
 							alt='dice'
 						/>
 					</div>
@@ -49,9 +47,10 @@ const DiceGame = () => {
 					</div>
 					<div className={classes.image}>
 						<img
-							src={
-								process.env.PUBLIC_URL + `/assets/images/dice${rightValue}.PNG`
-							}
+							// src={
+							// 	process.env.PUBLIC_URL + `/assets/images/dice${rightValue}.PNG`
+							// }
+							src={require(`./assets/images/dice${rightValue}.png`)}
 							alt='dice'
 						/>
 					</div>
