@@ -69,8 +69,8 @@
 	top: 15px;
 }
 .pizzalated section {
-	/* border: solid red 1px; */
 	padding: 20px 20px;
+	margin-bottom: 10px;
 	height: 80%;
 	display: flex;
 	justify-content: space-between;
@@ -168,8 +168,8 @@
 	box-shadow: 2px 1px 1px gray;
 }
 .pizzalated footer {
-	/* border: solid red; */
-	margin: auto;
+	display: flex;
+	align-items: center;
 	color: red;
 }
 .pizzalated footer p {
@@ -266,7 +266,7 @@
 
 @media screen and (max-width: 600px) {
 	.pizzalated header {
-		margin-top: 10px;
+		margin-top: 2rem;
 	}
 	.pizzalated header nav {
 		padding: 5px 1rem;
@@ -300,12 +300,12 @@
 	}
 	.pizzalated section .pizza_wrapper {
 		margin-top: 10px;
-		height: 97%;
+		height: 93%;
 	}
 	.pizzalated section .content {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: space-around;
+		justify-content: space-evenly;
 	}
 	.pizzalated section .card {
 		margin-right: 0;
