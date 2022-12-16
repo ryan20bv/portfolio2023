@@ -59,23 +59,24 @@ const AboutRight = () => {
 				<div>
 					<h2>
 						<b>
-							Hello, I am Ryan Valenzuela! I enjoy transforming plans, designs,
-							and ideas into reality.
+							I am Ryan Valenzuel, from Oil and Gas Industry with Mechanical 
+							Engineering background especiallizing in QA/QC to Information 
+							and Technology in Web Developer using MERN Stack.
+
 						</b>
 					</h2>
 					<p>
-						Being an Urban Planner by profession, I ventured on a mission to
-						search for solutions to make smarter and more resilient communities
-						– an endless quest for technological innovations which eventually
-						led me to the fascinating world of Web Development. After all, the
-						web is just an evolved form of the communities that we know. We
-						connect, we communicate, we interact. Everything just turned
-						digital. Today, my mission still remains, but I am more focused now
-						on developing beautifully designed websites and web applications
-						that foster seamless and worthwhile digital community experiences.
-						Hungry to further enhance my knowledge in this field, I am open to
-						working in environments where I can learn, grow, and contribute
-						more.
+						As QA/QC in Oil and Gas Industry, the task is to ensure that step 
+							by step procedure must be followed to meet the quality and standard 
+							of the project. The skills are keen to details, ensure different 
+							department function well and innovate task and activities and pass 														information efficiently.
+							As for Web Developer, i was curious and want to learn new skill.
+							I enrolled in a bootcamp and then do self learning to determine if 
+							i have a grit for Information and Technology.
+							Now i have several project deployed using MERN stack, and looking
+							for working environment to use my new acquired skill and further 
+							grow in the field of Information and Technology.
+
 					</p>
 				</div>
 			</section>
