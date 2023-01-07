@@ -59,24 +59,28 @@ const AboutRight = () => {
 				<div>
 					<h2>
 						<b>
-							I am Ryan Valenzuel, from Oil and Gas Industry with Mechanical 
-							Engineering background especiallizing in QA/QC to Information 
-							and Technology in Web Developer using MERN Stack.
-
+							I am Ryan Valenzuela, from Oil and Gas Industry with Mechanical
+							Engineering background specializing in QA/QC to Information and
+							Technology in Web Developer using MERN Stack.
 						</b>
 					</h2>
 					<p>
-						As QA/QC in Oil and Gas Industry, the task is to ensure that step 
-							by step procedure must be followed to meet the quality and standard 
-							of the project. The skills are keen to details, ensure different 
-							department function well and innovate task and activities and pass 														information efficiently.
-							As for Web Developer, i was curious and want to learn new skill.
-							I enrolled in a bootcamp and then do self learning to determine if 
-							i have a grit for Information and Technology.
-							Now i have several project deployed using MERN stack, and looking
-							for working environment to use my new acquired skill and further 
-							grow in the field of Information and Technology.
-
+						As QA/QC in Oil and Gas Industry, the task is to ensure that step by
+						step procedure must be followed to meet the quality and standard of
+						the project.
+					</p>
+					<p>
+						The skills are keen to details, ensure different department function
+						well and innovate task and activities and pass information
+						efficiently.
+					</p>{" "}
+					<p>
+						As for Web Developer, i was curious and want to learn new skill. I
+						enrolled in a boot camp and then do self learning to determine if i
+						have a grit for Information and Technology. <br />
+						Now i have several project deployed using MERN stack, and looking
+						for working environment to use my new acquired skill and further
+						grow in the field of Information and Technology.
 					</p>
 				</div>
 			</section>
