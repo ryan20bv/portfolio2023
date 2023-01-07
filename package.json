@@ -18,7 +18,7 @@
 		"save": "^2.5.0",
 		"web-vitals": "^2.1.4"
 	},
-	"homepage": "https://ryan20bv.github.io/portfolio-react/",
+	"homepage": "https://ryan20bv.github.io/portfolio2023/",
 	"scripts": {
 		"start": "react-scripts start",
 		"predeploy": "npm run build",
